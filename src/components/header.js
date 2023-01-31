@@ -13,7 +13,7 @@ const Header = ({ accountType, signedIn }) => {
   const router = useRouter();
   const login = accountType === 'login';
 
-  const handleClick = route => {
+  const handleClick = (route) => {
     setTimeout(() => {
       router.push(route);
     }, 1000);
@@ -25,7 +25,8 @@ const Header = ({ accountType, signedIn }) => {
         css={css`
           margin: 35px 30px 40px 30px;
           position: relative;
-        `}>
+        `}
+      >
         {signedIn ? (
           <EuiFlexGroup justifyContent="flexEnd" alignItems="center">
             <EuiFlexItem grow={false}>
@@ -47,10 +48,9 @@ const Header = ({ accountType, signedIn }) => {
                 size="s"
                 minWidth={0}
                 onClick={
-                  login
-                    ? () => handleClick('/8.6/signup')
-                    : () => handleClick('/8.6')
-                }>
+                  login ? () => handleClick('/signup') : () => handleClick('/')
+                }
+              >
                 {login ? 'Sign up' : 'Log in'}
               </EuiButton>
             </EuiFlexItem>

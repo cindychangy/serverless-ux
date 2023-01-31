@@ -26,7 +26,7 @@ const Login = () => {
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
-      router.push('8.6/profile');
+      router.push('profile');
     }, 1000);
   };
 
