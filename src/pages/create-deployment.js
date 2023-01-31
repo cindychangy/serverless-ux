@@ -25,7 +25,7 @@ const CreateDeployment = () => {
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
-      router.push('guided-setup');
+      router.push('kibana');
     }, 1500);
   };
 
