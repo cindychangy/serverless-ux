@@ -18,7 +18,7 @@ import {
   EuiHorizontalRule,
   EuiText,
 } from '@elastic/eui';
-import Account from '../../components/account';
+import Account from '../components/account';
 
 const KibanaHome = () => {
   const router = useRouter();

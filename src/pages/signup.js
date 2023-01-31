@@ -17,7 +17,6 @@ import {
   useEuiTheme,
 } from '@elastic/eui';
 import Header from '../components/header';
-import { Router } from 'next/router';
 
 const Signup = () => {
   const router = useRouter();
