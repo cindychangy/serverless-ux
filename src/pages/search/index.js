@@ -17,7 +17,7 @@ import {
   EuiHorizontalRule,
   EuiButtonEmpty,
 } from '@elastic/eui';
-import Header from '../components/header';
+import Header from '../../components/header';
 
 const Search = () => {
   const router = useRouter();
