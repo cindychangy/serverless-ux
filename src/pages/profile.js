@@ -40,14 +40,12 @@ const Profile = () => {
           max-width: 550px;
           margin: auto;
           width: 100%;
-        `}
-      >
+        `}>
         <EuiPanel paddingSize="l">
           <div
             css={css`
               padding: 30px;
-            `}
-          >
+            `}>
             <EuiText size="s" textAlign="center">
               <h1>Welcome to Elastic</h1>
               <EuiTextColor color="subdued">
@@ -82,7 +80,7 @@ const Profile = () => {
                 idSelected={experience}
                 color="primary"
                 isFullWidth
-                onChange={(experience) => setExperience(experience)}
+                onChange={experience => setExperience(experience)}
                 options={EXPERIENCE}
               />
 
@@ -98,7 +96,7 @@ const Profile = () => {
                 <EuiRadioGroup
                   idSelected={purpose}
                   options={PURPOSE}
-                  onChange={(purpose) => setPurpose(purpose)}
+                  onChange={purpose => setPurpose(purpose)}
                   compressed
                 />
               </EuiPanel>
@@ -110,8 +108,7 @@ const Profile = () => {
                   <EuiButton
                     fill
                     isLoading={isLoading}
-                    onClick={() => handleClick()}
-                  >
+                    onClick={() => handleClick()}>
                     Next
                   </EuiButton>
                 </EuiFlexItem>

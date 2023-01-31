@@ -55,8 +55,7 @@ const Signup = () => {
           text-align: center;
           position: relative;
           top: -50px;
-        `}
-      >
+        `}>
         <EuiSpacer size="m" />
         <EuiFlexItem>
           <EuiTitle size="m">
@@ -73,21 +72,18 @@ const Signup = () => {
           padding: 0 40px;
           margin: auto;
           position: relative;
-        `}
-      >
+        `}>
         <EuiSpacer size="xxl" />
         <EuiFlexGroup
           direction="row"
           justifyContent="center"
-          alignItems="flexStart"
-        >
+          alignItems="flexStart">
           <EuiFlexItem grow={false}>
             <EuiPanel
               paddingSize="l"
               css={css`
                 width: 430px;
-              `}
-            >
+              `}>
               <EuiTitle size="s">
                 <EuiTextAlign textAlign="center">
                   <h3>Sign up for a free 14-day trial</h3>
@@ -110,15 +106,13 @@ const Signup = () => {
                 fill
                 fullWidth
                 isLoading={isLoading}
-                onClick={() => handleClick()}
-              >
+                onClick={() => handleClick()}>
                 Start free trial
               </EuiButton>
               <EuiFlexGroup
                 alignItems="center"
                 gutterSize="s"
-                responsive={false}
-              >
+                responsive={false}>
                 <EuiFlexItem>
                   <EuiHorizontalRule />
                 </EuiFlexItem>
@@ -140,8 +134,7 @@ const Signup = () => {
                 <EuiFlexItem>
                   <EuiButton
                     iconSide="left"
-                    iconType="/images/icon-microsoft.svg"
-                  >
+                    iconType="/images/icon-microsoft.svg">
                     Microsoft
                   </EuiButton>
                 </EuiFlexItem>
@@ -182,8 +175,7 @@ const Signup = () => {
               <EuiFlexGroup
                 direction="column"
                 gutterSize="s"
-                responsive={false}
-              >
+                responsive={false}>
                 <EuiSpacer size="l" />
                 <EuiFlexItem>
                   <EuiButton iconSide="left" iconType="/images/icon-aws.svg">

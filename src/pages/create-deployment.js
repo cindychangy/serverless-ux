@@ -54,13 +54,11 @@ const CreateDeployment = () => {
           max-width: 650px;
           width: 100%;
           margin: auto;
-        `}
-      >
+        `}>
         <div
           css={css`
             padding: 40px 48px;
-          `}
-        >
+          `}>
           <EuiTitle>
             <h2>Create your first deployment</h2>
           </EuiTitle>
@@ -105,8 +103,7 @@ const CreateDeployment = () => {
             border-radius: 0 !important;
             box-shadow: rgba(0, 0, 0, 0.1) 0 0 12px !important;
             padding: 24px 48px !important;
-          `}
-        >
+          `}>
           <EuiButton fill isLoading={isLoading} onClick={() => handleClick()}>
             Create deployment
           </EuiButton>

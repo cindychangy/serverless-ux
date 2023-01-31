@@ -38,25 +38,21 @@ const Login = () => {
           padding: 0 40px;
           margin: auto;
           position: relative;
-        `}
-      >
+        `}>
         <EuiFlexGroup
           direction="row"
           justifyContent="center"
-          alignItems="flexStart"
-        >
+          alignItems="flexStart">
           <EuiFlexItem grow={false}>
             <EuiPanel
               paddingSize="l"
               css={css`
                 width: 430px;
-              `}
-            >
+              `}>
               <div
                 css={css`
                   padding: 0 8px;
-                `}
-              >
+                `}>
                 <EuiSpacer size="s" />
                 <EuiTitle size="s">
                   <EuiTextAlign textAlign="center">
@@ -76,23 +72,20 @@ const Login = () => {
                   fill
                   fullWidth
                   isLoading={isLoading}
-                  onClick={() => handleClick()}
-                >
+                  onClick={() => handleClick()}>
                   Log in
                 </EuiButton>
                 <EuiSpacer size="m" />
                 <div
                   css={css`
                     text-align: center;
-                  `}
-                >
+                  `}>
                   <EuiButtonEmpty href="#">Forgot password?</EuiButtonEmpty>
                 </div>
                 <EuiFlexGroup
                   alignItems="center"
                   gutterSize="s"
-                  responsive={false}
-                >
+                  responsive={false}>
                   <EuiFlexItem>
                     <EuiHorizontalRule />
                   </EuiFlexItem>
@@ -109,16 +102,14 @@ const Login = () => {
                   <EuiFlexItem>
                     <EuiButton
                       iconSide="left"
-                      iconType="/images/icon-google.svg"
-                    >
+                      iconType="/images/icon-google.svg">
                       Google
                     </EuiButton>
                   </EuiFlexItem>
                   <EuiFlexItem>
                     <EuiButton
                       iconSide="left"
-                      iconType="/images/icon-microsoft.svg"
-                    >
+                      iconType="/images/icon-microsoft.svg">
                       Microsoft
                     </EuiButton>
                   </EuiFlexItem>
