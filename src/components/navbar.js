@@ -11,9 +11,10 @@ import {
   EuiIcon,
   EuiPopover,
 } from '@elastic/eui';
+import { css } from '@emotion/react';
 import Account from './account';
 
-const Navbar = ({ crumbs, isCloud, isIntegrations }) => {
+const Navbar = ({ breadcrumbs, isCloud, isIntegrations }) => {
   const router = useRouter();
   if (typeof HTMLElement !== `undefined`) {
     return (
@@ -40,9 +41,9 @@ const Navbar = ({ crumbs, isCloud, isIntegrations }) => {
                 <EuiHeaderSectionItemButton flush="both">
                   <Account />
                 </EuiHeaderSectionItemButton>,
-                <EuiHeaderSectionItemButton flush="both">
-                  <EuiAvatar color="#25282f" iconType="cheer" name="account" />
-                </EuiHeaderSectionItemButton>,
+                // <EuiHeaderSectionItemButton flush="both">
+                //   <EuiAvatar color="#25282f" iconType="cheer" name="account" />
+                // </EuiHeaderSectionItemButton>,
                 <EuiHeaderSectionItemButton
                   key="user"
                   aria-label="Account menu">
@@ -70,7 +71,7 @@ const Navbar = ({ crumbs, isCloud, isIntegrations }) => {
                       <EuiAvatar name="Elastic Space" size="s" type="space" />
                     </EuiHeaderSectionItemButton>,
                   ],
-              breadcrumbs: crumbs,
+              breadcrumbs: breadcrumbs,
             },
             {
               items: isIntegrations

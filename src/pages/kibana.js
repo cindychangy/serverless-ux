@@ -49,7 +49,6 @@ const KibanaLayout = ({ children }) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   const collapsibleNavId = useGeneratedHtmlId({ prefix: 'collapsibleNav' });
-  const breadcrumbs = [];
 
   const collapsibleNav = (
     <EuiCollapsibleNav
