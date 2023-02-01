@@ -9,7 +9,7 @@ import { EuiProvider } from '@elastic/eui';
 const App = ({ Component, pageProps }) => (
   <>
     <Head>
-      <title>UX Onboarding Prototype</title>
+      <title>Serverless UX Prototype</title>
     </Head>
     <Global styles={globalStyes} />
     <EuiProvider colorMode="light">

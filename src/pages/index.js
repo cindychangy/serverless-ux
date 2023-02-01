@@ -1,126 +1,128 @@
+/* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
-  EuiFlexGroup,
-  EuiFlexItem,
   EuiTitle,
-  EuiText,
-  EuiButton,
-  EuiSpacer,
   EuiPanel,
-  EuiTextAlign,
-  EuiFormRow,
-  EuiFieldText,
-  EuiFieldPassword,
-  EuiHorizontalRule,
-  EuiButtonEmpty,
+  EuiText,
+  EuiSpacer,
+  EuiImage,
+  EuiLink,
 } from '@elastic/eui';
-import Header from '../components/header';
 
-const Login = () => {
+const IndexPage = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleClick = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      router.push('profile');
-    }, 1000);
-  };
+  const flowLink = css`
+    h4 {
+      margin-block-end: 0 !important;
+      margin-top: 10px;
+    }
+
+    p {
+      font-size: 13px;
+      color: #6b6f7f;
+    }
+  `;
 
   return (
-    <>
-      <Header accountType="login" />
+    <div style={{ position: 'relative', height: '100vh' }}>
       <div
         css={css`
-          padding: 0 40px;
-          margin: auto;
           position: relative;
+          z-index: 2;
+          margin-top: 150px;
         `}>
-        <EuiFlexGroup
-          direction="row"
-          justifyContent="center"
-          alignItems="flexStart">
-          <EuiFlexItem grow={false}>
-            <EuiPanel
-              paddingSize="l"
+        <EuiImage
+          size={140}
+          src={'/images/logo-elastic.png'}
+          alt="Elastic logo"
+          css={css`
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -85%);
+          `}
+        />
+        {/* <EuiTitle
+          size="m"
+          css={css`
+            text-align: center;
+          `}>
+          <h3>Serverless UX Prototype</h3>
+        </EuiTitle> */}
+        <div
+          css={css`
+            max-width: 300px;
+            margin: 40px auto;
+          `}>
+          <EuiPanel paddingSize="xl">
+            <EuiText
               css={css`
-                width: 430px;
+                text-transform: uppercase;
+                color: #6b6f7f;
+                letter-spacing: 2px;
               `}>
-              <div
-                css={css`
-                  padding: 0 8px;
-                `}>
-                <EuiSpacer size="s" />
-                <EuiTitle size="s">
-                  <EuiTextAlign textAlign="center">
-                    <h1>Log in</h1>
-                  </EuiTextAlign>
-                </EuiTitle>
-                <EuiSpacer size="xl" />
-                <EuiFormRow label="Email">
-                  <EuiFieldText icon="user" fullWidth />
-                </EuiFormRow>
-                <EuiSpacer size="l" />
-                <EuiFormRow label="Password">
-                  <EuiFieldPassword type="dual" fullWidth />
-                </EuiFormRow>
-                <EuiSpacer size="l" />
-                <EuiButton
-                  fill
-                  fullWidth
-                  isLoading={isLoading}
-                  onClick={() => handleClick()}>
-                  Log in
-                </EuiButton>
-                <EuiSpacer size="m" />
-                <div
-                  css={css`
-                    text-align: center;
-                  `}>
-                  <EuiButtonEmpty href="#">Forgot password?</EuiButtonEmpty>
-                </div>
-                <EuiFlexGroup
-                  alignItems="center"
-                  gutterSize="s"
-                  responsive={false}>
-                  <EuiFlexItem>
-                    <EuiHorizontalRule />
-                  </EuiFlexItem>
-                  <EuiFlexItem grow={false}>
-                    <EuiText color="subdued" size="s">
-                      Or log in with
-                    </EuiText>
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiHorizontalRule />
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-                <EuiFlexGroup gutterSize="s" responsive={false}>
-                  <EuiFlexItem>
-                    <EuiButton
-                      iconSide="left"
-                      iconType="/images/icon-google.svg">
-                      Google
-                    </EuiButton>
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiButton
-                      iconSide="left"
-                      iconType="/images/icon-microsoft.svg">
-                      Microsoft
-                    </EuiButton>
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-              </div>
-            </EuiPanel>
-          </EuiFlexItem>
-        </EuiFlexGroup>
+              <h5>Choose your flow</h5>
+            </EuiText>
+            <EuiSpacer size="s" />
+            <EuiText css={flowLink}>
+              <EuiLink>
+                <h4>New user</h4>
+              </EuiLink>
+              <p>starts from marketing page</p>
+            </EuiText>
+            <EuiSpacer size="s" />
+            <EuiText css={flowLink}>
+              <EuiLink>
+                <h4>Existing user</h4>
+              </EuiLink>
+              <p>starts from login</p>
+            </EuiText>
+
+            <EuiSpacer size="m" />
+            <EuiText css={flowLink}>
+              <EuiLink>
+                <h4>Billing admin</h4>
+              </EuiLink>
+            </EuiText>
+            <EuiSpacer size="m" />
+            <EuiText css={flowLink}>
+              <EuiLink>
+                <h4>Org admin</h4>
+              </EuiLink>
+            </EuiText>
+            <EuiSpacer size="m" />
+            <EuiText css={flowLink}>
+              <EuiLink>
+                <h4>Project viewer</h4>
+              </EuiLink>
+            </EuiText>
+          </EuiPanel>
+        </div>
       </div>
-    </>
+      <EuiImage
+        src={'/images/landing-page-bg.svg'}
+        alt="background image"
+        size={400}
+        css={css`
+          position: absolute;
+          top: 0;
+          left: 0;
+        `}
+      />
+      <EuiImage
+        src={'/images/landing-page-bg-2.svg'}
+        alt="background image"
+        size={400}
+        css={css`
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        `}
+      />
+    </div>
   );
 };
 
-export default Login;
+export default IndexPage;
