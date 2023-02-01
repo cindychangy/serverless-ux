@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
 import { useRouter } from 'next/router';
 import {
@@ -22,7 +23,15 @@ const Navbar = ({ crumbs, isCloud, isIntegrations }) => {
           sections={[
             {
               items: [
-                <EuiHeaderLogo iconType="logoElastic">Elastic</EuiHeaderLogo>,
+                <EuiHeaderLogo iconType="logoElastic">
+                  <img
+                    src="/images/elastic-text-white.svg"
+                    alt="Elastic"
+                    css={css`
+                      margin: 7px 0 0 1px;
+                    `}
+                  />
+                </EuiHeaderLogo>,
               ],
               borders: 'none',
             },

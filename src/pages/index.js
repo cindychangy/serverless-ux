@@ -67,14 +67,14 @@ const IndexPage = () => {
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
-              <EuiLink>
+              <EuiLink href="/signup">
                 <h4>New user</h4>
               </EuiLink>
               <p>starts from marketing page</p>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
-              <EuiLink>
+              <EuiLink href="/login">
                 <h4>Existing user</h4>
               </EuiLink>
               <p>starts from login</p>

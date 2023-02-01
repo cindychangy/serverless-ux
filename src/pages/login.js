@@ -26,7 +26,7 @@ const Login = () => {
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
-      router.push('profile');
+      router.push('/cloud');
     }, 1000);
   };
 

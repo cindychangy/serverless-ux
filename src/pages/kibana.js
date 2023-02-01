@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { css } from '@emotion/react';
@@ -126,7 +127,13 @@ const KibanaLayout = ({ children }) => {
                     key="elastic-logo"
                     iconType="logoElastic"
                     href="#">
-                    Elastic
+                    <img
+                      src="/images/elastic-text-white.svg"
+                      alt="Elastic"
+                      css={css`
+                        margin: 7px 0 0 1px;
+                      `}
+                    />
                   </EuiHeaderLogo>,
                 ],
                 borders: 'none',
