@@ -20,7 +20,7 @@ import {
   EuiTableBody,
   useEuiTheme,
 } from '@elastic/eui';
-import Navbar from '../../components/navbar';
+import CloudLayout from '../../layouts/cloud';
 
 const CloudHomepage = () => {
   const { euiTheme } = useEuiTheme();
@@ -64,81 +64,73 @@ const CloudHomepage = () => {
   ];
 
   return (
-    <>
-      <Navbar
-        isCloud
-        breadcrumbs={[
-          {
-            text: 'Cloud',
-          },
-        ]}
-      />
-      <div
-        css={css`
-          margin: auto;
-          max-width: 1600px;
-          width: 100%;
-        `}>
-        <EuiSpacer size="xl" />
-        <EuiFlexGroup gutterSize="l">
-          <EuiFlexItem grow={2}>
-            <EuiPanel>
-              <EuiFlexGroup gutterSize="s" alignItems="center">
-                <EuiFlexItem grow={false}>
-                  <div css={logoCircle}>
-                    <EuiIcon type="logoElasticsearch" size="m" />
-                  </div>
-                </EuiFlexItem>
-                <EuiFlexItem>
-                  <EuiText>
-                    <h4>Elasticsearch Service</h4>
-                  </EuiText>
-                </EuiFlexItem>
-                <EuiFlexItem
-                  grow={false}
-                  css={css`
-                    text-align: right;
-                  `}>
-                  <EuiButton fill iconType="plus">
-                    Create a project
-                  </EuiButton>
-                </EuiFlexItem>
-              </EuiFlexGroup>
-              <EuiSpacer sizer="1" />
-              <EuiTable css={tableStyles}>
-                <EuiTableHeader>
-                  {TABLE_HEADER.map(header => (
-                    <EuiTableHeaderCell>{header}</EuiTableHeaderCell>
+    <CloudLayout
+      breadcrumbs={[
+        {
+          text: 'Cloud',
+        },
+      ]}>
+      <EuiFlexGroup gutterSize="l">
+        <EuiFlexItem grow={2}>
+          <EuiPanel>
+            <EuiFlexGroup gutterSize="s" alignItems="center">
+              <EuiFlexItem grow={false}>
+                <div css={logoCircle}>
+                  <EuiIcon type="logoElasticsearch" size="m" />
+                </div>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiText>
+                  <h4>Elasticsearch Service</h4>
+                </EuiText>
+              </EuiFlexItem>
+              <EuiFlexItem
+                grow={false}
+                css={css`
+                  text-align: right;
+                `}>
+                <EuiButton fill iconType="plus">
+                  Create a project
+                </EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+            <EuiSpacer sizer="1" />
+            <EuiTable css={tableStyles}>
+              <EuiTableHeader>
+                {TABLE_HEADER.map(header => (
+                  <EuiTableHeaderCell>{header}</EuiTableHeaderCell>
+                ))}
+              </EuiTableHeader>
+              <EuiTableBody>
+                <EuiTableRow>
+                  {TABLE_ITEMS.map(item => (
+                    <>
+                      <EuiTableRowCell>
+                        <EuiButtonEmpty flush="left">
+                          {item.name}
+                        </EuiButtonEmpty>
+                      </EuiTableRowCell>
+                      <EuiTableRowCell>{item.status}</EuiTableRowCell>
+                      <EuiTableRowCell>{item.version}</EuiTableRowCell>
+                      <EuiTableRowCell>{item.region}</EuiTableRowCell>
+                      <EuiTableRowCell>
+                        <EuiButtonIcon
+                          iconType="gear"
+                          onClick={() => router.push('cloud/project')}
+                        />
+                      </EuiTableRowCell>
+                    </>
                   ))}
-                </EuiTableHeader>
-                <EuiTableBody>
-                  <EuiTableRow>
-                    {TABLE_ITEMS.map(item => (
-                      <>
-                        <EuiTableRowCell>
-                          <EuiButtonEmpty flush="left">
-                            {item.name}
-                          </EuiButtonEmpty>
-                        </EuiTableRowCell>
-                        <EuiTableRowCell>{item.status}</EuiTableRowCell>
-                        <EuiTableRowCell>{item.version}</EuiTableRowCell>
-                        <EuiTableRowCell>{item.region}</EuiTableRowCell>
-                        <EuiTableRowCell>
-                          <EuiButtonIcon iconType="gear" />
-                        </EuiTableRowCell>
-                      </>
-                    ))}
-                  </EuiTableRow>
-                </EuiTableBody>
-              </EuiTable>
-            </EuiPanel>
-          </EuiFlexItem>
-          <EuiFlexItem grow={1}>
-            <EuiPanel>Cloud panel</EuiPanel>
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      </div>
-    </>
+                </EuiTableRow>
+              </EuiTableBody>
+            </EuiTable>
+          </EuiPanel>
+        </EuiFlexItem>
+        <EuiFlexItem grow={1}>
+          <EuiPanel>Cloud panel</EuiPanel>
+        </EuiFlexItem>
+      </EuiFlexGroup>
+    </CloudLayout>
   );
 };
 
