@@ -65,6 +65,7 @@ const CloudHomepage = () => {
 
   return (
     <CloudLayout
+      isCloudHome
       breadcrumbs={[
         {
           text: 'Cloud',
@@ -98,7 +99,9 @@ const CloudHomepage = () => {
             <EuiTable css={tableStyles}>
               <EuiTableHeader>
                 {TABLE_HEADER.map(header => (
-                  <EuiTableHeaderCell>{header}</EuiTableHeaderCell>
+                  <EuiTableHeaderCell key={header.name}>
+                    {header}
+                  </EuiTableHeaderCell>
                 ))}
               </EuiTableHeader>
               <EuiTableBody>
@@ -106,7 +109,9 @@ const CloudHomepage = () => {
                   {TABLE_ITEMS.map(item => (
                     <>
                       <EuiTableRowCell>
-                        <EuiButtonEmpty flush="left">
+                        <EuiButtonEmpty
+                          flush="left"
+                          onClick={() => router.push('/search')}>
                           {item.name}
                         </EuiButtonEmpty>
                       </EuiTableRowCell>

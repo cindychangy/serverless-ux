@@ -10,7 +10,7 @@ import {
 } from '@elastic/eui';
 import Navbar from '../components/navbar';
 
-const CloudLayout = ({ breadcrumbs, children, hasSidebar }) => {
+const CloudLayout = ({ breadcrumbs, children, hasSidebar, isCloudHome }) => {
   const handleClick = () => {
     console.log('clicked');
   };
@@ -77,7 +77,9 @@ const CloudLayout = ({ breadcrumbs, children, hasSidebar }) => {
           panelled={!!hasSidebar}
           css={css`
             height: 100vh;
-          `}>
+            margin: auto;
+          `}
+          style={isCloudHome && { maxWidth: '1600px' }}>
           <EuiPageSection>{children}</EuiPageSection>
         </EuiPageBody>
       </EuiPage>

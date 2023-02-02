@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { css } from '@emotion/react';
@@ -13,40 +14,13 @@ import {
   EuiListGroup,
   useGeneratedHtmlId,
   EuiAvatar,
-  EuiTitle,
-  EuiText,
-  EuiModal,
-  EuiModalBody,
-  EuiModalFooter,
-  EuiButtonEmpty,
-  EuiSpacer,
-  EuiButton,
   useEuiTheme,
 } from '@elastic/eui';
-import Account from '../components/account';
-import GuidedSetupPanel from '../components/guided_setup_panel/guided_setup_panel';
 
-const KibanaLayout = ({
-  onClick,
-  guideOpen,
-  setGuide,
-  section,
-  confetti,
-  buttonDisabled,
-  newUserStartPage,
-  pageHeader,
-  stepNumber,
-  breadcrumbs,
-  hasSidebar,
-  children,
-  completedSteps,
-  loadGif,
-  guideIndex,
-  data,
-}) => {
+const KibanaLayout = ({ breadcrumbs, children }) => {
   const { euiTheme } = useEuiTheme();
   const mainWrapper = css`
-    padding-top: 96px; // two top navs
+    padding-top: 96px;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -72,28 +46,14 @@ const KibanaLayout = ({
   `;
 
   const [navIsOpen, setNavIsOpen] = useState(false);
-  const [exitGuide, setExitGuide] = useState(false);
-  const [removeGuideButton, setRemoveGuideButton] = useState(false);
-
-  let exitGuideModal;
 
   const collapsibleNavId = useGeneratedHtmlId({ prefix: 'collapsibleNav' });
-
-  const handleOptOut = () => {
-    onClick();
-    setExitGuide(true);
-  };
-
-  const removeGuide = () => {
-    setExitGuide(false);
-    setRemoveGuideButton(true);
-  };
 
   const collapsibleNav = (
     <EuiCollapsibleNav
       ownFocus={false}
       css={css`
-        margin-top: 96px; // two top navs
+        margin-top: 96px;
         min-height: calc(100vh - 96px);
         display: flex;
       `}
@@ -108,7 +68,6 @@ const KibanaLayout = ({
         </EuiHeaderSectionItemButton>
       }
       onClose={() => setNavIsOpen(false)}>
-      {/* Dark deployments section */}
       <EuiFlexItem grow={false} style={{ flexShrink: 0 }}>
         <EuiCollapsibleNavGroup isCollapsible={false} background="dark">
           <EuiListGroup
@@ -130,7 +89,6 @@ const KibanaLayout = ({
         </EuiCollapsibleNavGroup>
       </EuiFlexItem>
       <EuiHorizontalRule margin="none" />
-      {/* Menu items */}
       <EuiFlexItem className="eui-yScroll">
         <EuiCollapsibleNavGroup
           title={
@@ -151,37 +109,9 @@ const KibanaLayout = ({
 
   const leftSectionItems = [collapsibleNav];
 
-  if (exitGuide) {
-    exitGuideModal = (
-      <EuiModal maxWidth={448} aria-label="optOutModal">
-        <EuiModalBody>
-          <EuiSpacer size="m" />
-          <EuiTitle size="m">
-            <h2>Quit this setup guide and discard progress?</h2>
-          </EuiTitle>
-          <EuiSpacer size="m" />
-          <EuiText>
-            <p>
-              You can restart anytime, just click Setup guide on the homepage.
-            </p>
-          </EuiText>
-        </EuiModalBody>
-        <EuiModalFooter>
-          <EuiButtonEmpty onClick={() => setExitGuide(false)}>
-            Cancel
-          </EuiButtonEmpty>
-          <EuiButton color="warning" onClick={removeGuide} fill>
-            Quit Guide
-          </EuiButton>
-        </EuiModalFooter>
-      </EuiModal>
-    );
-  }
-
   if (typeof HTMLElement !== `undefined`) {
     return (
       <>
-        {exitGuideModal}
         <div css={mainWrapper}>
           <EuiHeader
             position="fixed"
@@ -193,33 +123,19 @@ const KibanaLayout = ({
                     key="elastic-logo"
                     iconType="logoElastic"
                     href="#">
-                    Elastic
+                    <img
+                      src="/images/elastic-text-white.svg"
+                      alt="Elastic"
+                      css={css`
+                        margin: 7px 0 0 1px;
+                      `}
+                    />
                   </EuiHeaderLogo>,
                 ],
                 borders: 'none',
               },
               {
                 items: [
-                  !removeGuideButton && (
-                    <GuidedSetupPanel
-                      key="onboarding-setup"
-                      onClick={onClick}
-                      handleOptOut={handleOptOut}
-                      guideOpen={guideOpen}
-                      buttonDisabled={buttonDisabled}
-                      section={section}
-                      confetti={confetti}
-                      newUserStartPage={newUserStartPage}
-                      stepNumber={stepNumber}
-                      completedSteps={completedSteps}
-                      loadGif={loadGif}
-                      guideIndex={guideIndex}
-                    />
-                  ),
-                  ,
-                  <EuiHeaderSectionItemButton flush="both">
-                    <Account />
-                  </EuiHeaderSectionItemButton>,
                   <EuiHeaderSectionItemButton flush="both">
                     <EuiAvatar
                       color="#25282f"
@@ -242,19 +158,9 @@ const KibanaLayout = ({
             position="fixed"
             sections={[
               {
-                items: leftSectionItems,
-                borders: 'right',
-              },
-              {
-                items: [
-                  <EuiHeaderSectionItemButton
-                    key="header-item"
-                    aria-label="Account menu">
-                    <EuiAvatar type="space" name="Default Space" size="s" />
-                  </EuiHeaderSectionItemButton>,
-                ],
+                items: [leftSectionItems],
                 breadcrumbs: breadcrumbs,
-                borders: 'right',
+                borders: 'none',
               },
             ]}
           />

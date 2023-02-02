@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
             sizes="16x16"
           />
         </Head>
-        <body className="guideBody">
+        <body>
           <Main />
           <NextScript />
         </body>
