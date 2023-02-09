@@ -28,7 +28,7 @@ const Profile = () => {
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
-      router.push('create-deployment');
+      router.push('project-setup');
     }, 500);
   };
 
@@ -47,7 +47,7 @@ const Profile = () => {
               padding: 30px;
             `}>
             <EuiText size="s" textAlign="center">
-              <h1>Welcome to Elastic</h1>
+              <h1>About you</h1>
               <EuiTextColor color="subdued">
                 <p>Provide the info below for the best Elastic experience.</p>
               </EuiTextColor>

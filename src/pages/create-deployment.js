@@ -14,6 +14,7 @@ import {
   EuiFlexItem,
   EuiIcon,
   EuiLink,
+  EuiCard,
 } from '@elastic/eui';
 
 import Navbar from '../components/navbar';

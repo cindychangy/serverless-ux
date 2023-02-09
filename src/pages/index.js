@@ -68,9 +68,9 @@ const IndexPage = () => {
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <EuiLink href="/signup">
-                <h4>New user</h4>
+                <h4>Trial user</h4>
               </EuiLink>
-              <p>starts from marketing page</p>
+              <p>starts from sign up</p>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>

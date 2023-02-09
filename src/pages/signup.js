@@ -48,31 +48,13 @@ const Signup = () => {
   return (
     <>
       <Header accountType="signup" />
-      <EuiFlexGroup
-        direction="column"
-        css={css`
-          text-align: center;
-          position: relative;
-          top: -50px;
-        `}>
-        <EuiSpacer size="m" />
-        <EuiFlexItem>
-          <EuiTitle size="m">
-            <h1>Welcome to Elastic Cloud</h1>
-          </EuiTitle>
-          <EuiSpacer size="s" />
-          <EuiText color="subdued">
-            <p>Get started in minutes</p>
-          </EuiText>
-        </EuiFlexItem>
-      </EuiFlexGroup>
       <div
         css={css`
           padding: 0 40px;
           margin: auto;
           position: relative;
         `}>
-        <EuiSpacer size="xxl" />
+        <EuiSpacer size="m" />
         <EuiFlexGroup
           direction="row"
           justifyContent="center"
@@ -85,7 +67,7 @@ const Signup = () => {
               `}>
               <EuiTitle size="s">
                 <EuiTextAlign textAlign="center">
-                  <h3>Sign up for a free 14-day trial</h3>
+                  <h3>Start your free Elastic Cloud trial</h3>
                 </EuiTextAlign>
               </EuiTitle>
               <EuiSpacer size="s" />
@@ -150,15 +132,15 @@ const Signup = () => {
             </EuiPanel>
           </EuiFlexItem>
 
-          <EuiFlexItem grow={false}>
+          {/* <EuiFlexItem grow={false}>
             <div css={verticalRule}>
               <EuiText color="subdued" size="s" css={ruleText}>
                 OR
               </EuiText>
             </div>
-          </EuiFlexItem>
+          </EuiFlexItem> */}
 
-          <EuiFlexItem grow={false}>
+          {/* <EuiFlexItem grow={false}>
             <EuiPanel paddingSize="l">
               <EuiTitle size="s">
                 <EuiTextAlign textAlign="center">
@@ -196,7 +178,7 @@ const Signup = () => {
                 </EuiFlexItem>
               </EuiFlexGroup>
             </EuiPanel>
-          </EuiFlexItem>
+          </EuiFlexItem> */}
         </EuiFlexGroup>
       </div>
     </>
