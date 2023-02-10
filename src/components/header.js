@@ -7,9 +7,25 @@ import {
   EuiImage,
   EuiText,
   EuiButton,
+  EuiTitle,
+  EuiStepsHorizontal,
+  EuiSpacer,
 } from '@elastic/eui';
 
-const Header = ({ accountType, signedIn }) => {
+const Header = ({ accountType, signedIn, steps, logoLarge }) => {
+  const stepStyles = css`
+    .euiStepNumber {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      font-size: 12px;
+    }
+
+    .euiStepHorizontal__title {
+      font-weight: 600;
+    }
+  `;
+
   const router = useRouter();
   const login = accountType === 'login';
 
@@ -54,16 +70,45 @@ const Header = ({ accountType, signedIn }) => {
             </EuiFlexItem>
           </EuiFlexGroup>
         )}
-        <EuiImage
-          size={170}
-          src={'/images/logo-elastic.png'}
-          alt="Elastic logo"
-          css={css`
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, -85%);
-          `}
-        />
+        {logoLarge ? (
+          <EuiImage
+            size={170}
+            src={'/images/logo-elastic.png'}
+            alt="Elastic logo"
+            css={css`
+              position: absolute;
+              left: 50%;
+              transform: translate(-50%, -85%);
+            `}
+          />
+        ) : (
+          <EuiImage
+            size={100}
+            src={'/images/logo-elastic.png'}
+            alt="Elastic logo"
+            css={css`
+              position: absolute;
+              left: 10px;
+              top: 0;
+            `}
+          />
+        )}
+
+        {steps && (
+          <div style={{ textAlign: 'center' }}>
+            <EuiTitle size="l">
+              <h1>Get started with Elastic</h1>
+            </EuiTitle>
+            <EuiSpacer size="m" />
+            <div
+              css={css`
+                max-width: 300px;
+                margin: auto;
+              `}>
+              <EuiStepsHorizontal steps={steps} css={stepStyles} />
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

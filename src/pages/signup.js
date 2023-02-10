@@ -14,6 +14,7 @@ import {
   EuiFormRow,
   EuiFieldText,
   EuiHorizontalRule,
+  EuiImage,
   useEuiTheme,
 } from '@elastic/eui';
 import Header from '../components/header';
@@ -47,7 +48,7 @@ const Signup = () => {
 
   return (
     <>
-      <Header accountType="signup" />
+      <Header logoLarge />
       <div
         css={css`
           padding: 0 40px;

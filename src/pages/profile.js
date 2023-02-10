@@ -15,6 +15,8 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiButton,
+  EuiTitle,
+  EuiStepsHorizontal,
 } from '@elastic/eui';
 import Header from '../components/header';
 import { EXPERIENCE, PURPOSE } from '../constants/profile.data';
@@ -34,7 +36,19 @@ const Profile = () => {
 
   return (
     <>
-      <Header signedIn />
+      <Header
+        signedIn
+        steps={[
+          {
+            title: 'About you',
+            status: 'incomplete',
+          },
+          {
+            title: 'Choose setup',
+            status: 'incomplete',
+          },
+        ]}
+      />
       <div
         css={css`
           max-width: 550px;

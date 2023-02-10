@@ -9,7 +9,10 @@ import {
   EuiTitle,
   EuiText,
   EuiHorizontalRule,
-  EuiFieldText,
+  EuiSkeletonTitle,
+  EuiSkeletonText,
+  EuiBadge,
+  EuiStepsHorizontal,
   EuiFlexGroup,
   EuiFlexItem,
   EuiIcon,
@@ -32,7 +35,21 @@ const ProjectSetup = () => {
 
   return (
     <>
-      <Header signedIn />
+      <Header
+        signedIn
+        steps={[
+          {
+            title: 'About you',
+            status: 'complete',
+            onClick: () => router.push('profile'),
+          },
+          {
+            title: 'Choose setup',
+            status: 'incomplete',
+            onClick: () => router.push('projet-setup'),
+          },
+        ]}
+      />
       <div
         css={css`
           max-width: 800px;
@@ -41,11 +58,40 @@ const ProjectSetup = () => {
         `}>
         <EuiFlexGroup>
           <EuiFlexItem>
-            <EuiCard>Dedicated</EuiCard>
+            <EuiCard textAlign="left" paddingSize="l">
+              <EuiTitle size="s">
+                <h3>Dedicated</h3>
+              </EuiTitle>
+              <EuiHorizontalRule margin="s" />
+              <EuiSpacer size="s" />
+              <EuiSkeletonText
+                lines={3}
+                size="s"
+                contentAriaLabel="dummy text"
+              />
+            </EuiCard>
           </EuiFlexItem>
 
           <EuiFlexItem>
-            <EuiCard>Serverless</EuiCard>
+            <EuiCard textAlign="left" paddingSize="l">
+              <EuiTitle size="s">
+                <h3>
+                  Self Managed
+                  <EuiBadge
+                    color="accent"
+                    style={{ color: '#fff', marginLeft: '5px' }}>
+                    BETA
+                  </EuiBadge>
+                </h3>
+              </EuiTitle>
+              <EuiHorizontalRule margin="s" />
+              <EuiSpacer size="s" />
+              <EuiSkeletonText
+                lines={3}
+                size="s"
+                contentAriaLabel="dummy text"
+              />
+            </EuiCard>
           </EuiFlexItem>
         </EuiFlexGroup>
       </div>
