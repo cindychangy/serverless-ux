@@ -257,7 +257,10 @@ const ProjectSetup = () => {
                 </EuiFlexGroup>
                 <EuiHorizontalRule margin="xl" />
                 <EuiFlexGroup justifyContent="flexEnd">
-                  <EuiButton minWidth={200} fill>
+                  <EuiButton
+                    minWidth={200}
+                    onClick={router.push('/guided-setup')}
+                    fill>
                     Create project
                   </EuiButton>
                 </EuiFlexGroup>
@@ -296,7 +299,9 @@ const ProjectSetup = () => {
                 <EuiSpacer size="xl" />
                 <EuiFlexGroup justifyContent="flexEnd">
                   <EuiFlexItem grow={false}>
-                    <EuiButton fill onClick={() => handleClick()}>
+                    <EuiButton
+                      fill
+                      onClick={() => router.push('/guided-setup')}>
                       Create deployment
                     </EuiButton>
                   </EuiFlexItem>

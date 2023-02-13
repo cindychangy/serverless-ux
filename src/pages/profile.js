@@ -17,7 +17,7 @@ import {
   EuiButton,
 } from '@elastic/eui';
 import Header from '../components/header';
-import { EXPERIENCE, PURPOSE } from '../constants/profile.data';
+import { EXPERIENCE, PURPOSE } from '../constants/profile';
 
 const Profile = () => {
   const router = useRouter();
