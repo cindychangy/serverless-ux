@@ -138,20 +138,20 @@ const ProjectSetup = () => {
               </EuiFlexItem>
               <EuiFlexGroup>
                 <EuiFlexItem>
-                  <EuiSuperSelect
+                  {/* <EuiSuperSelect
                     id="provider"
                     options={options}
                     value="google"
                     onChange={() => {}}
-                  />
+                  /> */}
                 </EuiFlexItem>
                 <EuiFlexItem>
-                  <EuiSuperSelect
+                  {/* <EuiSuperSelect
                     id="region"
                     options={options}
                     value="google"
                     onChange={() => {}}
-                  />
+                  /> */}
                 </EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexGroup>
