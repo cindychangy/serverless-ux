@@ -15,8 +15,6 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiButton,
-  EuiTitle,
-  EuiStepsHorizontal,
 } from '@elastic/eui';
 import Header from '../components/header';
 import { EXPERIENCE, PURPOSE } from '../constants/profile.data';
@@ -41,7 +39,7 @@ const Profile = () => {
         steps={[
           {
             title: 'About you',
-            status: 'incomplete',
+            status: 'current',
           },
           {
             title: 'Choose setup',

@@ -105,7 +105,11 @@ const Header = ({ accountType, signedIn, steps, logoLarge }) => {
                 max-width: 300px;
                 margin: auto;
               `}>
-              <EuiStepsHorizontal steps={steps} css={stepStyles} />
+              <EuiStepsHorizontal
+                steps={steps}
+                css={stepStyles}
+                onClick={() => handleClick}
+              />
             </div>
           </div>
         )}
