@@ -43,13 +43,7 @@ const Header = ({ accountType, signedIn, steps, logoLarge }) => {
           position: relative;
         `}>
         {signedIn ? (
-          <EuiFlexGroup justifyContent="flexEnd" alignItems="center">
-            <EuiFlexItem grow={false}>
-              <EuiButton minWidth={0} fill>
-                Log out
-              </EuiButton>
-            </EuiFlexItem>
-          </EuiFlexGroup>
+          <div></div>
         ) : (
           <EuiFlexGroup justifyContent="flexEnd" alignItems="center">
             <EuiFlexItem grow={false}>
@@ -95,7 +89,11 @@ const Header = ({ accountType, signedIn, steps, logoLarge }) => {
         )}
 
         {steps && (
-          <div style={{ textAlign: 'center' }}>
+          <div
+            css={css`
+              text-align: center;
+              margin-top: -10px;
+            `}>
             <EuiTitle size="l">
               <h1>Get started with Elastic</h1>
             </EuiTitle>

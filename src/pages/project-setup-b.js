@@ -80,6 +80,20 @@ const ProjectSetup = () => {
     },
   ];
 
+  const optionsHardware = [
+    {
+      value: 'CPU',
+      inputDisplay: <p>CPU optimized</p>,
+    },
+  ];
+
+  const optionsVersion = [
+    {
+      value: 'version',
+      inputDisplay: <p>8.6.1 (latest)</p>,
+    },
+  ];
+
   const showProjectDetails = userSelection => {
     if (userSelection === PROJECT_SERVERLESS) {
       setProjectType(PROJECT_SERVERLESS);
@@ -341,37 +355,119 @@ const ProjectSetup = () => {
                 </EuiFlexGroup>
               </>
             ) : (
-              <>
-                <EuiSpacer size="s" />
-
+              <div
+                css={css`
+                  width: 100%;
+                `}>
                 <EuiTitle size="xs">
                   <h5>Deployment Name</h5>
                 </EuiTitle>
                 <EuiSpacer size="s" />
                 <EuiFieldText fullWidth placeholder="My deployment" />
-
-                <EuiSpacer size="xxl" />
+                <EuiSpacer size="s" />
+                <EuiHorizontalRule />
                 <EuiTitle size="xs">
-                  <h5>Deployment Settings</h5>
+                  <h5>Settings</h5>
                 </EuiTitle>
                 <EuiSpacer size="m" />
-                <EuiFlexGroup gutterSize="s">
-                  <EuiFlexItem grow={false}>
-                    <EuiIcon type="/images/icon-gcp.svg" size="xxl" />
+                <EuiFlexGroup gutterSize="s" direction="column">
+                  <EuiFlexItem>
+                    <EuiFlexGroup>
+                      <EuiFlexItem>
+                        <h3
+                          css={css`
+                            font-weight: 600;
+                          `}>
+                          Cloud provider
+                        </h3>
+                      </EuiFlexItem>
+                      <EuiFlexItem grow={1}>
+                        <EuiSuperSelect
+                          id="provider"
+                          options={optionsProvider}
+                          value="google"
+                          onChange={() => {}}
+                        />
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
                   </EuiFlexItem>
                   <EuiFlexItem>
-                    <EuiText size="s">
-                      <p>
-                        GCP Iowa (us-central1) &nbsp;{' '}
-                        <EuiLink href="#">Edit settings</EuiLink>
-                      </p>
-                    </EuiText>
-                    <EuiText color="subdued" size="xs">
-                      <p>Storage optimized, 8.1.3</p>
-                    </EuiText>
+                    <EuiFlexGroup>
+                      <EuiFlexItem>
+                        <h3
+                          css={css`
+                            font-weight: 600;
+                          `}>
+                          Region
+                        </h3>
+                      </EuiFlexItem>
+                      <EuiFlexItem grow={1}>
+                        <EuiSuperSelect
+                          id="region"
+                          options={optionsRegion}
+                          value="Iowa"
+                          onChange={() => {}}
+                        />
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
                   </EuiFlexItem>
+                  <EuiFlexItem>
+                    <EuiFlexGroup>
+                      <EuiFlexItem>
+                        <h3
+                          css={css`
+                            font-weight: 600;
+                          `}>
+                          Hardware profile
+                        </h3>
+                      </EuiFlexItem>
+                      <EuiFlexItem grow={1}>
+                        <EuiSuperSelect
+                          id="hardware"
+                          options={optionsHardware}
+                          value="CPU"
+                          onChange={() => {}}
+                        />
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
+                  </EuiFlexItem>
+                  <EuiFlexItem>
+                    <EuiFlexGroup>
+                      <EuiFlexItem>
+                        <h3
+                          css={css`
+                            font-weight: 600;
+                          `}>
+                          Version
+                        </h3>
+                      </EuiFlexItem>
+                      <EuiFlexItem grow={1}>
+                        <EuiSuperSelect
+                          id="version"
+                          options={optionsVersion}
+                          value="version"
+                          onChange={() => {}}
+                        />
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
+                  </EuiFlexItem>
+                  {/* <EuiFlexItem grow={false}>
+                  <EuiIcon type="/images/icon-gcp.svg" size="xxl" />
+                </EuiFlexItem>
+
+                <EuiFlexItem>
+                  <EuiText size="s">
+                    <p>
+                      GCP Iowa (us-central1) &nbsp;{' '}
+                      <EuiLink href="#">Edit settings</EuiLink>
+                    </p>
+                  </EuiText>
+                  <EuiText color="subdued" size="xs">
+                    <p>Storage optimized, 8.1.3</p>
+                  </EuiText>
+                </EuiFlexItem> */}
                 </EuiFlexGroup>
-                <EuiSpacer size="xl" />
+                <EuiHorizontalRule />
                 <EuiFlexGroup justifyContent="flexEnd">
                   <EuiFlexItem grow={false}>
                     <EuiButton
@@ -381,7 +477,7 @@ const ProjectSetup = () => {
                     </EuiButton>
                   </EuiFlexItem>
                 </EuiFlexGroup>
-              </>
+              </div>
             )}
           </EuiAccordion>
         )}
