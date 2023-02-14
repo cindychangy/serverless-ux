@@ -397,6 +397,13 @@ const ProjectSetup = () => {
                       </EuiFlexItem>
                     </EuiFlexGroup>
                   </EuiFlexItem>
+                  <EuiFlexItem alignSelf="flexStart" grow={false}>
+                    <EuiSpacer size="s" />
+                    <EuiLink href="">
+                      <EuiIcon type="arrowRight" />
+                      &nbsp;&nbsp;Advanced Settings
+                    </EuiLink>
+                  </EuiFlexItem>
                 </EuiFlexGroup>
                 <EuiHorizontalRule />
                 <EuiFlexGroup justifyContent="flexEnd">

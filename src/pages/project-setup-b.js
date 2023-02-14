@@ -451,6 +451,13 @@ const ProjectSetup = () => {
                       </EuiFlexItem>
                     </EuiFlexGroup>
                   </EuiFlexItem>
+                  <EuiFlexItem alignSelf="flexStart" grow={false}>
+                    <EuiSpacer size="s" />
+                    <EuiLink href="">
+                      <EuiIcon type="arrowRight" />
+                      &nbsp;&nbsp;Advanced Settings
+                    </EuiLink>
+                  </EuiFlexItem>
                   {/* <EuiFlexItem grow={false}>
                   <EuiIcon type="/images/icon-gcp.svg" size="xxl" />
                 </EuiFlexItem>
