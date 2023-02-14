@@ -65,7 +65,7 @@ const Profile = () => {
               </EuiTextColor>
             </EuiText>
             <EuiHorizontalRule margin="xl" />
-            <EuiForm component="form">
+            <EuiForm component="form" fullWidth>
               <EuiText size="s">
                 <b>Full Name</b>
               </EuiText>
