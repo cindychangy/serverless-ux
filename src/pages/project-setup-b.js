@@ -277,7 +277,18 @@ const ProjectSetup = () => {
                         isSelected: solution === 'search',
                       }}>
                       <EuiTitle size="xs">
-                        <h4>ElasticSearch</h4>
+                        <EuiFlexGroup alignItems="center">
+                          <EuiFlexItem grow={false}>
+                            <EuiIcon type="logoElasticsearch" size="m" />
+                          </EuiFlexItem>
+                          <EuiFlexItem
+                            grow={2}
+                            css={css`
+                              margin-left: -16px;
+                            `}>
+                            <h4>ElasticSearch</h4>
+                          </EuiFlexItem>
+                        </EuiFlexGroup>
                       </EuiTitle>
                       <EuiSpacer size="s" />
                       <EuiSkeletonText
@@ -297,7 +308,18 @@ const ProjectSetup = () => {
                         isSelected: solution === 'obs',
                       }}>
                       <EuiTitle size="xs">
-                        <h4>Observability</h4>
+                        <EuiFlexGroup alignItems="center">
+                          <EuiFlexItem grow={false}>
+                            <EuiIcon type="logoObservability" size="m" />
+                          </EuiFlexItem>
+                          <EuiFlexItem
+                            grow={2}
+                            css={css`
+                              margin-left: -16px;
+                            `}>
+                            <h4>Observability</h4>
+                          </EuiFlexItem>
+                        </EuiFlexGroup>
                       </EuiTitle>
                       <EuiSpacer size="s" />
                       <EuiSkeletonText
@@ -317,7 +339,18 @@ const ProjectSetup = () => {
                         isSelected: solution === 'security',
                       }}>
                       <EuiTitle size="xs">
-                        <h4>Security</h4>
+                        <EuiFlexGroup alignItems="center">
+                          <EuiFlexItem grow={false}>
+                            <EuiIcon type="logoSecurity" size="m" />
+                          </EuiFlexItem>
+                          <EuiFlexItem
+                            grow={2}
+                            css={css`
+                              margin-left: -16px;
+                            `}>
+                            <h4>Security</h4>
+                          </EuiFlexItem>
+                        </EuiFlexGroup>
                       </EuiTitle>
                       <EuiSpacer size="s" />
                       <EuiSkeletonText
