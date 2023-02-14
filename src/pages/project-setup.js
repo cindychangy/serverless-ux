@@ -83,6 +83,7 @@ const ProjectSetup = () => {
 
   const showProjectDetails = userSelection => {
     setSolution(userSelection);
+    setProjectType(PROJECT_SERVERLESS);
 
     if (userSelection) {
       setAccordionTrigger('open');
@@ -173,6 +174,19 @@ const ProjectSetup = () => {
               <EuiSpacer size="s" />
             </EuiCard>
           </EuiFlexItem>
+          {/* <EuiFlexItem>
+            <EuiCard
+              paddingSize="none"
+              css={cardContainer}
+              selectable={{
+                onClick: () => showProjectDetails('all'),
+                isSelected: solution === 'all',
+              }}>
+              <EuiTitle size="xs">
+                <h4>I'd like to use multiple solutions</h4>
+              </EuiTitle>
+            </EuiCard>
+          </EuiFlexItem> */}
         </EuiFlexGroup>
 
         <EuiSpacer size="xl" />
@@ -223,7 +237,7 @@ const ProjectSetup = () => {
                         }
                         selectable={{
                           onClick: () => setProjectType(PROJECT_CLASSIC),
-                          isSelected: projectType === PROJECT_CLASSIC && true,
+                          isSelected: projectType === PROJECT_CLASSIC,
                         }}>
                         <EuiHorizontalRule margin="s" />
                         <EuiSpacer size="s" />
@@ -248,9 +262,7 @@ const ProjectSetup = () => {
                         css={cardContainer}
                         selectable={{
                           onClick: () => setProjectType(PROJECT_SERVERLESS),
-                          isSelected:
-                            (projectType === PROJECT_SERVERLESS && true) ||
-                            solution !== undefined,
+                          isSelected: projectType === PROJECT_SERVERLESS,
                         }}
                         title={
                           <>
