@@ -43,7 +43,7 @@ const Signup = () => {
     setIsLoading(true);
     setTimeout(() => {
       router.push('/profile');
-    }, 1000);
+    }, 550);
   };
 
   return (

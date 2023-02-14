@@ -29,7 +29,7 @@ const Profile = () => {
     setIsLoading(true);
     setTimeout(() => {
       router.push('project-setup');
-    }, 500);
+    }, 250);
   };
 
   return (

@@ -146,7 +146,7 @@ const ProjectSetup = () => {
                     css={css`
                       margin-left: -16px;
                     `}>
-                    <h4>ElasticSearch</h4>
+                    <h4>Elasticsearch</h4>
                   </EuiFlexItem>
                 </EuiFlexGroup>
               </EuiTitle>
@@ -298,7 +298,7 @@ const ProjectSetup = () => {
                               <EuiSpacer size="m" />
                               <EuiTitle size="s">
                                 <h3>
-                                  Self Managed
+                                  Fully Managed
                                   <EuiBadge
                                     color="accent"
                                     style={{

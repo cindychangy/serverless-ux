@@ -175,7 +175,7 @@ const ProjectSetup = () => {
                   <EuiSpacer size="m" />
                   <EuiTitle size="s">
                     <h3>
-                      Self Managed
+                      Fully Managed
                       <EuiBadge
                         color="accent"
                         style={{
