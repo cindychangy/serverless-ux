@@ -49,7 +49,7 @@ const ProjectSetup = () => {
     }
   `;
 
-  const options = [
+  const optionsProvider = [
     {
       value: 'google',
       inputDisplay: (
@@ -59,6 +59,22 @@ const ProjectSetup = () => {
           </EuiFlexItem>
           <EuiFlexItem grow>
             <p>Google Cloud</p>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      ),
+    },
+  ];
+
+  const optionsRegion = [
+    {
+      value: 'Iowa',
+      inputDisplay: (
+        <EuiFlexGroup alignItems="center">
+          <EuiFlexItem grow={false}>
+            <EuiImage width={40} src="images/flag.svg" />
+          </EuiFlexItem>
+          <EuiFlexItem grow>
+            <p>Iowa (us-central1)</p>
           </EuiFlexItem>
         </EuiFlexGroup>
       ),
@@ -288,7 +304,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem>
                         <EuiSuperSelect
                           id="provider"
-                          options={options}
+                          options={optionsProvider}
                           value="google"
                           onChange={() => {}}
                         />
@@ -296,8 +312,8 @@ const ProjectSetup = () => {
                       <EuiFlexItem>
                         <EuiSuperSelect
                           id="region"
-                          options={options}
-                          value="google"
+                          options={optionsRegion}
+                          value="Iowa"
                           onChange={() => {}}
                         />
                       </EuiFlexItem>
