@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
   EuiButton,
-  EuiButtonEmpty,
   EuiImage,
   EuiSpacer,
   EuiTitle,
@@ -49,7 +48,7 @@ const ProjectSetup = () => {
     }
   `;
 
-  const optionsProvider = [
+  const PROVIDER = [
     {
       value: 'google',
       inputDisplay: (
@@ -69,7 +68,7 @@ const ProjectSetup = () => {
     },
   ];
 
-  const optionsRegion = [
+  const REGION = [
     {
       value: 'Iowa',
       inputDisplay: (
@@ -85,14 +84,14 @@ const ProjectSetup = () => {
     },
   ];
 
-  const optionsHardware = [
+  const HARDWARE = [
     {
       value: 'CPU',
       inputDisplay: <p>CPU optimized</p>,
     },
   ];
 
-  const optionsVersion = [
+  const VERSION = [
     {
       value: 'version',
       inputDisplay: <p>8.6.1 (latest)</p>,
@@ -119,8 +118,6 @@ const ProjectSetup = () => {
 
   const showProjectDetails = userSelection => {
     setSolution(userSelection);
-
-    console.log(userSelection);
 
     if (userSelection) {
       setAccordionTrigger('open');
@@ -325,7 +322,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="provider"
-                          options={optionsProvider}
+                          options={PROVIDER}
                           value="google"
                           onChange={() => {}}
                         />
@@ -345,7 +342,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="region"
-                          options={optionsRegion}
+                          options={REGION}
                           value="Iowa"
                           onChange={() => {}}
                         />
@@ -365,7 +362,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="hardware"
-                          options={optionsHardware}
+                          options={HARDWARE}
                           value="CPU"
                           onChange={() => {}}
                         />
@@ -385,7 +382,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="version"
-                          options={optionsVersion}
+                          options={VERSION}
                           value="version"
                           onChange={() => {}}
                         />
@@ -427,7 +424,7 @@ const ProjectSetup = () => {
                     <EuiFlexItem>
                       <EuiSuperSelect
                         id="provider"
-                        options={optionsProvider}
+                        options={PROVIDER}
                         value="google"
                         onChange={() => {}}
                       />
@@ -435,7 +432,7 @@ const ProjectSetup = () => {
                     <EuiFlexItem>
                       <EuiSuperSelect
                         id="region"
-                        options={optionsRegion}
+                        options={REGION}
                         value="Iowa"
                         onChange={() => {}}
                       />

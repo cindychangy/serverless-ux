@@ -44,13 +44,6 @@ const IndexPage = () => {
             transform: translate(-50%, -85%);
           `}
         />
-        {/* <EuiTitle
-          size="m"
-          css={css`
-            text-align: center;
-          `}>
-          <h3>Serverless UX Prototype</h3>
-        </EuiTitle> */}
         <div
           css={css`
             max-width: 400px;
@@ -63,14 +56,31 @@ const IndexPage = () => {
                 color: #6b6f7f;
                 letter-spacing: 2px;
               `}>
-              <h5>Integration Checkpoint #2</h5>
+              <h5>Integration Checkpoint #2 Flows</h5>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
-              <EuiLink href="/signup">
-                <h4>Trial user</h4>
-              </EuiLink>
-              <p>starts from sign up</p>
+              <h4>
+                <EuiLink href="/signup">
+                  <strong>Trial user version A</strong>
+                </EuiLink>
+                <span
+                  css={css`
+                    margin: 0 10px;
+                    color: #cecece;
+                    font-weight: 400;
+                    font-size: 11px;
+                  `}>
+                  |
+                </span>
+                <EuiLink
+                  href="/project-setup-b"
+                  css={css`
+                    font-size: 15px;
+                  `}>
+                  version B
+                </EuiLink>
+              </h4>
             </EuiText>
             {/* <EuiSpacer size="s" />
             <EuiText css={flowLink}>

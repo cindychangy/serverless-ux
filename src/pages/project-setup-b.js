@@ -48,7 +48,7 @@ const ProjectSetup = () => {
     }
   `;
 
-  const optionsProvider = [
+  const PROVIDER = [
     {
       value: 'google',
       inputDisplay: (
@@ -57,7 +57,7 @@ const ProjectSetup = () => {
             <EuiImage
               width={40}
               src="images/logo-google-cloud.svg"
-              alt="Google logo"
+              alt="Google"
             />
           </EuiFlexItem>
           <EuiFlexItem grow>
@@ -68,13 +68,13 @@ const ProjectSetup = () => {
     },
   ];
 
-  const optionsRegion = [
+  const REGION = [
     {
       value: 'Iowa',
       inputDisplay: (
         <EuiFlexGroup alignItems="center">
           <EuiFlexItem grow={false}>
-            <EuiImage width={40} src="images/flag.svg" alt="American flag" />
+            <EuiImage width={40} src="images/flag.svg" alt="American flga" />
           </EuiFlexItem>
           <EuiFlexItem grow>
             <p>Iowa (us-central1)</p>
@@ -84,17 +84,35 @@ const ProjectSetup = () => {
     },
   ];
 
-  const optionsHardware = [
+  const HARDWARE = [
     {
       value: 'CPU',
       inputDisplay: <p>CPU optimized</p>,
     },
   ];
 
-  const optionsVersion = [
+  const VERSION = [
     {
       value: 'version',
       inputDisplay: <p>8.6.1 (latest)</p>,
+    },
+  ];
+
+  const SOLUTION_CARDS = [
+    {
+      solution: 'search',
+      logo: 'logoElasticsearch',
+      title: 'Elasticsearch',
+    },
+    {
+      solution: 'observability',
+      logo: 'logoObservability',
+      title: 'Observability',
+    },
+    {
+      solution: 'security',
+      logo: 'logoSecurity',
+      title: 'Security',
     },
   ];
 
@@ -140,14 +158,13 @@ const ProjectSetup = () => {
               title={
                 <>
                   <EuiSpacer size="m" />
-                  <EuiTitle size="s">
-                    <h3>Dedicated</h3>
-                  </EuiTitle>
+                  Dedicated
                 </>
               }
+              titleElement="h4"
               selectable={{
                 onClick: () => showProjectDetails(PROJECT_CLASSIC),
-                isSelected: projectType === PROJECT_CLASSIC && true,
+                isSelected: projectType === PROJECT_CLASSIC,
               }}>
               <EuiHorizontalRule margin="s" />
               <EuiSpacer size="s" />
@@ -170,29 +187,26 @@ const ProjectSetup = () => {
               textAlign="left"
               paddingSize="none"
               css={cardContainer}
-              selectable={{
-                onClick: () => showProjectDetails(PROJECT_SERVERLESS),
-                isSelected: projectType === PROJECT_SERVERLESS && true,
-              }}
               title={
                 <>
                   <EuiSpacer size="m" />
-                  <EuiTitle size="s">
-                    <h3>
-                      Fully Managed
-                      <EuiBadge
-                        color="accent"
-                        style={{
-                          color: '#fff',
-                          marginLeft: '5px',
-                        }}>
-                        BETA
-                      </EuiBadge>
-                    </h3>
-                  </EuiTitle>
+                  Fully Managed
+                  <EuiBadge
+                    color="accent"
+                    style={{
+                      color: '#fff',
+                      marginLeft: '5px',
+                      marginTop: '-4px',
+                    }}>
+                    BETA
+                  </EuiBadge>
                 </>
               }
-              onClick={() => {}}>
+              titleElement="h4"
+              selectable={{
+                onClick: () => showProjectDetails(PROJECT_SERVERLESS),
+                isSelected: projectType === PROJECT_SERVERLESS,
+              }}>
               <EuiHorizontalRule margin="s" />
               <EuiSpacer size="s" />
               <EuiSkeletonText
@@ -206,7 +220,6 @@ const ProjectSetup = () => {
                 size="s"
                 contentAriaLabel="dummy text"
               />
-              <EuiSpacer size="m" />
             </EuiCard>
           </EuiFlexItem>
         </EuiFlexGroup>
@@ -249,7 +262,7 @@ const ProjectSetup = () => {
                         <EuiFlexItem>
                           <EuiSuperSelect
                             id="provider"
-                            options={optionsProvider}
+                            options={PROVIDER}
                             value="google"
                             onChange={() => {}}
                           />
@@ -257,7 +270,7 @@ const ProjectSetup = () => {
                         <EuiFlexItem>
                           <EuiSuperSelect
                             id="region"
-                            options={optionsRegion}
+                            options={REGION}
                             value="Iowa"
                             onChange={() => {}}
                           />
@@ -272,99 +285,41 @@ const ProjectSetup = () => {
                 </EuiText>
                 <EuiSpacer size="l" />
                 <EuiFlexGroup gutterSize="m">
-                  <EuiFlexItem>
-                    <EuiCard
-                      paddingSize="none"
-                      css={cardContainer}
-                      selectable={{
-                        onClick: () => setSolution('search'),
-                        isSelected: solution === 'search',
-                      }}>
-                      <EuiTitle size="xs">
-                        <EuiFlexGroup alignItems="center">
-                          <EuiFlexItem grow={false}>
-                            <EuiIcon type="logoElasticsearch" size="m" />
-                          </EuiFlexItem>
-                          <EuiFlexItem
-                            grow={2}
-                            css={css`
-                              margin-left: -16px;
-                            `}>
-                            <h4>ElasticSearch</h4>
-                          </EuiFlexItem>
-                        </EuiFlexGroup>
-                      </EuiTitle>
-                      <EuiSpacer size="s" />
-                      <EuiSkeletonText
-                        lines={4}
-                        size="xs"
-                        contentAriaLabel="dummy text"
-                      />
-                      <EuiSpacer size="s" />
-                    </EuiCard>
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiCard
-                      paddingSize="none"
-                      css={cardContainer}
-                      selectable={{
-                        onClick: () => setSolution('obs'),
-                        isSelected: solution === 'obs',
-                      }}>
-                      <EuiTitle size="xs">
-                        <EuiFlexGroup alignItems="center">
-                          <EuiFlexItem grow={false}>
-                            <EuiIcon type="logoObservability" size="m" />
-                          </EuiFlexItem>
-                          <EuiFlexItem
-                            grow={2}
-                            css={css`
-                              margin-left: -16px;
-                            `}>
-                            <h4>Observability</h4>
-                          </EuiFlexItem>
-                        </EuiFlexGroup>
-                      </EuiTitle>
-                      <EuiSpacer size="s" />
-                      <EuiSkeletonText
-                        lines={4}
-                        size="xs"
-                        contentAriaLabel="dummy text"
-                      />
-                      <EuiSpacer size="s" />
-                    </EuiCard>
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiCard
-                      paddingSize="none"
-                      css={cardContainer}
-                      selectable={{
-                        onClick: () => setSolution('security'),
-                        isSelected: solution === 'security',
-                      }}>
-                      <EuiTitle size="xs">
-                        <EuiFlexGroup alignItems="center">
-                          <EuiFlexItem grow={false}>
-                            <EuiIcon type="logoSecurity" size="m" />
-                          </EuiFlexItem>
-                          <EuiFlexItem
-                            grow={2}
-                            css={css`
-                              margin-left: -16px;
-                            `}>
-                            <h4>Security</h4>
-                          </EuiFlexItem>
-                        </EuiFlexGroup>
-                      </EuiTitle>
-                      <EuiSpacer size="s" />
-                      <EuiSkeletonText
-                        lines={4}
-                        size="xs"
-                        contentAriaLabel="dummy text"
-                      />
-                      <EuiSpacer size="s" />
-                    </EuiCard>
-                  </EuiFlexItem>
+                  {SOLUTION_CARDS.map(card => (
+                    <EuiFlexItem key={card.title}>
+                      <EuiCard
+                        paddingSize="none"
+                        css={cardContainer}
+                        selectable={{
+                          onClick: () => setSolution(card.solution),
+                          isSelected: solution === card.solution,
+                        }}
+                        title={
+                          <EuiFlexGroup alignItems="center">
+                            <EuiFlexItem grow={false}>
+                              <EuiIcon type={card.logo} size="m" />
+                            </EuiFlexItem>
+                            <EuiFlexItem
+                              grow={false}
+                              css={css`
+                                margin-left: -16px;
+                              `}>
+                              {card.title}
+                            </EuiFlexItem>
+                          </EuiFlexGroup>
+                        }
+                        titleElement="h4"
+                        titleSize="xs">
+                        <EuiSpacer size="s" />
+                        <EuiSkeletonText
+                          lines={4}
+                          size="xs"
+                          contentAriaLabel="dummy text"
+                        />
+                        <EuiSpacer size="s" />
+                      </EuiCard>
+                    </EuiFlexItem>
+                  ))}
                 </EuiFlexGroup>
                 <EuiHorizontalRule margin="xxl" />
                 <EuiFlexGroup justifyContent="spaceBetween">
@@ -421,7 +376,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="provider"
-                          options={optionsProvider}
+                          options={PROVIDER}
                           value="google"
                           onChange={() => {}}
                         />
@@ -441,7 +396,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="region"
-                          options={optionsRegion}
+                          options={REGION}
                           value="Iowa"
                           onChange={() => {}}
                         />
@@ -461,7 +416,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="hardware"
-                          options={optionsHardware}
+                          options={HARDWARE}
                           value="CPU"
                           onChange={() => {}}
                         />
@@ -481,7 +436,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem grow={1}>
                         <EuiSuperSelect
                           id="version"
-                          options={optionsVersion}
+                          options={VERSION}
                           value="version"
                           onChange={() => {}}
                         />
@@ -495,21 +450,6 @@ const ProjectSetup = () => {
                       &nbsp;&nbsp;Advanced Settings
                     </EuiLink>
                   </EuiFlexItem>
-                  {/* <EuiFlexItem grow={false}>
-                  <EuiIcon type="/images/icon-gcp.svg" size="xxl" />
-                </EuiFlexItem>
-
-                <EuiFlexItem>
-                  <EuiText size="s">
-                    <p>
-                      GCP Iowa (us-central1) &nbsp;{' '}
-                      <EuiLink href="#">Edit settings</EuiLink>
-                    </p>
-                  </EuiText>
-                  <EuiText color="subdued" size="xs">
-                    <p>Storage optimized, 8.1.3</p>
-                  </EuiText>
-                </EuiFlexItem> */}
                 </EuiFlexGroup>
                 <EuiHorizontalRule />
                 <EuiFlexGroup justifyContent="flexEnd">
