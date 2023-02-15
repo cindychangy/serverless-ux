@@ -97,7 +97,7 @@ const CloudHomepage = () => {
             </EuiFlexGroup>
             <EuiSpacer sizer="1" />
             <EuiTable css={tableStyles}>
-              <EuiTableHeader>
+              <EuiTableHeader key="header">
                 {TABLE_HEADER.map(header => (
                   <EuiTableHeaderCell key={header.name}>
                     {header}
@@ -105,7 +105,7 @@ const CloudHomepage = () => {
                 ))}
               </EuiTableHeader>
               <EuiTableBody>
-                <EuiTableRow>
+                <EuiTableRow key="row">
                   {TABLE_ITEMS.map(item => (
                     <>
                       <EuiTableRowCell>
@@ -122,6 +122,7 @@ const CloudHomepage = () => {
                         <EuiButtonIcon
                           iconType="gear"
                           onClick={() => router.push('cloud/project')}
+                          aria-label="Settings"
                         />
                       </EuiTableRowCell>
                     </>

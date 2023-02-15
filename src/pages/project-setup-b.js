@@ -54,7 +54,11 @@ const ProjectSetup = () => {
       inputDisplay: (
         <EuiFlexGroup alignItems="center">
           <EuiFlexItem grow={false}>
-            <EuiImage width={40} src="images/logo-google-cloud.svg" />
+            <EuiImage
+              width={40}
+              src="images/logo-google-cloud.svg"
+              alt="Google logo"
+            />
           </EuiFlexItem>
           <EuiFlexItem grow>
             <p>Google Cloud</p>
@@ -70,7 +74,7 @@ const ProjectSetup = () => {
       inputDisplay: (
         <EuiFlexGroup alignItems="center">
           <EuiFlexItem grow={false}>
-            <EuiImage width={40} src="images/flag.svg" />
+            <EuiImage width={40} src="images/flag.svg" alt="American flag" />
           </EuiFlexItem>
           <EuiFlexItem grow>
             <p>Iowa (us-central1)</p>
@@ -484,7 +488,7 @@ const ProjectSetup = () => {
                       </EuiFlexItem>
                     </EuiFlexGroup>
                   </EuiFlexItem>
-                  <EuiFlexItem alignSelf="flexStart" grow={false}>
+                  <EuiFlexItem grow={false}>
                     <EuiSpacer size="s" />
                     <EuiLink href="">
                       <EuiIcon type="arrowRight" />

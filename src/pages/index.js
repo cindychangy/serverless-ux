@@ -53,7 +53,7 @@ const IndexPage = () => {
         </EuiTitle> */}
         <div
           css={css`
-            max-width: 300px;
+            max-width: 400px;
             margin: 40px auto;
           `}>
           <EuiPanel paddingSize="xl">
@@ -63,7 +63,7 @@ const IndexPage = () => {
                 color: #6b6f7f;
                 letter-spacing: 2px;
               `}>
-              <h5>Choose your flow</h5>
+              <h5>Integration Checkpoint #2</h5>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
