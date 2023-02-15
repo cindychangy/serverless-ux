@@ -21,8 +21,8 @@ import {
   EuiFieldText,
 } from '@elastic/eui';
 
-import Header from '../components/header';
-import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../constants/global';
+import Header from '../../../components/header';
+import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../../constants/global';
 
 const ProjectSetup = () => {
   const router = useRouter();
@@ -56,7 +56,7 @@ const ProjectSetup = () => {
           <EuiFlexItem grow={false}>
             <EuiImage
               width={40}
-              src="images/logo-google-cloud.svg"
+              src="/images/logo-google-cloud.svg"
               alt="Google"
             />
           </EuiFlexItem>
@@ -74,7 +74,7 @@ const ProjectSetup = () => {
       inputDisplay: (
         <EuiFlexGroup alignItems="center">
           <EuiFlexItem grow={false}>
-            <EuiImage width={40} src="images/flag.svg" alt="American flga" />
+            <EuiImage width={40} src="/images/flag.svg" alt="American flga" />
           </EuiFlexItem>
           <EuiFlexItem grow>
             <p>Iowa (us-central1)</p>
@@ -179,6 +179,7 @@ const ProjectSetup = () => {
                 size="s"
                 contentAriaLabel="dummy text"
               />
+              <EuiSpacer size="m" />
             </EuiCard>
           </EuiFlexItem>
 
@@ -237,7 +238,7 @@ const ProjectSetup = () => {
               <div
                 css={css`
                   position: absolute;
-                  left: 50%;
+                  left: 49%;
                 `}>
                 <EuiIcon type="arrowDown" color="primary" size="l" />
               </div>

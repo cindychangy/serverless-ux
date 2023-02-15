@@ -200,7 +200,7 @@ const ProjectSetup = () => {
                 <div
                   css={css`
                     position: absolute;
-                    left: 50%;
+                    left: 49%;
                   `}>
                   <EuiIcon type="arrowDown" color="primary" size="l" />
                 </div>

@@ -18,6 +18,10 @@ const IndexPage = () => {
     h4 {
       margin-block-end: 0 !important;
       margin-top: 10px;
+
+      a {
+        font-weight: 700;
+      }
     }
 
     p {
@@ -56,31 +60,22 @@ const IndexPage = () => {
                 color: #6b6f7f;
                 letter-spacing: 2px;
               `}>
-              <h5>Integration Checkpoint #2 Flows</h5>
+              {/* <h5>Integration Checkpoint #2 Flows</h5> */}
+              <h5>Select a Flow</h5>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/signup">
-                  <strong>Trial user version A</strong>
-                </EuiLink>
-                <span
-                  css={css`
-                    margin: 0 10px;
-                    color: #cecece;
-                    font-weight: 400;
-                    font-size: 11px;
-                  `}>
-                  |
-                </span>
-                <EuiLink
-                  href="/project-setup-b"
-                  css={css`
-                    font-size: 15px;
-                  `}>
-                  version B
-                </EuiLink>
+                <EuiLink href="/signup">Trial user (v1)</EuiLink>
               </h4>
+              <p>Solution led project selection</p>
+            </EuiText>
+            <EuiSpacer size="s" />
+            <EuiText css={flowLink}>
+              <h4>
+                <EuiLink href="/flows/trial-v2/signup">Trial user (v2)</EuiLink>
+              </h4>
+              <p>Project type led selection</p>
             </EuiText>
             {/* <EuiSpacer size="s" />
             <EuiText css={flowLink}>
