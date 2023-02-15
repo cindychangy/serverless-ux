@@ -243,6 +243,7 @@ const ProjectSetup = () => {
                             size="s"
                             contentAriaLabel="dummy text"
                           />
+                          <EuiSpacer size="m" />
                         </EuiCard>
                       </EuiFlexItem>
 
