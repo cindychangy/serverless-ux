@@ -166,17 +166,15 @@ const CloudHomepage = () => {
         </EuiFlexGroup>
         <EuiSpacer sizer="1" />
         <EuiTable css={tableStyles}>
-          <EuiTableHeader key="header">
+          <EuiTableHeader>
             {TABLE_HEADER_PROJECTS.map(header => (
-              <EuiTableHeaderCell key={header.name}>
-                {header}
-              </EuiTableHeaderCell>
+              <EuiTableHeaderCell key={header}>{header}</EuiTableHeaderCell>
             ))}
           </EuiTableHeader>
           <EuiTableBody>
             {TABLE_ITEMS_PROJECTS.map(item => (
-              <EuiTableRow key="row">
-                <Fragment key={item.name}>
+              <EuiTableRow key={item.name}>
+                <Fragment>
                   <EuiTableRowCell>
                     <EuiLink onClick={() => router.push('/search')}>
                       {item.name}

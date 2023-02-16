@@ -122,13 +122,13 @@ const CreateProject = () => {
               </EuiTitle>
             </EuiFlexItem>
             <EuiFlexItem css={formStyles}>
-              <EuiSuperSelect
+              {/* <EuiSuperSelect
                 id="Provider"
                 options={PROVIDER}
                 value="google"
                 prepend="Cloud provider"
                 fullWidth
-              />
+              /> */}
             </EuiFlexItem>
             <EuiFlexItem css={formStyles}>
               {/* <EuiSuperSelect
