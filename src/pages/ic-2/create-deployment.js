@@ -14,6 +14,9 @@ import {
   EuiFlexItem,
   EuiSuperSelect,
   EuiImage,
+  EuiLink,
+  EuiAccordion,
+  EuiButtonGroup,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
@@ -54,9 +57,30 @@ const REGION = [
   },
 ];
 
+const HARDWARE = [
+  {
+    value: 'optimized',
+    inputDisplay: <p>Storage optimized</p>,
+  },
+];
+
+const VERSION = [
+  {
+    value: 'latest',
+    inputDisplay: <p>8.5.2 (latest)</p>,
+  },
+];
+
 const formStyles = css`
   .euiFormLabel.euiFormControlLayout__prepend {
     width: 180px;
+  }
+`;
+
+const advancedSettingsIcon = css`
+  .euiButtonIcon,
+  .euiButtonIcon.euiAccordion__iconButton-isOpen {
+    color: #07c;
   }
 `;
 
@@ -79,8 +103,8 @@ const CreateDeployment = () => {
             href: 'cloud',
           },
           {
-            text: 'Projects',
-            href: 'projects',
+            text: 'Deployments',
+            href: 'deployments',
           },
           {
             text: 'Create',
@@ -105,9 +129,9 @@ const CreateDeployment = () => {
           <EuiSpacer size="s" />
           <EuiText color="subdued" size="s">
             <p>
-              In a project, find all the capabilities you need to integrate your
-              data, and solve your search, observability
-              <br /> and security challenges.
+              In a deployment, find all the capabilities you need to integrate
+              your data, and solve your search, observability and security
+              challenges.
             </p>
           </EuiText>
           <EuiHorizontalRule />
@@ -117,11 +141,14 @@ const CreateDeployment = () => {
             <h4>Name</h4>
           </EuiTitle>
           <EuiSpacer size="s" />
-          <EuiFieldText fullWidth placeholder="My fully managed project" />
+          <EuiFieldText fullWidth placeholder="My deployment" />
 
           <EuiSpacer size="l" />
           {!isLoading && (
-            <EuiFlexGroup justifyContent="spaceBetween" direction="column">
+            <EuiFlexGroup
+              justifyContent="spaceBetween"
+              direction="column"
+              gutterSize="m">
               <EuiFlexItem grow={2}>
                 <EuiTitle size="s">
                   <h4>Settings</h4>
@@ -145,6 +172,35 @@ const CreateDeployment = () => {
                   fullWidth
                 />
               </EuiFlexItem>
+              <EuiFlexItem css={formStyles}>
+                <EuiSuperSelect
+                  id="Hardware"
+                  options={HARDWARE}
+                  value="optimized"
+                  prepend="Hardware profile"
+                  fullWidth
+                />
+              </EuiFlexItem>
+              <EuiFlexItem css={formStyles}>
+                <EuiSuperSelect
+                  id="Version"
+                  options={VERSION}
+                  value="latest"
+                  prepend="Version"
+                  fullWidth
+                />
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiSpacer size="m" />
+                <EuiAccordion
+                  buttonContent={
+                    <EuiLink onClick={() => {}}>Advanced Settings</EuiLink>
+                  }
+                  css={advancedSettingsIcon}>
+                  <EuiSpacer size="m" />
+                  <p>Show advanced settings...</p>
+                </EuiAccordion>
+              </EuiFlexItem>
             </EuiFlexGroup>
           )}
         </div>
@@ -155,12 +211,35 @@ const CreateDeployment = () => {
             padding: 16px 48px !important;
             text-align: right;
           `}>
-          <EuiButton
-            fill
-            isLoading={isLoading}
-            onClick={() => router.push('/guided-setup')}>
-            Create deployment
-          </EuiButton>
+          <EuiFlexGroup justifyContent="space-between">
+            <EuiFlexItem>
+              {/* <EuiButtonGroup
+                name="price"
+                legend="This is a basic group"
+                options={[
+                  {
+                    id: 'hourly',
+                    label: 'Hourly',
+                  },
+                  {
+                    id: 'monthly',
+                    label: 'Monthly',
+                  },
+                ]}
+                idSelected={toggleCompressedIdSelected}
+                onChange={id => onChangeCompressed(id)}
+                buttonSize="compressed"
+              /> */}
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiButton
+                fill
+                isLoading={isLoading}
+                onClick={() => router.push('/guided-setup')}>
+                Create deployment
+              </EuiButton>
+            </EuiFlexItem>
+          </EuiFlexGroup>
         </EuiPanel>
       </EuiPanel>
     </>
