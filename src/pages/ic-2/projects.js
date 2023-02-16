@@ -34,19 +34,19 @@ const TABLE_ITEMS = [
     name: 'Access Logs POC',
     type: 'Observability',
     region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="">Manage</EuiLink>,
+    actions: <EuiLink href="#">Manage</EuiLink>,
   },
   {
     name: 'Access Logs POC',
     type: 'Observability',
     region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="">Manage</EuiLink>,
+    actions: <EuiLink href="#">Manage</EuiLink>,
   },
   {
     name: 'Access Logs POC',
     type: 'Observability',
     region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="">Manage</EuiLink>,
+    actions: <EuiLink href="#">Manage</EuiLink>,
   },
 ];
 

@@ -100,14 +100,16 @@ const IndexPage = () => {
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/ic-3/trial/signup">Trial user (v1)</EuiLink>
+                <EuiLink href="/ic-3/trial/signup">Trial user v1 (WIP)</EuiLink>
               </h4>
               <p>Solution led project selection</p>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/ic-3/trial/b/signup">Trial user (v2)</EuiLink>
+                <EuiLink href="/ic-3/trial/b/signup">
+                  Trial user v2 (WIP)
+                </EuiLink>
               </h4>
               <p>Project type led selection</p>
             </EuiText>

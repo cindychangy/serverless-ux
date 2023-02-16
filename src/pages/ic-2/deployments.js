@@ -42,7 +42,7 @@ const TABLE_ITEMS = [
     status: <EuiBadge color="success">Healthy</EuiBadge>,
     version: '8.5.0',
     region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="">Manage</EuiLink>,
+    actions: <EuiLink href="#">Manage</EuiLink>,
   },
 ];
 

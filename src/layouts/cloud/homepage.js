@@ -95,11 +95,11 @@ const CloudHomepageLayout = ({ children, route }) => {
                       <EuiSpacer size="m" />
                       <EuiSearchBar box={{ placeholder: 'Help me find...' }} />
                       <EuiSpacer size="m" />
-                      <EuiLink href="">
+                      <EuiLink href="#">
                         Elasticsearch Service on Elastic Cloud documentation
                       </EuiLink>
                       <EuiSpacer size="m" />
-                      <EuiLink href="">Elasticsearch documentation</EuiLink>
+                      <EuiLink href="#">Elasticsearch documentation</EuiLink>
                       <EuiSpacer size="m" />
                       <EuiLink href="">Elasticsearch REST API</EuiLink>
                     </EuiPanel>
@@ -118,21 +118,21 @@ const CloudHomepageLayout = ({ children, route }) => {
                     <EuiPanel grow={false} paddingSize="l">
                       {iconTitle('users', 'Community')}
                       <EuiSpacer size="m" />
-                      <EuiLink href="">Join an ElasticON event</EuiLink>
+                      <EuiLink href="#">Join an ElasticON event</EuiLink>
                       <EuiSpacer size="s" />
                       <EuiText size="s">
                         Hear success stories, lessons learned, tips, tricks,
                         best practices, and funny anecdotes…
                       </EuiText>
                       <EuiSpacer size="l" />
-                      <EuiLink href="">
+                      <EuiLink href="#">
                         Elastic Blasticians presents: A Fireside Chat with Dr.
                         William Scott, IBM Master
                       </EuiLink>
                       <EuiSpacer size="s" />
                       <EuiText size="xs">FEBRUARY 16, 18:00</EuiText>
                       <EuiSpacer size="l" />
-                      <EuiLink href="">
+                      <EuiLink href="#">
                         Improving visibility into modern telco networks: A
                         consolidated look on 3G/4G to 5G, NWDAF and Radio
                         Analytics
@@ -140,12 +140,12 @@ const CloudHomepageLayout = ({ children, route }) => {
                       <EuiSpacer size="s" />
                       <EuiText size="xs">FEBRUARY 21, 9:00</EuiText>
                       <EuiSpacer size="m" />
-                      <EuiButton href="">Events portal</EuiButton>
+                      <EuiButton href="#">Events portal</EuiButton>
                       <EuiHorizontalRule />
                       <EuiText size="s">
                         Engage with our community!
-                        <a href="">Visit our forum</a>,
-                        <a href="">join us on Slack</a>, or
+                        <a href="#">Visit our forum</a>,
+                        <a href="#">join us on Slack</a>, or
                         <a href="">contribute to the Elastic Stack on GitHub</a>
                         .
                       </EuiText>
@@ -168,7 +168,7 @@ const CloudHomepageLayout = ({ children, route }) => {
                     <EuiPanel paddingSize="l">
                       {iconTitle('documentEdit', 'News')}
                       <EuiSpacer size="m" />
-                      <EuiLink href="">
+                      <EuiLink href="#">
                         <EuiText
                           size="s"
                           css={css`
@@ -182,7 +182,7 @@ const CloudHomepageLayout = ({ children, route }) => {
                       <small>FEBRUARY 14, 2023</small> &nbsp;
                       <EuiTextColor color="accent">New!</EuiTextColor>
                       <EuiSpacer size="m" />
-                      <EuiLink href="">
+                      <EuiLink href="#">
                         <EuiText
                           size="s"
                           css={css`
@@ -196,7 +196,7 @@ const CloudHomepageLayout = ({ children, route }) => {
                       <small>FEBRUARY 13, 2023</small> &nbsp;
                       <EuiTextColor color="accent">New</EuiTextColor>
                       <EuiSpacer size="m" />
-                      <EuiLink href="">
+                      <EuiLink href="#">
                         <EuiText
                           size="s"
                           css={css`

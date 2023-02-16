@@ -392,7 +392,7 @@ const ProjectSetup = () => {
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
                     <EuiSpacer size="s" />
-                    <EuiLink href="">
+                    <EuiLink href="#">
                       <EuiIcon type="arrowRight" />
                       &nbsp;&nbsp;Advanced Settings
                     </EuiLink>
