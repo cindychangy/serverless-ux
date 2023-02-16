@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
-  EuiImage,
+  EuiButton,
   EuiSpacer,
   EuiHorizontalRule,
   EuiSkeletonText,
@@ -15,13 +15,13 @@ import {
   EuiCard,
 } from '@elastic/eui';
 
-import Header from '../../components/header';
+import Navbar from '../../components/navbar';
 import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../constants/global';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
 
 const ProjectSetup = () => {
   const router = useRouter();
-  const [projectType, setProjectType] = useState('none');
+  const [projectType, setProjectType] = useState(undefined);
   const [solution, setSolution] = useState(undefined);
   const [accordionTrigger, setAccordionTrigger] = useState('closed');
 
@@ -46,16 +46,37 @@ const ProjectSetup = () => {
     }
   };
 
+  const handleStart = () => {
+    if (projectType === PROJECT_SERVERLESS) {
+      router.push('/ic-2/create-project');
+    } else {
+      router.push('/ic-2/create-deployment');
+    }
+  };
+
   return (
     <>
-      <Header signedIn />
+      <Navbar
+        isCloud
+        breadcrumbs={[
+          {
+            text: 'Cloud',
+            href: 'cloud',
+          },
+          {
+            text: 'Create',
+          },
+        ]}
+      />
       <div
         css={css`
           max-width: 800px;
           margin: auto;
           width: 100%;
         `}>
-        <EuiSpacer size="m" />
+        <EuiSpacer size="xxl" />
+        <EuiSpacer size="xxl" />
+        <EuiSpacer size="xxl" />
         <EuiFlexGroup gutterSize="m">
           {SOLUTION_CARDS.map(card => (
             <EuiFlexItem key={card.title}>
@@ -197,7 +218,18 @@ const ProjectSetup = () => {
                       </EuiFlexItem>
                     </EuiFlexGroup>
                   </EuiFlexItem>
-                  <EuiSpacer margin="s" />
+                  <EuiHorizontalRule margin="m" />
+                  <EuiFlexItem
+                    css={css`
+                      align-self: flex-end;
+                    `}>
+                    <EuiButton
+                      fill
+                      isDisabled={projectType === undefined && true}
+                      onClick={handleStart}>
+                      Start
+                    </EuiButton>
+                  </EuiFlexItem>
                 </EuiFlexGroup>
               )}
             </EuiAccordion>
