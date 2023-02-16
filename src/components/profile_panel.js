@@ -28,7 +28,7 @@ const ProfilePanel = ({ route }) => {
     setIsLoading(true);
     setTimeout(() => {
       router.push(route);
-    }, 250);
+    }, 400);
   };
 
   return (

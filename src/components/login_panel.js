@@ -26,7 +26,7 @@ const LoginPanel = ({ route }) => {
     setIsLoading(true);
     setTimeout(() => {
       router.push(route);
-    }, 350);
+    }, 400);
   };
 
   return (

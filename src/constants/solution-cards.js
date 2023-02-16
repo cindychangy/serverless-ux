@@ -1,3 +1,21 @@
+export const SOLUTION_CARDS = [
+  {
+    solution: 'search',
+    logo: 'logoElasticsearch',
+    title: 'Elasticsearch',
+  },
+  {
+    solution: 'observability',
+    logo: 'logoObservability',
+    title: 'Observability',
+  },
+  {
+    solution: 'security',
+    logo: 'logoSecurity',
+    title: 'Security',
+  },
+];
+
 export const CARDS_OBS = [
   {
     section: 'Observability',

@@ -90,7 +90,7 @@ const CloudHomepage = () => {
   ];
 
   return (
-    <CloudHomepageLayout>
+    <CloudHomepageLayout route="project-setup">
       <EuiSpacer size="m" />
       <EuiPanel>
         <EuiFlexGroup gutterSize="s" alignItems="center">

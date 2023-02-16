@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
   EuiPage,
@@ -31,7 +32,8 @@ const iconStyle = css`
   box-shadow: 0 3px 2px rgb(0 0 0 / 10%);
 `;
 
-const CloudHomepageLayout = ({ children }) => {
+const CloudHomepageLayout = ({ children, route }) => {
+  const router = useRouter();
   const iconTitle = (icon, title) => {
     return (
       <EuiFlexGroup alignItems="center" gutterSize="s">
@@ -76,7 +78,10 @@ const CloudHomepageLayout = ({ children }) => {
                     </EuiTitle>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
-                    <EuiButton iconType="plusInCircle" fill>
+                    <EuiButton
+                      iconType="plusInCircle"
+                      fill
+                      onClick={() => router.push(route)}>
                       Create
                     </EuiButton>
                   </EuiFlexItem>

@@ -25,7 +25,7 @@ const SignupPanel = ({ route }) => {
     setIsLoading(true);
     setTimeout(() => {
       router.push(route);
-    }, 550);
+    }, 400);
   };
 
   return (
