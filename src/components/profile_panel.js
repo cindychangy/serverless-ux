@@ -16,10 +16,9 @@ import {
   EuiFlexItem,
   EuiButton,
 } from '@elastic/eui';
-import Header from '../components/header';
 import { EXPERIENCE, PURPOSE } from '../constants/profile';
 
-const Profile = () => {
+const ProfilePanel = ({ route }) => {
   const router = useRouter();
   const [experience, setExperience] = useState('');
   const [purpose, setPurpose] = useState('');
@@ -28,25 +27,12 @@ const Profile = () => {
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
-      router.push('project-setup');
+      router.push(route);
     }, 250);
   };
 
   return (
     <>
-      <Header
-        signedIn
-        steps={[
-          {
-            title: 'About you',
-            status: 'current',
-          },
-          {
-            title: 'Choose setup',
-            status: 'incomplete',
-          },
-        ]}
-      />
       <div
         css={css`
           max-width: 550px;
@@ -133,4 +119,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePanel;

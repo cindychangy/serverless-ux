@@ -2,7 +2,7 @@
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import { useEuiTheme } from '@elastic/eui';
-import CloudLayout from '../../layouts/cloud';
+import CloudLayout from '../../../layouts/cloud';
 
 const ProjectSettings = () => {
   const { euiTheme } = useEuiTheme();

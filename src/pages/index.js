@@ -50,8 +50,17 @@ const IndexPage = () => {
         />
         <div
           css={css`
+            margin-top: 60px;
+            text-align: center;
+            color: #6b6f7f;
+            font-size: 15px;
+          `}>
+          <p>Below are relevant flows for each checkpoint</p>
+        </div>
+        <div
+          css={css`
             max-width: 400px;
-            margin: 40px auto;
+            margin: 25px auto;
           `}>
           <EuiPanel paddingSize="xl">
             <EuiText
@@ -60,49 +69,48 @@ const IndexPage = () => {
                 color: #6b6f7f;
                 letter-spacing: 2px;
               `}>
-              {/* <h5>Integration Checkpoint #2 Flows</h5> */}
-              <h5>Select a Flow</h5>
+              <h5>Integration Checkpoint #2</h5>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/signup">Trial user (v1)</EuiLink>
+                <EuiLink href="/ic-2/login">Exisiting users</EuiLink>
+              </h4>
+              <p>Starts at login</p>
+            </EuiText>
+            <EuiSpacer size="s" />
+            {/* <EuiText css={flowLink}>
+              <h4>
+                <EuiLink href="">Deployment list view</EuiLink>
+              </h4>
+              <p>Starts at Cloud homepage</p>
+            </EuiText> */}
+            <EuiSpacer size="s" />
+          </EuiPanel>
+          <EuiSpacer size="xxl" />
+          <EuiPanel paddingSize="xl" color="transparent" hasBorder>
+            <EuiText
+              css={css`
+                text-transform: uppercase;
+                color: #6b6f7f;
+                letter-spacing: 2px;
+              `}>
+              <h5>Integration Checkpoint #3</h5>
+            </EuiText>
+            <EuiSpacer size="s" />
+            <EuiText css={flowLink}>
+              <h4>
+                <EuiLink href="/ic-3/trial/signup">Trial user (v1)</EuiLink>
               </h4>
               <p>Solution led project selection</p>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/flows/trial-v2/signup">Trial user (v2)</EuiLink>
+                <EuiLink href="/ic-3/trial/b/signup">Trial user (v2)</EuiLink>
               </h4>
               <p>Project type led selection</p>
             </EuiText>
-            {/* <EuiSpacer size="s" />
-            <EuiText css={flowLink}>
-              <EuiLink href="/login">
-                <h4>Existing user</h4>
-              </EuiLink>
-              <p>starts from login</p>
-            </EuiText>
-
-            <EuiSpacer size="m" />
-            <EuiText css={flowLink}>
-              <EuiLink>
-                <h4>Billing admin</h4>
-              </EuiLink>
-            </EuiText>
-            <EuiSpacer size="m" />
-            <EuiText css={flowLink}>
-              <EuiLink>
-                <h4>Org admin</h4>
-              </EuiLink>
-            </EuiText>
-            <EuiSpacer size="m" />
-            <EuiText css={flowLink}>
-              <EuiLink>
-                <h4>Project viewer</h4>
-              </EuiLink>
-            </EuiText> */}
           </EuiPanel>
         </div>
       </div>

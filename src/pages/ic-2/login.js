@@ -16,22 +16,27 @@ import {
   EuiFieldPassword,
   EuiHorizontalRule,
   EuiButtonEmpty,
-  EuiImage,
 } from '@elastic/eui';
-import Header from '../components/header';
+import Header from '../../components/header';
+import LoginPanel from '../../components/login_panel';
 
-const Home = () => {
+const LoginPage = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      router.push('/cloud');
+    }, 1000);
+  };
 
   return (
-    <div style={{ background: '#fff', height: '100vh' }}>
-      <div style={{ margin: 'auto', paddingTop: '20px', maxWidth: '1140px' }}>
-        <h1>Homepage!</h1>
-      </div>
-
-      <EuiHorizontalRule />
-    </div>
+    <>
+      <Header accountType="login" />
+      <LoginPanel route="/cloud" />
+    </>
   );
 };
 
-export default Home;
+export default LoginPage;
