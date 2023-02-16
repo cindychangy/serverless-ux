@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -12,23 +12,17 @@ import {
   EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiComboBox,
+  EuiSuperSelect,
   EuiImage,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
 
-const OPTIONS_PROVIDER = [
-  {
-    label: 'Google',
-  },
-];
-
 const PROVIDER = [
   {
     value: 'google',
     inputDisplay: (
-      <EuiFlexGroup alignItems="center">
+      <EuiFlexGroup alignItems="center" gutterSize="s">
         <EuiFlexItem grow={false}>
           <EuiImage
             width={40}
@@ -48,7 +42,7 @@ const REGION = [
   {
     value: 'Iowa',
     inputDisplay: (
-      <EuiFlexGroup alignItems="center">
+      <EuiFlexGroup alignItems="center" gutterSize="s">
         <EuiFlexItem grow={false}>
           <EuiImage width={40} src="/images/flag.svg" alt="American flga" />
         </EuiFlexItem>
@@ -60,9 +54,20 @@ const REGION = [
   },
 ];
 
+const formStyles = css`
+  .euiFormLabel.euiFormControlLayout__prepend {
+    width: 180px;
+  }
+`;
+
 const CreateDeployment = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  //this is a hack for the superselect loading error on local
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
@@ -115,33 +120,33 @@ const CreateDeployment = () => {
           <EuiFieldText fullWidth placeholder="My fully managed project" />
 
           <EuiSpacer size="l" />
-          <EuiFlexGroup justifyContent="spaceBetween" direction="column">
-            <EuiFlexItem grow={2}>
-              <EuiTitle size="s">
-                <h4>Settings</h4>
-              </EuiTitle>
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiComboBox
-                prepend="Cloud provider"
-                singleSelection={{ asPlainText: true }}
-                options={OPTIONS_PROVIDER}
-                fullWidth
-                // selectedOptions={selectedOptions}
-                // onChange={onChange}
-              />
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiComboBox
-                prepend="Region"
-                singleSelection={{ asPlainText: true }}
-                options={OPTIONS_PROVIDER}
-                // selectedOptions={selectedOptions}
-                // onChange={onChange}
-                fullWidth
-              />
-            </EuiFlexItem>
-          </EuiFlexGroup>
+          {!isLoading && (
+            <EuiFlexGroup justifyContent="spaceBetween" direction="column">
+              <EuiFlexItem grow={2}>
+                <EuiTitle size="s">
+                  <h4>Settings</h4>
+                </EuiTitle>
+              </EuiFlexItem>
+              <EuiFlexItem css={formStyles}>
+                <EuiSuperSelect
+                  id="provider"
+                  options={PROVIDER}
+                  value="google"
+                  prepend="Cloud provider"
+                  fullWidth
+                />
+              </EuiFlexItem>
+              <EuiFlexItem css={formStyles}>
+                <EuiSuperSelect
+                  id="Region"
+                  options={REGION}
+                  value="Iowa"
+                  prepend="Region"
+                  fullWidth
+                />
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          )}
         </div>
         <EuiPanel
           css={css`
@@ -150,7 +155,10 @@ const CreateDeployment = () => {
             padding: 16px 48px !important;
             text-align: right;
           `}>
-          <EuiButton fill isLoading={isLoading} onClick={() => router.push('')}>
+          <EuiButton
+            fill
+            isLoading={isLoading}
+            onClick={() => router.push('/guided-setup')}>
             Create deployment
           </EuiButton>
         </EuiPanel>

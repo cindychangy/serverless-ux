@@ -22,7 +22,7 @@ const PROVIDER = [
   {
     value: 'google',
     inputDisplay: (
-      <EuiFlexGroup alignItems="center">
+      <EuiFlexGroup alignItems="center" gutterSize="s">
         <EuiFlexItem grow={false}>
           <EuiImage
             width={40}
@@ -42,7 +42,7 @@ const REGION = [
   {
     value: 'Iowa',
     inputDisplay: (
-      <EuiFlexGroup alignItems="center">
+      <EuiFlexGroup alignItems="center" gutterSize="s">
         <EuiFlexItem grow={false}>
           <EuiImage width={50} src="/images/flag.svg" alt="American flag" />
         </EuiFlexItem>
@@ -156,7 +156,10 @@ const CreateProject = () => {
             padding: 16px 48px !important;
             text-align: right;
           `}>
-          <EuiButton fill isLoading={isLoading} onClick={() => router.push('')}>
+          <EuiButton
+            fill
+            isLoading={isLoading}
+            onClick={() => router.push('/guided-setup')}>
             Create project
           </EuiButton>
         </EuiPanel>
