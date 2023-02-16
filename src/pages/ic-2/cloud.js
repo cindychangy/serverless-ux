@@ -17,6 +17,7 @@ import {
   EuiTableRow,
   EuiTableRowCell,
   EuiTableBody,
+  EuiButtonEmpty,
   useEuiTheme,
 } from '@elastic/eui';
 import CloudHomepageLayout from '../../layouts/cloud/homepage';
@@ -101,10 +102,17 @@ const CloudHomepage = () => {
           </EuiFlexItem>
           <EuiFlexItem>
             <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
-              <EuiFlexItem>
-                <EuiText>
-                  <h4>Elasticsearch deployments</h4>
-                </EuiText>
+              <EuiFlexItem grow={false}>
+                <EuiButtonEmpty
+                  href=""
+                  color="text"
+                  css={css`
+                    font-weight: 700;
+                    font-size: 16px;
+                  `}
+                  onClick={() => router.push('deployments')}>
+                  Elasticsearch deployments
+                </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
                 <EuiLink href="">View all deployments</EuiLink>
@@ -153,10 +161,17 @@ const CloudHomepage = () => {
           </EuiFlexItem>
           <EuiFlexItem>
             <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
-              <EuiFlexItem>
-                <EuiText>
-                  <h4>Elasticsearch projects</h4>
-                </EuiText>
+              <EuiFlexItem grow={false}>
+                <EuiButtonEmpty
+                  href=""
+                  color="text"
+                  css={css`
+                    font-weight: 700;
+                    font-size: 16px;
+                  `}
+                  onClick={() => router.push('projects')}>
+                  Elasticsearch projects
+                </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
                 <EuiLink href="">View all projects</EuiLink>
@@ -173,7 +188,7 @@ const CloudHomepage = () => {
           </EuiTableHeader>
           <EuiTableBody>
             {TABLE_ITEMS_PROJECTS.map(item => (
-              <EuiTableRow key={item.name}>
+              <EuiTableRow key={item}>
                 <Fragment>
                   <EuiTableRowCell>
                     <EuiLink onClick={() => router.push('/search')}>

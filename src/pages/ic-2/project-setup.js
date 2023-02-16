@@ -13,6 +13,7 @@ import {
   EuiFlexItem,
   EuiIcon,
   EuiCard,
+  EuiTitle,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
@@ -74,7 +75,6 @@ const ProjectSetup = () => {
           margin: auto;
           width: 100%;
         `}>
-        <EuiSpacer size="xxl" />
         <EuiSpacer size="xxl" />
         <EuiSpacer size="xxl" />
         <EuiFlexGroup gutterSize="m">
@@ -227,7 +227,7 @@ const ProjectSetup = () => {
                       fill
                       isDisabled={projectType === undefined && true}
                       onClick={handleStart}>
-                      Start
+                      Next
                     </EuiButton>
                   </EuiFlexItem>
                 </EuiFlexGroup>

@@ -11,7 +11,7 @@ import {
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 
-const Navbar = ({ breadcrumbs, isCloud, isIntegrations }) => {
+const Navbar = ({ breadcrumbs }) => {
   const router = useRouter();
   const { euiTheme } = useEuiTheme();
   return (
