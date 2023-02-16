@@ -37,6 +37,7 @@ const PROVIDER = [
     ),
   },
 ];
+
 const REGION = [
   {
     value: 'Iowa',
@@ -52,6 +53,7 @@ const REGION = [
     ),
   },
 ];
+
 const formStyles = css`
   .euiFormLabel.euiFormControlLayout__prepend {
     width: 180px;
@@ -129,13 +131,13 @@ const CreateProject = () => {
               />
             </EuiFlexItem>
             <EuiFlexItem css={formStyles}>
-              <EuiSuperSelect
+              {/* <EuiSuperSelect
                 id="Region"
                 options={REGION}
                 value="Iowa"
                 prepend="Region"
                 fullWidth
-              />
+              /> */}
             </EuiFlexItem>
           </EuiFlexGroup>
         </div>
