@@ -16,7 +16,7 @@ import {
   EuiHorizontalRule,
 } from '@elastic/eui';
 
-const SignupPanel = ({ href }) => {
+const SignupPanel = ({ route }) => {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,7 @@ const SignupPanel = ({ href }) => {
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
-      router.push(href);
+      router.push(route);
     }, 550);
   };
 
@@ -68,7 +68,7 @@ const SignupPanel = ({ href }) => {
               fill
               fullWidth
               isLoading={isLoading}
-              onClick={() => handleClick()}>
+              onClick={() => handleClick(route)}>
               Start free trial
             </EuiButton>
             <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>

@@ -24,7 +24,7 @@ const ProfilePanel = ({ route }) => {
   const [purpose, setPurpose] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = route => {
     setIsLoading(true);
     setTimeout(() => {
       router.push(route);
@@ -106,7 +106,7 @@ const ProfilePanel = ({ route }) => {
                   <EuiButton
                     fill
                     isLoading={isLoading}
-                    onClick={() => handleClick()}>
+                    onClick={() => handleClick(route)}>
                     Next
                   </EuiButton>
                 </EuiFlexItem>

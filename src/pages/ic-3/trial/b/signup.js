@@ -6,7 +6,7 @@ const SignupPage = () => {
   return (
     <>
       <Header logoLarge />
-      <SignupPanel href="profile" />
+      <SignupPanel route="profile" />
     </>
   );
 };
