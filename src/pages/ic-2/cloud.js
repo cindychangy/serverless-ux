@@ -78,8 +78,13 @@ const CloudHomepage = () => {
 
   const TABLE_ITEMS_PROJECTS = [
     {
-      name: 'Security xyz2064',
+      name: 'Access Logs POC',
       type: 'Observability',
+      provider: 'GCP - Iowa (us-central1)',
+    },
+    {
+      name: 'Search_docs',
+      type: 'Elasticsearch',
       provider: 'GCP - Iowa (us-central1)',
     },
   ];
@@ -117,8 +122,8 @@ const CloudHomepage = () => {
             ))}
           </EuiTableHeader>
           <EuiTableBody>
-            <EuiTableRow key="row">
-              {TABLE_ITEMS_DEPLOYMENTS.map(item => (
+            {TABLE_ITEMS_DEPLOYMENTS.map(item => (
+              <EuiTableRow key="row">
                 <Fragment key={item.name}>
                   <EuiTableRowCell>
                     <EuiLink onClick={() => router.push('/search')}>
@@ -132,8 +137,8 @@ const CloudHomepage = () => {
                     <EuiLink href="">Manage</EuiLink>
                   </EuiTableRowCell>
                 </Fragment>
-              ))}
-            </EuiTableRow>
+              </EuiTableRow>
+            ))}
           </EuiTableBody>
         </EuiTable>
         <EuiSpacer size="s" />
@@ -169,8 +174,8 @@ const CloudHomepage = () => {
             ))}
           </EuiTableHeader>
           <EuiTableBody>
-            <EuiTableRow key="row">
-              {TABLE_ITEMS_PROJECTS.map(item => (
+            {TABLE_ITEMS_PROJECTS.map(item => (
+              <EuiTableRow key="row">
                 <Fragment key={item.name}>
                   <EuiTableRowCell>
                     <EuiLink onClick={() => router.push('/search')}>
@@ -183,8 +188,8 @@ const CloudHomepage = () => {
                     <EuiLink href="">Manage</EuiLink>
                   </EuiTableRowCell>
                 </Fragment>
-              ))}
-            </EuiTableRow>
+              </EuiTableRow>
+            ))}
           </EuiTableBody>
         </EuiTable>
         <EuiSpacer size="s" />

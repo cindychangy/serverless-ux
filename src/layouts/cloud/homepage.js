@@ -174,7 +174,7 @@ const CloudHomepageLayout = ({ children }) => {
                         </EuiText>
                       </EuiLink>
                       <EuiSpacer size="s" />
-                      <small>FEBRUARY 14, 2023</small> &nbsp; &nbsp;
+                      <small>FEBRUARY 14, 2023</small> &nbsp;
                       <EuiTextColor color="accent">New!</EuiTextColor>
                       <EuiSpacer size="m" />
                       <EuiLink href="">
@@ -188,7 +188,7 @@ const CloudHomepageLayout = ({ children }) => {
                         </EuiText>
                       </EuiLink>
                       <EuiSpacer size="s" />
-                      <small>FEBRUARY 13, 2023</small> &nbsp; &nbsp;
+                      <small>FEBRUARY 13, 2023</small> &nbsp;
                       <EuiTextColor color="accent">New</EuiTextColor>
                       <EuiSpacer size="m" />
                       <EuiLink href="">
@@ -202,7 +202,7 @@ const CloudHomepageLayout = ({ children }) => {
                         </EuiText>
                       </EuiLink>
                       <EuiSpacer size="s" />
-                      <small>FEBRUARY 6, 2023</small> &nbsp; &nbsp;
+                      <small>FEBRUARY 6, 2023</small> &nbsp;
                       <EuiTextColor color="accent">New</EuiTextColor>
                     </EuiPanel>
                   </EuiFlexItem>
