@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -62,7 +62,12 @@ const formStyles = css`
 
 const CreateProject = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  //this is a hack for the superselect loading error on local
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
@@ -83,6 +88,7 @@ const CreateProject = () => {
         ]}
       />
       <EuiSpacer size="xxl" />
+
       <EuiPanel
         paddingSize="none"
         css={css`
@@ -115,31 +121,33 @@ const CreateProject = () => {
           <EuiFieldText fullWidth placeholder="My fully managed project" />
 
           <EuiSpacer size="l" />
-          <EuiFlexGroup justifyContent="spaceBetween" direction="column">
-            <EuiFlexItem grow={2}>
-              <EuiTitle size="s">
-                <h4>Settings</h4>
-              </EuiTitle>
-            </EuiFlexItem>
-            <EuiFlexItem css={formStyles}>
-              {/* <EuiSuperSelect
-                id="Provider"
-                options={PROVIDER}
-                value="google"
-                prepend="Cloud provider"
-                fullWidth
-              /> */}
-            </EuiFlexItem>
-            <EuiFlexItem css={formStyles}>
-              {/* <EuiSuperSelect
-                id="Region"
-                options={REGION}
-                value="Iowa"
-                prepend="Region"
-                fullWidth
-              /> */}
-            </EuiFlexItem>
-          </EuiFlexGroup>
+          {!isLoading && (
+            <EuiFlexGroup justifyContent="spaceBetween" direction="column">
+              <EuiFlexItem grow={2}>
+                <EuiTitle size="s">
+                  <h4>Settings</h4>
+                </EuiTitle>
+              </EuiFlexItem>
+              <EuiFlexItem css={formStyles}>
+                <EuiSuperSelect
+                  id="provider"
+                  options={PROVIDER}
+                  value="google"
+                  prepend="Cloud provider"
+                  fullWidth
+                />
+              </EuiFlexItem>
+              <EuiFlexItem css={formStyles}>
+                <EuiSuperSelect
+                  id="Region"
+                  options={REGION}
+                  value="Iowa"
+                  prepend="Region"
+                  fullWidth
+                />
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          )}
         </div>
         <EuiPanel
           css={css`
