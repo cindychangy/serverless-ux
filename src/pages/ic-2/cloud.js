@@ -104,7 +104,7 @@ const CloudHomepage = () => {
             <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
               <EuiFlexItem grow={false}>
                 <EuiButtonEmpty
-                  href=""
+                  href="#"
                   color="text"
                   css={css`
                     font-weight: 700;
@@ -115,7 +115,7 @@ const CloudHomepage = () => {
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
-                <EuiLink href="">View all deployments</EuiLink>
+                <EuiLink href="#">View all deployments</EuiLink>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
@@ -142,7 +142,7 @@ const CloudHomepage = () => {
                   <EuiTableRowCell>{item.version}</EuiTableRowCell>
                   <EuiTableRowCell>{item.region}</EuiTableRowCell>
                   <EuiTableRowCell>
-                    <EuiLink href="">Manage</EuiLink>
+                    <EuiLink href="#">Manage</EuiLink>
                   </EuiTableRowCell>
                 </Fragment>
               </EuiTableRow>
@@ -163,7 +163,7 @@ const CloudHomepage = () => {
             <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
               <EuiFlexItem grow={false}>
                 <EuiButtonEmpty
-                  href=""
+                  href="#"
                   color="text"
                   css={css`
                     font-weight: 700;
@@ -174,7 +174,7 @@ const CloudHomepage = () => {
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
-                <EuiLink href="">View all projects</EuiLink>
+                <EuiLink href="#">View all projects</EuiLink>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
@@ -198,7 +198,7 @@ const CloudHomepage = () => {
                   <EuiTableRowCell>{item.type}</EuiTableRowCell>
                   <EuiTableRowCell>{item.provider}</EuiTableRowCell>
                   <EuiTableRowCell>
-                    <EuiLink href="">Manage</EuiLink>
+                    <EuiLink href="#">Manage</EuiLink>
                   </EuiTableRowCell>
                 </Fragment>
               </EuiTableRow>
