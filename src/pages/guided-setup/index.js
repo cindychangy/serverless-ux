@@ -11,12 +11,11 @@ import {
   EuiFlexGroup,
   EuiCard,
   EuiIcon,
-  EuiButton,
   EuiTextColor,
   EuiPageTemplate,
 } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
-import { CARDS_OBS } from '../../constants/guide-cards';
+import { CARDS_OBS } from '../../constants/solution-cards';
 
 const GuidedSetup = () => {
   const router = useRouter();

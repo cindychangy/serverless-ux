@@ -102,7 +102,7 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
           buttonElement="div"
           iconType="logoKibana"
           isCollapsible={true}
-          initialIsOpen="Kibana"></EuiCollapsibleNavGroup>
+          initialIsOpen={true}></EuiCollapsibleNavGroup>
       </EuiFlexItem>
     </EuiCollapsibleNav>
   );
