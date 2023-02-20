@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -17,16 +17,15 @@ import {
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
-import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../constants/global';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
 
 const ProjectSetup = () => {
   const router = useRouter();
-  const [projectType, setProjectType] = useState(undefined);
+  const [pageViewExtended, setPageViewExtended] = useState(false);
   const [solution, setSolution] = useState(undefined);
   const [accordionTrigger, setAccordionTrigger] = useState('closed');
 
-  const cardContainer = css`
+  const soultionCard = css`
     .euiCard__content {
       text-align: left;
       padding: 10px 20px;
@@ -47,13 +46,11 @@ const ProjectSetup = () => {
     }
   };
 
-  const handleStart = () => {
-    if (projectType === PROJECT_SERVERLESS) {
-      router.push('/ic-2/create-project');
-    } else {
-      router.push('/ic-2/create-deployment');
+  useEffect(() => {
+    if (router.query.root !== 'projectList') {
+      setPageViewExtended(true);
     }
-  };
+  }, [router]);
 
   return (
     <>
@@ -72,17 +69,15 @@ const ProjectSetup = () => {
       <div
         css={css`
           max-width: 800px;
-          margin: auto;
+          margin: 80px auto 0 auto;
           width: 100%;
         `}>
-        <EuiSpacer size="xxl" />
-        <EuiSpacer size="xxl" />
         <EuiFlexGroup gutterSize="m">
           {SOLUTION_CARDS.map(card => (
             <EuiFlexItem key={card.title}>
               <EuiCard
                 paddingSize="none"
-                css={cardContainer}
+                css={soultionCard}
                 selectable={{
                   onClick: () => showProjectDetails(card.solution),
                   isSelected: solution === card.solution,
@@ -114,126 +109,140 @@ const ProjectSetup = () => {
             </EuiFlexItem>
           ))}
         </EuiFlexGroup>
-
-        <EuiSpacer size="xl" />
-        {solution !== undefined && (
+        {!pageViewExtended && (
           <>
-            <EuiAccordion
-              id="projectDetails"
-              arrowDisplay="none"
-              forceState={accordionTrigger}
-              css={css`
-                position: relative;
-              `}
-              buttonContent={
-                <div
-                  css={css`
-                    position: absolute;
-                    left: 49%;
-                  `}>
-                  <EuiIcon type="arrowDown" color="primary" size="l" />
-                </div>
-              }
-              padding="l">
-              <EuiSpacer size="xxl" />
-              {accordionTrigger === 'open' && (
-                <EuiFlexGroup direction="column" alignItems="center">
-                  <EuiFlexItem
-                    css={css`
-                      width: 100%;
-                    `}>
-                    <EuiFlexGroup>
-                      <EuiFlexItem>
-                        <EuiCard
-                          textAlign="left"
-                          paddingSize="none"
-                          css={cardContainer}
-                          title={
-                            <>
-                              <EuiSpacer size="m" />
-                              Dedicated
-                            </>
-                          }
-                          titleElement="h4"
-                          selectable={{
-                            onClick: () => setProjectType(PROJECT_CLASSIC),
-                            isSelected: projectType === PROJECT_CLASSIC,
-                          }}>
-                          <EuiHorizontalRule margin="s" />
-                          <EuiSpacer size="s" />
-                          <EuiSkeletonText
-                            lines={2}
-                            size="s"
-                            contentAriaLabel="dummy text"
-                          />
-                          <EuiSpacer size="m" />
-                          <EuiSkeletonText
-                            lines={2}
-                            size="s"
-                            contentAriaLabel="dummy text"
-                          />
-                          <EuiSpacer size="m" />
-                        </EuiCard>
-                      </EuiFlexItem>
-
-                      <EuiFlexItem>
-                        <EuiCard
-                          textAlign="left"
-                          paddingSize="none"
-                          css={cardContainer}
-                          title={
-                            <>
-                              <EuiSpacer size="m" />
-                              Fully Managed
-                              <EuiBadge
-                                color="accent"
-                                style={{
-                                  color: '#fff',
-                                  marginLeft: '5px',
-                                  marginTop: '-4px',
-                                }}>
-                                BETA
-                              </EuiBadge>
-                            </>
-                          }
-                          titleElement="h4"
-                          selectable={{
-                            onClick: () => setProjectType(PROJECT_SERVERLESS),
-                            isSelected: projectType === PROJECT_SERVERLESS,
-                          }}>
-                          <EuiHorizontalRule margin="s" />
-                          <EuiSpacer size="s" />
-                          <EuiSkeletonText
-                            lines={2}
-                            size="s"
-                            contentAriaLabel="dummy text"
-                          />
-                          <EuiSpacer size="m" />
-                          <EuiSkeletonText
-                            lines={2}
-                            size="s"
-                            contentAriaLabel="dummy text"
-                          />
-                        </EuiCard>
-                      </EuiFlexItem>
-                    </EuiFlexGroup>
-                  </EuiFlexItem>
-                  <EuiHorizontalRule margin="m" />
-                  <EuiFlexItem
-                    css={css`
-                      align-self: flex-end;
-                    `}>
-                    <EuiButton
-                      fill
-                      isDisabled={projectType === undefined && true}
-                      onClick={handleStart}>
-                      Next
-                    </EuiButton>
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-              )}
-            </EuiAccordion>
+            <EuiHorizontalRule margin="xl" />
+            <EuiFlexGroup justifyContent="flexEnd">
+              <EuiFlexItem grow={false}>
+                <EuiButton
+                  fill
+                  disabled={solution == undefined && true}
+                  onClick={() => router.push('create-project')}>
+                  Next
+                </EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
           </>
+        )}
+        <EuiSpacer size="l" />
+        {solution !== undefined && pageViewExtended && (
+          <EuiAccordion
+            id="projectDetails"
+            arrowDisplay="none"
+            forceState={accordionTrigger}
+            css={css`
+              position: relative;
+            `}
+            buttonContent={
+              <div
+                css={css`
+                  position: absolute;
+                  left: 49%;
+                `}>
+                <EuiIcon type="arrowDown" color="primary" size="l" />
+              </div>
+            }
+            padding="l">
+            <EuiSpacer size="xxl" />
+            {accordionTrigger === 'open' && (
+              <EuiFlexGroup gutterSize="m">
+                <EuiFlexItem
+                  css={css`
+                    padding: 0 5px;
+                    width: 100%;
+                  `}>
+                  <EuiFlexGroup>
+                    <EuiFlexItem>
+                      <EuiCard
+                        textAlign="left"
+                        paddingSize="l"
+                        title={
+                          <>
+                            <EuiSpacer size="m" />
+                            Dedicated
+                          </>
+                        }
+                        titleElement="h4"
+                        // selectable={{
+                        //   onClick: () => setProjectType(PROJECT_CLASSIC),
+                        //   isSelected: projectType === PROJECT_CLASSIC,
+                        // }}
+                      >
+                        <EuiHorizontalRule margin="s" />
+                        <EuiSpacer size="s" />
+                        <EuiSkeletonText
+                          lines={2}
+                          size="s"
+                          contentAriaLabel="dummy text"
+                        />
+                        <EuiSpacer size="m" />
+                        <EuiSkeletonText
+                          lines={2}
+                          size="s"
+                          contentAriaLabel="dummy text"
+                        />
+                        <EuiSpacer size="m" />
+                        <EuiButton
+                          fullWidth
+                          onClick={() => router.push('create-deployment')}>
+                          Next
+                        </EuiButton>
+                      </EuiCard>
+                      <EuiSpacer size="l" />
+                    </EuiFlexItem>
+
+                    <EuiFlexItem>
+                      <EuiCard
+                        textAlign="left"
+                        paddingSize="l"
+                        title={
+                          <>
+                            <EuiSpacer size="m" />
+                            Fully Managed
+                            <EuiBadge
+                              color="accent"
+                              style={{
+                                color: '#fff',
+                                marginLeft: '5px',
+                                marginTop: '-4px',
+                              }}>
+                              BETA
+                            </EuiBadge>
+                          </>
+                        }
+                        titleElement="h4"
+                        // selectable={{
+                        //   onClick: () => setProjectType(PROJECT_SERVERLESS),
+                        //   isSelected: projectType === PROJECT_SERVERLESS,
+                        // }}
+                      >
+                        <EuiHorizontalRule margin="s" />
+                        <EuiSpacer size="s" />
+                        <EuiSkeletonText
+                          lines={2}
+                          size="s"
+                          contentAriaLabel="dummy text"
+                        />
+                        <EuiSpacer size="m" />
+                        <EuiSkeletonText
+                          lines={2}
+                          size="s"
+                          contentAriaLabel="dummy text"
+                        />
+                        <EuiSpacer size="m" />
+                        <EuiButton
+                          fullWidth
+                          onClick={() => router.push('create-project')}>
+                          Next
+                        </EuiButton>
+                      </EuiCard>
+                      <EuiSpacer size="l" />
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            )}
+          </EuiAccordion>
         )}
       </div>
     </>
