@@ -18,33 +18,6 @@ import {
 } from '@elastic/eui';
 
 const KibanaLayout = ({ breadcrumbs, children }) => {
-  const { euiTheme } = useEuiTheme();
-  const mainWrapper = css`
-    padding-top: 96px;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  `;
-
-  const contentWrapper = css`
-    display: flex;
-    flex-flow: column nowrap;
-    flex-grow: 1;
-    z-index: 0;
-    position: relative;
-  `;
-
-  const header = css`
-    background: ${euiTheme.colors.body};
-    padding: 45px 0;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    align-content: center;
-    border-bottom: 2px solid ${euiTheme.colors.lightestShade};
-  `;
-
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   const collapsibleNavId = useGeneratedHtmlId({ prefix: 'collapsibleNav' });
@@ -52,11 +25,6 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
   const collapsibleNav = (
     <EuiCollapsibleNav
       ownFocus={false}
-      css={css`
-        margin-top: 96px;
-        min-height: calc(100vh - 96px);
-        display: flex;
-      `}
       id={collapsibleNavId}
       aria-label="Main navigation"
       isOpen={navIsOpen}
@@ -112,7 +80,7 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
   if (typeof HTMLElement !== `undefined`) {
     return (
       <>
-        <div css={mainWrapper}>
+        <div>
           <EuiHeader
             position="fixed"
             theme="dark"
@@ -158,9 +126,24 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
             position="fixed"
             sections={[
               {
-                items: [leftSectionItems],
+                items: leftSectionItems,
+                borders: 'right',
+              },
+              {
+                items: [
+                  <EuiHeaderSectionItemButton
+                    key="header-item"
+                    aria-label="Account menu">
+                    <EuiAvatar
+                      type="space"
+                      name="Default"
+                      size="s"
+                      color="#00BFB3"
+                    />
+                  </EuiHeaderSectionItemButton>,
+                ],
                 breadcrumbs: breadcrumbs,
-                borders: 'none',
+                borders: 'right',
               },
             ]}
           />

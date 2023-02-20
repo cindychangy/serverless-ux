@@ -39,7 +39,7 @@ const CloudSubPageLayout = ({ breadcrumbs, children, navItems, pageTitle }) => {
               height: 100vh;
             `}>
             <EuiPageHeader
-              paddingSize="none"
+              paddingSize="m"
               bottomBorder={true}
               pageTitle={pageTitle}
             />

@@ -93,12 +93,15 @@ const ProjectsPage = () => {
             fill
             iconType="plusInCircle"
             onClick={() =>
-              router.push({
-                pathname: 'project-setup',
-                query: {
-                  root: 'projectList',
+              router.push(
+                {
+                  pathname: 'project-setup',
+                  query: {
+                    root: 'projectList',
+                  },
                 },
-              })
+                'projects'
+              )
             }>
             Create project
           </EuiButton>
@@ -116,11 +119,29 @@ const ProjectsPage = () => {
             <EuiTableRow key="row">
               <Fragment key={item.name}>
                 <EuiTableRowCell>
-                  <EuiLink onClick={() => router.push('')}>{item.name}</EuiLink>
+                  <EuiLink onClick={() => router.push('kibana')}>
+                    {item.name}
+                  </EuiLink>
                 </EuiTableRowCell>
                 <EuiTableRowCell>{item.type}</EuiTableRowCell>
                 <EuiTableRowCell>{item.region}</EuiTableRowCell>
-                <EuiTableRowCell>{item.actions}</EuiTableRowCell>
+                <EuiTableRowCell>
+                  {' '}
+                  <EuiLink
+                    onClick={() =>
+                      router.push(
+                        {
+                          pathname: 'details',
+                          query: {
+                            projectTitle: item.name,
+                          },
+                        },
+                        'project-details'
+                      )
+                    }>
+                    {item.actions}
+                  </EuiLink>
+                </EuiTableRowCell>
               </Fragment>
             </EuiTableRow>
           ))}

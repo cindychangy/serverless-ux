@@ -115,7 +115,9 @@ const CloudHomepage = () => {
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
-                <EuiLink href="#">View all deployments</EuiLink>
+                <EuiLink onClick={() => router.push('deployments')}>
+                  View all deployments
+                </EuiLink>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
@@ -134,7 +136,7 @@ const CloudHomepage = () => {
               <EuiTableRow key="row">
                 <Fragment key={item.name}>
                   <EuiTableRowCell>
-                    <EuiLink onClick={() => router.push('/search')}>
+                    <EuiLink onClick={() => router.push('kibana')}>
                       {item.name}
                     </EuiLink>
                   </EuiTableRowCell>
@@ -142,7 +144,20 @@ const CloudHomepage = () => {
                   <EuiTableRowCell>{item.version}</EuiTableRowCell>
                   <EuiTableRowCell>{item.region}</EuiTableRowCell>
                   <EuiTableRowCell>
-                    <EuiLink href="#">Manage</EuiLink>
+                    <EuiLink
+                      onClick={() =>
+                        router.push(
+                          {
+                            pathname: 'details',
+                            query: {
+                              projectTitle: item.name,
+                            },
+                          },
+                          'deployment-details'
+                        )
+                      }>
+                      Manage
+                    </EuiLink>
                   </EuiTableRowCell>
                 </Fragment>
               </EuiTableRow>
@@ -174,7 +189,9 @@ const CloudHomepage = () => {
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
-                <EuiLink href="#">View all projects</EuiLink>
+                <EuiLink onClick={() => router.push('projects')}>
+                  View all projects
+                </EuiLink>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
@@ -191,14 +208,27 @@ const CloudHomepage = () => {
               <EuiTableRow key={item}>
                 <Fragment>
                   <EuiTableRowCell>
-                    <EuiLink onClick={() => router.push('/search')}>
+                    <EuiLink onClick={() => router.push('kibana')}>
                       {item.name}
                     </EuiLink>
                   </EuiTableRowCell>
                   <EuiTableRowCell>{item.type}</EuiTableRowCell>
                   <EuiTableRowCell>{item.provider}</EuiTableRowCell>
                   <EuiTableRowCell>
-                    <EuiLink href="#">Manage</EuiLink>
+                    <EuiLink
+                      onClick={() =>
+                        router.push(
+                          {
+                            pathname: 'details',
+                            query: {
+                              projectTitle: item.name,
+                            },
+                          },
+                          'project-details'
+                        )
+                      }>
+                      Manage
+                    </EuiLink>
                   </EuiTableRowCell>
                 </Fragment>
               </EuiTableRow>

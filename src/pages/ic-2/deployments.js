@@ -108,12 +108,29 @@ const DeploymentsPage = () => {
             <EuiTableRow key="row">
               <Fragment key={item.name}>
                 <EuiTableRowCell>
-                  <EuiLink onClick={() => router.push('')}>{item.name}</EuiLink>
+                  <EuiLink onClick={() => router.push('kibana')}>
+                    {item.name}
+                  </EuiLink>
                 </EuiTableRowCell>
                 <EuiTableRowCell>{item.status}</EuiTableRowCell>
                 <EuiTableRowCell>{item.version}</EuiTableRowCell>
                 <EuiTableRowCell>{item.region}</EuiTableRowCell>
-                <EuiTableRowCell>{item.actions}</EuiTableRowCell>
+                <EuiTableRowCell>
+                  <EuiLink
+                    onClick={() =>
+                      router.push(
+                        {
+                          pathname: 'details',
+                          query: {
+                            projectTitle: item.name,
+                          },
+                        },
+                        'deployment-details'
+                      )
+                    }>
+                    {item.actions}
+                  </EuiLink>
+                </EuiTableRowCell>
               </Fragment>
             </EuiTableRow>
           ))}
