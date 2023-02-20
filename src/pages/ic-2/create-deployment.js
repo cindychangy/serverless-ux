@@ -20,6 +20,7 @@ import {
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
+import WaitPanel from '../../components/wait_panel';
 
 const PROVIDER = [
   {
@@ -86,6 +87,7 @@ const advancedSettingsIcon = css`
 
 const CreateDeployment = () => {
   const router = useRouter();
+  const [creating, setIsCreating] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   //this is a hack for the superselect loading error on local
@@ -112,108 +114,111 @@ const CreateDeployment = () => {
         ]}
       />
       <EuiSpacer size="xxl" />
-      <EuiPanel
-        paddingSize="none"
-        css={css`
-          max-width: 800px;
-          width: 100%;
-          margin: auto;
-        `}>
-        <div
-          css={css`
-            padding: 40px 48px;
-          `}>
-          <EuiTitle size="l">
-            <h1>Create a deployment</h1>
-          </EuiTitle>
-          <EuiSpacer size="s" />
-          <EuiText color="subdued" size="s">
-            <p>
-              In a deployment, find all the capabilities you need to integrate
-              your data, and solve your search, observability and security
-              challenges.
-            </p>
-          </EuiText>
-          <EuiHorizontalRule />
-          <EuiSpacer size="s" />
-
-          <EuiTitle size="s">
-            <h4>Name</h4>
-          </EuiTitle>
-          <EuiSpacer size="s" />
-          <EuiFieldText fullWidth placeholder="My deployment" />
-
-          <EuiSpacer size="l" />
-          {!isLoading && (
-            <EuiFlexGroup
-              justifyContent="spaceBetween"
-              direction="column"
-              gutterSize="m">
-              <EuiFlexItem grow={2}>
-                <EuiTitle size="s">
-                  <h4>Settings</h4>
-                </EuiTitle>
-              </EuiFlexItem>
-              <EuiFlexItem css={formStyles}>
-                <EuiSuperSelect
-                  id="provider"
-                  options={PROVIDER}
-                  value="google"
-                  prepend="Cloud provider"
-                  fullWidth
-                />
-              </EuiFlexItem>
-              <EuiFlexItem css={formStyles}>
-                <EuiSuperSelect
-                  id="Region"
-                  options={REGION}
-                  value="Iowa"
-                  prepend="Region"
-                  fullWidth
-                />
-              </EuiFlexItem>
-              <EuiFlexItem css={formStyles}>
-                <EuiSuperSelect
-                  id="Hardware"
-                  options={HARDWARE}
-                  value="optimized"
-                  prepend="Hardware profile"
-                  fullWidth
-                />
-              </EuiFlexItem>
-              <EuiFlexItem css={formStyles}>
-                <EuiSuperSelect
-                  id="Version"
-                  options={VERSION}
-                  value="latest"
-                  prepend="Version"
-                  fullWidth
-                />
-              </EuiFlexItem>
-              <EuiFlexItem>
-                <EuiSpacer size="m" />
-                <EuiAccordion
-                  buttonContent={
-                    <EuiLink onClick={() => {}}>Advanced Settings</EuiLink>
-                  }
-                  css={advancedSettingsIcon}>
-                  <EuiSpacer size="m" />
-                  <p>Show advanced settings...</p>
-                </EuiAccordion>
-              </EuiFlexItem>
-            </EuiFlexGroup>
-          )}
-        </div>
+      {creating ? (
+        <WaitPanel />
+      ) : (
         <EuiPanel
+          paddingSize="none"
           css={css`
-            border-radius: 0 !important;
-            box-shadow: rgba(0, 0, 0, 0.1) 0 0 12px !important;
-            padding: 16px 48px !important;
-            text-align: right;
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
           `}>
-          <EuiFlexGroup justifyContent="space-between">
-            <EuiFlexItem>
-              {/* <EuiButtonGroup
+          <div
+            css={css`
+              padding: 40px 48px;
+            `}>
+            <EuiTitle size="l">
+              <h1>Create a deployment</h1>
+            </EuiTitle>
+            <EuiSpacer size="s" />
+            <EuiText color="subdued" size="s">
+              <p>
+                In a deployment, find all the capabilities you need to integrate
+                your data, and solve your search, observability and security
+                challenges.
+              </p>
+            </EuiText>
+            <EuiHorizontalRule />
+            <EuiSpacer size="s" />
+
+            <EuiTitle size="s">
+              <h4>Name</h4>
+            </EuiTitle>
+            <EuiSpacer size="s" />
+            <EuiFieldText fullWidth placeholder="My deployment" />
+
+            <EuiSpacer size="l" />
+            {!isLoading && (
+              <EuiFlexGroup
+                justifyContent="spaceBetween"
+                direction="column"
+                gutterSize="m">
+                <EuiFlexItem grow={2}>
+                  <EuiTitle size="s">
+                    <h4>Settings</h4>
+                  </EuiTitle>
+                </EuiFlexItem>
+                <EuiFlexItem css={formStyles}>
+                  <EuiSuperSelect
+                    id="provider"
+                    options={PROVIDER}
+                    value="google"
+                    prepend="Cloud provider"
+                    fullWidth
+                  />
+                </EuiFlexItem>
+                <EuiFlexItem css={formStyles}>
+                  <EuiSuperSelect
+                    id="Region"
+                    options={REGION}
+                    value="Iowa"
+                    prepend="Region"
+                    fullWidth
+                  />
+                </EuiFlexItem>
+                <EuiFlexItem css={formStyles}>
+                  <EuiSuperSelect
+                    id="Hardware"
+                    options={HARDWARE}
+                    value="optimized"
+                    prepend="Hardware profile"
+                    fullWidth
+                  />
+                </EuiFlexItem>
+                <EuiFlexItem css={formStyles}>
+                  <EuiSuperSelect
+                    id="Version"
+                    options={VERSION}
+                    value="latest"
+                    prepend="Version"
+                    fullWidth
+                  />
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiSpacer size="m" />
+                  <EuiAccordion
+                    buttonContent={
+                      <EuiLink onClick={() => {}}>Advanced Settings</EuiLink>
+                    }
+                    css={advancedSettingsIcon}>
+                    <EuiSpacer size="m" />
+                    <p>Show advanced settings...</p>
+                  </EuiAccordion>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            )}
+          </div>
+          <EuiPanel
+            css={css`
+              border-radius: 0 !important;
+              box-shadow: rgba(0, 0, 0, 0.1) 0 0 12px !important;
+              padding: 16px 48px !important;
+              text-align: right;
+            `}>
+            <EuiFlexGroup justifyContent="space-between">
+              <EuiFlexItem>
+                {/* <EuiButtonGroup
                 name="price"
                 legend="This is a basic group"
                 options={[
@@ -230,18 +235,16 @@ const CreateDeployment = () => {
                 onChange={id => onChangeCompressed(id)}
                 buttonSize="compressed"
               /> */}
-            </EuiFlexItem>
-            <EuiFlexItem grow={false}>
-              <EuiButton
-                fill
-                isLoading={isLoading}
-                onClick={() => router.push('/guided-setup')}>
-                Create deployment
-              </EuiButton>
-            </EuiFlexItem>
-          </EuiFlexGroup>
+              </EuiFlexItem>
+              <EuiFlexItem grow={false}>
+                <EuiButton fill onClick={() => setIsCreating(true)}>
+                  Create deployment
+                </EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiPanel>
         </EuiPanel>
-      </EuiPanel>
+      )}
     </>
   );
 };

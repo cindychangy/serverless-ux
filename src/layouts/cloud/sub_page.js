@@ -7,6 +7,7 @@ import {
   EuiPageBody,
   EuiPageSection,
   EuiPageHeader,
+  EuiSpacer,
 } from '@elastic/eui';
 import Navbar from '../../components/navbar';
 
@@ -16,7 +17,13 @@ const sideNavStyles = css`
   }
 `;
 
-const CloudSubPageLayout = ({ breadcrumbs, children, navItems, pageTitle }) => {
+const CloudSubPageLayout = ({
+  breadcrumbs,
+  children,
+  navItems,
+  pageTitle,
+  bgColor,
+}) => {
   return (
     <>
       <Navbar breadcrumbs={breadcrumbs} />
@@ -31,18 +38,15 @@ const CloudSubPageLayout = ({ breadcrumbs, children, navItems, pageTitle }) => {
             css={sideNavStyles}
           />
         </EuiPageSidebar>
-        <EuiPageBody paddingSize="none" panelled={true}>
+        <EuiPageBody paddingSize="none" panelled={true} color={bgColor}>
           <EuiPageSection
             css={css`
               max-width: 1320px;
               margin: auto;
               height: 100vh;
             `}>
-            <EuiPageHeader
-              paddingSize="m"
-              bottomBorder={true}
-              pageTitle={pageTitle}
-            />
+            <EuiSpacer size="l" />
+            <EuiPageHeader pageTitle={pageTitle} />
             {children}
           </EuiPageSection>
         </EuiPageBody>

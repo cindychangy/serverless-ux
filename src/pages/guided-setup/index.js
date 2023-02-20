@@ -22,19 +22,6 @@ const GuidedSetup = () => {
   const [guideOpen, setGuide] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  const guideCard = css`
-    position: relative;
-    min-height: 110px;
-    width: 380px;
-
-    .euiCard__content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  `;
-
   const BREADCRUMBS = [
     {
       text: 'Home',
@@ -52,8 +39,13 @@ const GuidedSetup = () => {
       guideOpen={guideOpen}
       buttonDisabled={buttonDisabled}
       onClick={() => handleGuideClick(section)}>
-      <EuiSpacer size="m" />
-      <EuiPageTemplate style={{ paddingBlockStart: 0 }} paddingSize="l">
+      <EuiPageTemplate
+        style={{ paddingBlockStart: 0 }}
+        paddingSize="l"
+        css={css`
+          margin-top: 95px;
+        `}>
+        <EuiSpacer size="xxl" />
         <EuiPageTemplate.Section color="subdued">
           <EuiTitle size="l" className="eui-textCenter">
             <h1>What would you like to do&nbsp;first?</h1>
