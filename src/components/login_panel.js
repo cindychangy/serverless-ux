@@ -57,11 +57,11 @@ const LoginPanel = ({ route }) => {
                 </EuiTextAlign>
               </EuiTitle>
               <EuiSpacer size="xl" />
-              <EuiFormRow label="Email">
+              <EuiFormRow label="Email" id="email">
                 <EuiFieldText icon="user" fullWidth />
               </EuiFormRow>
               <EuiSpacer size="l" />
-              <EuiFormRow label="Password">
+              <EuiFormRow label="Password" id="password">
                 <EuiFieldPassword type="dual" fullWidth />
               </EuiFormRow>
               <EuiSpacer size="l" />

@@ -21,19 +21,20 @@ import {
 } from '@elastic/eui';
 import Navbar from '../../components/navbar';
 
-const iconStyle = css`
-  background: #f5f7fa;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 3px 2px rgb(0 0 0 / 10%);
-`;
-
 const CloudHomepageLayout = ({ children, route }) => {
   const router = useRouter();
+
+  const iconStyle = css`
+    background: #f5f7fa;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 2px rgb(0 0 0 / 10%);
+  `;
+
   const iconTitle = (icon, title) => {
     return (
       <EuiFlexGroup alignItems="center" gutterSize="s">

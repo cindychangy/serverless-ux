@@ -18,48 +18,6 @@ import {
 
 import Navbar from '../../components/navbar';
 
-const PROVIDER = [
-  {
-    value: 'google',
-    inputDisplay: (
-      <EuiFlexGroup alignItems="center" gutterSize="s">
-        <EuiFlexItem grow={false}>
-          <EuiImage
-            width={40}
-            src="/images/logo-google-cloud.svg"
-            alt="Google"
-          />
-        </EuiFlexItem>
-        <EuiFlexItem grow>
-          <p>Google Cloud</p>
-        </EuiFlexItem>
-      </EuiFlexGroup>
-    ),
-  },
-];
-
-const REGION = [
-  {
-    value: 'Iowa',
-    inputDisplay: (
-      <EuiFlexGroup alignItems="center" gutterSize="s">
-        <EuiFlexItem grow={false}>
-          <EuiImage width={50} src="/images/flag.svg" alt="American flag" />
-        </EuiFlexItem>
-        <EuiFlexItem grow>
-          <p>Iowa (us-central1)</p>
-        </EuiFlexItem>
-      </EuiFlexGroup>
-    ),
-  },
-];
-
-const formStyles = css`
-  .euiFormLabel.euiFormControlLayout__prepend {
-    width: 180px;
-  }
-`;
-
 const CreateProject = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -68,6 +26,48 @@ const CreateProject = () => {
   useEffect(() => {
     setIsLoading(false);
   }, []);
+
+  const PROVIDER = [
+    {
+      value: 'google',
+      inputDisplay: (
+        <EuiFlexGroup alignItems="center" gutterSize="s">
+          <EuiFlexItem grow={false}>
+            <EuiImage
+              width={40}
+              src="/images/logo-google-cloud.svg"
+              alt="Google"
+            />
+          </EuiFlexItem>
+          <EuiFlexItem grow>
+            <p>Google Cloud</p>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      ),
+    },
+  ];
+
+  const REGION = [
+    {
+      value: 'Iowa',
+      inputDisplay: (
+        <EuiFlexGroup alignItems="center" gutterSize="s">
+          <EuiFlexItem grow={false}>
+            <EuiImage width={50} src="/images/flag.svg" alt="American flag" />
+          </EuiFlexItem>
+          <EuiFlexItem grow>
+            <p>Iowa (us-central1)</p>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      ),
+    },
+  ];
+
+  const formStyles = css`
+    .euiFormLabel.euiFormControlLayout__prepend {
+      width: 180px;
+    }
+  `;
 
   return (
     <>

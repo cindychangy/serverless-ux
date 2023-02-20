@@ -19,38 +19,6 @@ import {
 import { css } from '@emotion/react';
 import CloudSubPageLayout from '../../layouts/cloud/sub_page';
 
-const tableStyles = css`
-  .euiTableHeaderCell:nth-child(4),
-  .euiTableRowCell:nth-child(4) {
-    .euiTableCellContent {
-      justify-content: flex-end;
-    }
-  }
-`;
-
-const TABLE_HEADER = ['Project', 'Type', 'Cloud provider & region', 'Actions'];
-
-const TABLE_ITEMS = [
-  {
-    name: 'Access Logs POC',
-    type: 'Observability',
-    region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="#">Manage</EuiLink>,
-  },
-  {
-    name: 'Access Logs POC',
-    type: 'Observability',
-    region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="#">Manage</EuiLink>,
-  },
-  {
-    name: 'Access Logs POC',
-    type: 'Observability',
-    region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="#">Manage</EuiLink>,
-  },
-];
-
 const ProjectsPage = () => {
   const router = useRouter();
 
@@ -58,22 +26,57 @@ const ProjectsPage = () => {
     router.push(route);
   };
 
-  const SIDENAV_ITEMS = [
+  const tableStyles = css`
+    .euiTableHeaderCell:nth-child(4),
+    .euiTableRowCell:nth-child(4) {
+      .euiTableCellContent {
+        justify-content: flex-end;
+      }
+    }
+  `;
+
+  const TABLE_HEADER = [
+    'Project',
+    'Type',
+    'Cloud provider & region',
+    'Actions',
+  ];
+
+  const TABLE_ITEMS = [
     {
-      name: 'Deployments',
-      id: `nav_deployments`,
-      onClick: () => handleClick('deployments'),
+      name: 'Access Logs POC',
+      type: 'Observability',
+      region: 'GCP - Iowa (us-central1)',
+      actions: <EuiLink href="#">Manage</EuiLink>,
     },
     {
-      name: 'Projects',
-      id: `nav_projects`,
-      isSelected: true,
+      name: 'Access Logs POC',
+      type: 'Observability',
+      region: 'GCP - Iowa (us-central1)',
+      actions: <EuiLink href="#">Manage</EuiLink>,
+    },
+    {
+      name: 'Access Logs POC',
+      type: 'Observability',
+      region: 'GCP - Iowa (us-central1)',
+      actions: <EuiLink href="#">Manage</EuiLink>,
     },
   ];
 
   return (
     <CloudSubPageLayout
-      navItems={SIDENAV_ITEMS}
+      navItems={[
+        {
+          name: 'Deployments',
+          id: `nav_deployments`,
+          onClick: () => handleClick('deployments'),
+        },
+        {
+          name: 'Projects',
+          id: `nav_projects`,
+          isSelected: true,
+        },
+      ]}
       pageTitle="Projects"
       breadcrumbs={[
         {
@@ -111,14 +114,14 @@ const ProjectsPage = () => {
       <EuiSpacer size="xxl" />
       <EuiTable css={tableStyles}>
         <EuiTableHeader key="header">
-          {TABLE_HEADER.map(header => (
-            <EuiTableHeaderCell key={header.name}>{header}</EuiTableHeaderCell>
+          {TABLE_HEADER.map((header, index) => (
+            <EuiTableHeaderCell key={index}>{header}</EuiTableHeaderCell>
           ))}
         </EuiTableHeader>
         <EuiTableBody>
-          {TABLE_ITEMS.map(item => (
-            <EuiTableRow key="row">
-              <Fragment key={item.name}>
+          {TABLE_ITEMS.map((item, index) => (
+            <EuiTableRow key={item.name + index}>
+              <Fragment>
                 <EuiTableRowCell>
                   <EuiLink onClick={() => router.push('kibana')}>
                     {item.name}
@@ -127,7 +130,6 @@ const ProjectsPage = () => {
                 <EuiTableRowCell>{item.type}</EuiTableRowCell>
                 <EuiTableRowCell>{item.region}</EuiTableRowCell>
                 <EuiTableRowCell>
-                  {' '}
                   <EuiLink
                     onClick={() =>
                       router.push(

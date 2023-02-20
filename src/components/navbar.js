@@ -7,13 +7,10 @@ import {
   EuiHeaderSectionItemButton,
   EuiAvatar,
   EuiButtonIcon,
-  useEuiTheme,
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 
 const Navbar = ({ breadcrumbs }) => {
-  const router = useRouter();
-  const { euiTheme } = useEuiTheme();
   return (
     <>
       <EuiHeader
@@ -35,15 +32,13 @@ const Navbar = ({ breadcrumbs }) => {
           },
           {
             items: [
-              <EuiHeaderSectionItemButton flush="both">
-                <EuiButtonIcon
-                  iconType="help"
-                  aria-label="Help"
-                  css={css`
-                    color: #fff;
-                  `}
-                />
-              </EuiHeaderSectionItemButton>,
+              <EuiButtonIcon
+                iconType="help"
+                aria-label="Help"
+                css={css`
+                  color: #fff;
+                `}
+              />,
               <EuiHeaderSectionItemButton aria-label="Account menu" key="user">
                 <EuiAvatar name="Emily Lin" size="s" color="#06bfb4" />
               </EuiHeaderSectionItemButton>,

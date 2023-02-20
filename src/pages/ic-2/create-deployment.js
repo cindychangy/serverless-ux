@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
   EuiButton,
@@ -14,79 +13,14 @@ import {
   EuiFlexItem,
   EuiSuperSelect,
   EuiImage,
-  EuiLink,
+  EuiTextColor,
   EuiAccordion,
-  EuiButtonGroup,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
 import WaitPanel from '../../components/wait_panel';
 
-const PROVIDER = [
-  {
-    value: 'google',
-    inputDisplay: (
-      <EuiFlexGroup alignItems="center" gutterSize="s">
-        <EuiFlexItem grow={false}>
-          <EuiImage
-            width={40}
-            src="/images/logo-google-cloud.svg"
-            alt="Google"
-          />
-        </EuiFlexItem>
-        <EuiFlexItem grow>
-          <p>Google Cloud</p>
-        </EuiFlexItem>
-      </EuiFlexGroup>
-    ),
-  },
-];
-
-const REGION = [
-  {
-    value: 'Iowa',
-    inputDisplay: (
-      <EuiFlexGroup alignItems="center" gutterSize="s">
-        <EuiFlexItem grow={false}>
-          <EuiImage width={40} src="/images/flag.svg" alt="American flga" />
-        </EuiFlexItem>
-        <EuiFlexItem grow>
-          <p>Iowa (us-central1)</p>
-        </EuiFlexItem>
-      </EuiFlexGroup>
-    ),
-  },
-];
-
-const HARDWARE = [
-  {
-    value: 'optimized',
-    inputDisplay: <p>Storage optimized</p>,
-  },
-];
-
-const VERSION = [
-  {
-    value: 'latest',
-    inputDisplay: <p>8.5.2 (latest)</p>,
-  },
-];
-
-const formStyles = css`
-  .euiFormLabel.euiFormControlLayout__prepend {
-    width: 180px;
-  }
-`;
-
-const advancedSettingsIcon = css`
-  .euiButtonIcon,
-  .euiButtonIcon.euiAccordion__iconButton-isOpen {
-    color: #07c;
-  }
-`;
-
 const CreateDeployment = () => {
-  const router = useRouter();
   const [creating, setIsCreating] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -94,6 +28,69 @@ const CreateDeployment = () => {
   useEffect(() => {
     setIsLoading(false);
   }, []);
+
+  const PROVIDER = [
+    {
+      value: 'google',
+      inputDisplay: (
+        <EuiFlexGroup alignItems="center" gutterSize="s">
+          <EuiFlexItem grow={false}>
+            <EuiImage
+              width={40}
+              src="/images/logo-google-cloud.svg"
+              alt="Google"
+            />
+          </EuiFlexItem>
+          <EuiFlexItem grow>
+            <p>Google Cloud</p>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      ),
+    },
+  ];
+
+  const REGION = [
+    {
+      value: 'Iowa',
+      inputDisplay: (
+        <EuiFlexGroup alignItems="center" gutterSize="s">
+          <EuiFlexItem grow={false}>
+            <EuiImage width={40} src="/images/flag.svg" alt="American flga" />
+          </EuiFlexItem>
+          <EuiFlexItem grow>
+            <p>Iowa (us-central1)</p>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      ),
+    },
+  ];
+
+  const HARDWARE = [
+    {
+      value: 'optimized',
+      inputDisplay: <p>Storage optimized</p>,
+    },
+  ];
+
+  const VERSION = [
+    {
+      value: 'latest',
+      inputDisplay: <p>8.5.2 (latest)</p>,
+    },
+  ];
+
+  const formStyles = css`
+    .euiFormLabel.euiFormControlLayout__prepend {
+      width: 180px;
+    }
+  `;
+
+  const advancedSettingsIcon = css`
+    .euiButtonIcon,
+    .euiButtonIcon.euiAccordion__iconButton-isOpen {
+      color: #07c;
+    }
+  `;
 
   return (
     <>
@@ -198,8 +195,11 @@ const CreateDeployment = () => {
                 <EuiFlexItem>
                   <EuiSpacer size="m" />
                   <EuiAccordion
+                    id="advancedSettings"
                     buttonContent={
-                      <EuiLink onClick={() => {}}>Advanced Settings</EuiLink>
+                      <EuiTextColor color="#0077CC">
+                        Advanced Settings
+                      </EuiTextColor>
                     }
                     css={advancedSettingsIcon}>
                     <EuiSpacer size="m" />

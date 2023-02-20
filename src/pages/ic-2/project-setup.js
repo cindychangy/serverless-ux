@@ -13,7 +13,6 @@ import {
   EuiFlexItem,
   EuiIcon,
   EuiCard,
-  EuiTitle,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';

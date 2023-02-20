@@ -125,15 +125,13 @@ const CloudHomepage = () => {
         <EuiSpacer sizer="1" />
         <EuiTable css={tableStyles}>
           <EuiTableHeader key="header">
-            {TABLE_HEADER_DEPLOYMENTS.map(header => (
-              <EuiTableHeaderCell key={header.name}>
-                {header}
-              </EuiTableHeaderCell>
+            {TABLE_HEADER_DEPLOYMENTS.map((header, index) => (
+              <EuiTableHeaderCell key={index}>{header}</EuiTableHeaderCell>
             ))}
           </EuiTableHeader>
           <EuiTableBody>
-            {TABLE_ITEMS_DEPLOYMENTS.map(item => (
-              <EuiTableRow key="row">
+            {TABLE_ITEMS_DEPLOYMENTS.map((item, index) => (
+              <EuiTableRow key={item + index}>
                 <Fragment key={item.name}>
                   <EuiTableRowCell>
                     <EuiLink onClick={() => router.push('kibana')}>
@@ -199,13 +197,13 @@ const CloudHomepage = () => {
         <EuiSpacer sizer="1" />
         <EuiTable css={tableStyles}>
           <EuiTableHeader>
-            {TABLE_HEADER_PROJECTS.map(header => (
-              <EuiTableHeaderCell key={header}>{header}</EuiTableHeaderCell>
+            {TABLE_HEADER_PROJECTS.map((header, index) => (
+              <EuiTableHeaderCell key={index}>{header}</EuiTableHeaderCell>
             ))}
           </EuiTableHeader>
           <EuiTableBody>
-            {TABLE_ITEMS_PROJECTS.map(item => (
-              <EuiTableRow key={item}>
+            {TABLE_ITEMS_PROJECTS.map((item, index) => (
+              <EuiTableRow key={item + index}>
                 <Fragment>
                   <EuiTableRowCell>
                     <EuiLink onClick={() => router.push('kibana')}>

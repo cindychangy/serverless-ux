@@ -32,7 +32,7 @@ const WaitPanel = ({ type }) => {
     <EuiPanel
       paddingSize="l"
       css={css`
-        max-width: 740px;
+        width: 740px;
         margin: auto;
       `}>
       {type === 'project' ? (

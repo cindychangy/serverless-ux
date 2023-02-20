@@ -20,33 +20,6 @@ import {
 import { css } from '@emotion/react';
 import CloudSubPageLayout from '../../layouts/cloud/sub_page';
 
-const tableStyles = css`
-  .euiTableHeaderCell:nth-child(5),
-  .euiTableRowCell:nth-child(5) {
-    .euiTableCellContent {
-      justify-content: flex-end;
-    }
-  }
-`;
-
-const TABLE_HEADER = [
-  'Deployment',
-  'Status',
-  'Version',
-  'Cloud provider & region',
-  'Actions',
-];
-
-const TABLE_ITEMS = [
-  {
-    name: 'Security xyz2064',
-    status: <EuiBadge color="success">Healthy</EuiBadge>,
-    version: '8.5.0',
-    region: 'GCP - Iowa (us-central1)',
-    actions: <EuiLink href="#">Manage</EuiLink>,
-  },
-];
-
 const DeploymentsPage = () => {
   const router = useRouter();
 
@@ -54,23 +27,48 @@ const DeploymentsPage = () => {
     router.push(route);
   };
 
-  const SIDENAV_ITEMS = [
+  const tableStyles = css`
+    .euiTableHeaderCell:nth-child(5),
+    .euiTableRowCell:nth-child(5) {
+      .euiTableCellContent {
+        justify-content: flex-end;
+      }
+    }
+  `;
+
+  const TABLE_HEADER = [
+    'Deployment',
+    'Status',
+    'Version',
+    'Cloud provider & region',
+    'Actions',
+  ];
+
+  const TABLE_ITEMS = [
     {
-      name: 'Deployments',
-      id: `nav_deployments`,
-      isSelected: true,
-      onClick: handleClick,
-    },
-    {
-      name: 'Projects',
-      id: `nav_projects`,
-      onClick: () => handleClick('projects'),
+      name: 'Security xyz2064',
+      status: <EuiBadge color="success">Healthy</EuiBadge>,
+      version: '8.5.0',
+      region: 'GCP - Iowa (us-central1)',
+      actions: <EuiLink href="#">Manage</EuiLink>,
     },
   ];
 
   return (
     <CloudSubPageLayout
-      navItems={SIDENAV_ITEMS}
+      navItems={[
+        {
+          name: 'Deployments',
+          id: `nav_deployments`,
+          isSelected: true,
+          onClick: handleClick,
+        },
+        {
+          name: 'Projects',
+          id: `nav_projects`,
+          onClick: () => handleClick('projects'),
+        },
+      ]}
       pageTitle="Deployments"
       breadcrumbs={[
         {
@@ -100,8 +98,10 @@ const DeploymentsPage = () => {
       <EuiSpacer size="xxl" />
       <EuiTable css={tableStyles}>
         <EuiTableHeader key="header">
-          {TABLE_HEADER.map(header => (
-            <EuiTableHeaderCell key={header.name}>{header}</EuiTableHeaderCell>
+          {TABLE_HEADER.map((header, index) => (
+            <EuiTableHeaderCell key={header + index}>
+              {header}
+            </EuiTableHeaderCell>
           ))}
         </EuiTableHeader>
         <EuiTableBody>

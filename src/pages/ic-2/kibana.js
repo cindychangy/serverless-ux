@@ -6,14 +6,9 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiCard,
-  EuiIcon,
   EuiButton,
   EuiButtonEmpty,
   EuiImage,
-  EuiAvatar,
-  EuiHeader,
-  EuiHeaderLogo,
-  EuiHeaderSectionItemButton,
   EuiHorizontalRule,
   EuiText,
 } from '@elastic/eui';
@@ -129,14 +124,10 @@ const KibanaHome = () => {
               </EuiTitle>
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
-              <EuiButtonEmpty iconType="wrench" minWidth={100}>
-                Dev Tools
-              </EuiButtonEmpty>
+              <EuiButtonEmpty iconType="wrench">Dev Tools</EuiButtonEmpty>
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
-              <EuiButtonEmpty iconType="gear" fullWidth={false}>
-                Stack Management
-              </EuiButtonEmpty>
+              <EuiButtonEmpty iconType="gear">Stack Management</EuiButtonEmpty>
             </EuiFlexItem>
           </EuiFlexGroup>
 
@@ -161,11 +152,6 @@ const KibanaHome = () => {
                         className="euiIcon__fillSecondary"
                         d="M9 17.83h2V23H9zM11 10.18V7H9v3.18a3 3 0 102 0zM10 14a1 1 0 110-2 1 1 0 010 2zM17 7h2v5.17h-2zM21 17a3 3 0 10-4 2.82V23h2v-3.18A3 3 0 0021 17zm-3 1a1 1 0 110-2 1 1 0 010 2z"></path>
                     </svg>
-                  </EuiFlexItem>
-                  <EuiFlexItem grow={false}>
-                    <EuiTitle size="xs">
-                      <h3>Manage permissions</h3>
-                    </EuiTitle>
                   </EuiFlexItem>
                 </EuiFlexGroup>
                 <EuiText
@@ -220,8 +206,8 @@ const KibanaHome = () => {
                   <EuiFlexItem grow={false}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="30"
+                      height="30"
                       viewBox="0 0 16 16"
                       className="euiIcon euiIcon--large euiIcon--text euiCard__icon"
                       focusable="false"

@@ -11,12 +11,6 @@ import {
 } from '@elastic/eui';
 import Navbar from '../../components/navbar';
 
-const sideNavStyles = css`
-  .euiSideNavItem--root {
-    padding-bottom: 0;
-  }
-`;
-
 const CloudSubPageLayout = ({
   breadcrumbs,
   children,
@@ -24,6 +18,12 @@ const CloudSubPageLayout = ({
   pageTitle,
   bgColor,
 }) => {
+  const sideNavStyles = css`
+    .euiSideNavItem--root {
+      padding-bottom: 0;
+    }
+  `;
+
   return (
     <>
       <Navbar breadcrumbs={breadcrumbs} />
