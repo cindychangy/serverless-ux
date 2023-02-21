@@ -110,12 +110,12 @@ const CloudHomepage = () => {
                     font-weight: ${euiTheme.font.weight.bold};
                     font-size: 16px;
                   `}
-                  onClick={() => router.push('deployments')}>
+                  onClick={() => router.push('deployments/list')}>
                   Elasticsearch deployments
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
-                <EuiLink onClick={() => router.push('deployments')}>
+                <EuiLink onClick={() => router.push('deployments/list')}>
                   View all deployments
                 </EuiLink>
               </EuiFlexItem>
@@ -146,12 +146,12 @@ const CloudHomepage = () => {
                       onClick={() =>
                         router.push(
                           {
-                            pathname: 'details',
+                            pathname: 'deployments/details',
                             query: {
                               projectTitle: item.name,
                             },
                           },
-                          'deployment-details'
+                          'deployments/details'
                         )
                       }>
                       Manage
@@ -182,12 +182,12 @@ const CloudHomepage = () => {
                     font-weight: ${euiTheme.font.weight.bold};
                     font-size: 16px;
                   `}
-                  onClick={() => router.push('projects')}>
+                  onClick={() => router.push('projects/list')}>
                   Elasticsearch projects
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
-                <EuiLink onClick={() => router.push('projects')}>
+                <EuiLink onClick={() => router.push('projects/list')}>
                   View all projects
                 </EuiLink>
               </EuiFlexItem>
@@ -217,12 +217,12 @@ const CloudHomepage = () => {
                       onClick={() =>
                         router.push(
                           {
-                            pathname: 'details',
+                            pathname: 'projects/details',
                             query: {
                               projectTitle: item.name,
                             },
                           },
-                          'project-details'
+                          'projects/details'
                         )
                       }>
                       Manage

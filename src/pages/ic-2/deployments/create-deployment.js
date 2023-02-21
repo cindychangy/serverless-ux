@@ -18,8 +18,8 @@ import {
   useEuiTheme,
 } from '@elastic/eui';
 
-import Navbar from '../../components/navbar';
-import WaitPanel from '../../components/wait_panel';
+import Navbar from '../../../components/navbar';
+import WaitPanel from '../../../components/wait_panel';
 
 const CreateDeployment = () => {
   const { euiTheme } = useEuiTheme();

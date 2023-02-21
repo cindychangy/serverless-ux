@@ -16,7 +16,7 @@ import {
   EuiImage,
 } from '@elastic/eui';
 
-import Navbar from '../../components/navbar';
+import Navbar from '../../../components/navbar';
 
 const CreateProject = () => {
   const router = useRouter();

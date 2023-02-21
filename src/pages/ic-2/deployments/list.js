@@ -18,7 +18,7 @@ import {
   EuiHorizontalRule,
 } from '@elastic/eui';
 import { css } from '@emotion/react';
-import CloudSubPageLayout from '../../layouts/cloud/sub_page';
+import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
 
 const DeploymentsPage = () => {
   const router = useRouter();
@@ -66,14 +66,14 @@ const DeploymentsPage = () => {
         {
           name: 'Projects',
           id: `nav_projects`,
-          onClick: () => handleClick('projects'),
+          onClick: () => handleClick('/ic-2/projects/list'),
         },
       ]}
       pageTitle="Deployments"
       breadcrumbs={[
         {
           text: 'Cloud',
-          href: 'cloud',
+          href: '/ic-2/cloud',
         },
         {
           text: 'Projects',
@@ -126,7 +126,7 @@ const DeploymentsPage = () => {
                             projectTitle: item.name,
                           },
                         },
-                        'deployment-details'
+                        'details'
                       )
                     }>
                     {item.actions}

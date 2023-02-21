@@ -15,8 +15,8 @@ import {
   EuiCard,
 } from '@elastic/eui';
 
-import Navbar from '../../components/navbar';
-import { SOLUTION_CARDS } from '../../constants/solution-cards';
+import Navbar from '../../../components/navbar';
+import { SOLUTION_CARDS } from '../../../constants/solution-cards';
 
 const ProjectSetup = () => {
   const router = useRouter();

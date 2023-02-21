@@ -58,9 +58,7 @@ const Header = ({ accountType, signedIn, steps, logoLarge }) => {
                 fill
                 size="s"
                 minWidth={0}
-                onClick={
-                  login ? () => handleClick('/signup') : () => handleClick('/')
-                }>
+                onClick={() => router.push('#')}>
                 {login ? 'Sign up' : 'Log in'}
               </EuiButton>
             </EuiFlexItem>
