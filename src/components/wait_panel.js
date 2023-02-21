@@ -38,7 +38,98 @@ const WaitPanel = ({ type, solution }) => {
         margin: auto;
       `}>
       {type === 'project' ? (
-        <p>Project</p>
+        <>
+          <EuiFlexGroup alignItems="center" justifyContent="space-between">
+            <EuiFlexItem grow={false}>
+              {isLoading && <EuiLoadingSpinner size="l" />}
+            </EuiFlexItem>
+            <EuiFlexItem grow={2}>
+              {isLoading ? (
+                <EuiText>
+                  <small>Creating your project...</small>
+                </EuiText>
+              ) : (
+                <EuiText>
+                  <EuiIcon
+                    color={euiTheme.colors.success}
+                    type="checkInCircleFilled"
+                    css={css`
+                      margin-right: 5px;
+                    `}
+                  />
+                  <small>Your project is ready!</small>
+                </EuiText>
+              )}
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiButton
+                size="s"
+                disabled={isLoading ? true : false}
+                fill
+                onClick={() =>
+                  router.push(
+                    {
+                      pathname: '/guided-setup',
+                      query: {
+                        solution,
+                      },
+                    },
+                    '/guided-setup'
+                  )
+                }>
+                Continue
+              </EuiButton>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+          <EuiHorizontalRule />
+          <EuiTextAlign textAlign="center">
+            <EuiTitle size="s">
+              <h3>Project loading screen</h3>
+            </EuiTitle>
+            {/* <EuiSpacer size="s" />
+            <EuiText>
+              <small>
+                These root credentials are shown only once. <br />
+                They provide super user access to your deployment. Keep them
+                safe.
+              </small>
+            </EuiText>
+            <EuiSpacer size="xl" />
+            <EuiPanel
+              color="subdued"
+              paddingSize="l"
+              css={css`
+                max-width: 400px;
+                margin: auto;
+              `}>
+              <EuiTextColor color={euiTheme.colors.accent}>
+                Username
+              </EuiTextColor>
+              <EuiCode
+                transparentBackground
+                css={css`
+                  display: block;
+                  color: #000;
+                `}>
+                elastic
+              </EuiCode>
+              <EuiSpacer size="xl" />
+              <EuiTextColor color={euiTheme.colors.accent}>
+                Password
+              </EuiTextColor>
+              <EuiCode
+                transparentBackground
+                css={css`
+                  display: block;
+                  color: #000;
+                `}>
+                93jfufew73jrjfewiws
+              </EuiCode>
+              <EuiSpacer size="l" />
+            </EuiPanel> */}
+          </EuiTextAlign>
+          <EuiSpacer size="xxl" />
+        </>
       ) : (
         <>
           <EuiFlexGroup alignItems="center" justifyContent="space-between">
