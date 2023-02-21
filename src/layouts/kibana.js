@@ -18,6 +18,7 @@ import {
 } from '@elastic/eui';
 
 const KibanaLayout = ({ breadcrumbs, children }) => {
+  const { euiTheme } = useEuiTheme();
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   const collapsibleNavId = useGeneratedHtmlId({ prefix: 'collapsibleNav' });
@@ -106,7 +107,7 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
                 items: [
                   <EuiHeaderSectionItemButton flush="both">
                     <EuiAvatar
-                      color="#25282f"
+                      color={euiTheme.colors.darkestShade}
                       iconType="cheer"
                       name="account"
                     />
@@ -114,7 +115,11 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
                   <EuiHeaderSectionItemButton
                     key="user"
                     aria-label="Account menu">
-                    <EuiAvatar size="s" name="Else Lane" color="#06bfb4" />
+                    <EuiAvatar
+                      size="s"
+                      name="Emily Lin"
+                      color={euiTheme.colors.success}
+                    />
                   </EuiHeaderSectionItemButton>,
                 ],
                 borders: 'none',
@@ -138,7 +143,7 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
                       type="space"
                       name="Default"
                       size="s"
-                      color="#00BFB3"
+                      color={euiTheme.colors.success}
                     />
                   </EuiHeaderSectionItemButton>,
                 ],

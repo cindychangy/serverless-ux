@@ -1,16 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useRouter } from 'next/router';
 import {
   EuiHeader,
   EuiHeaderLogo,
   EuiHeaderSectionItemButton,
   EuiAvatar,
   EuiButtonIcon,
+  useEuiTheme,
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 
 const Navbar = ({ breadcrumbs }) => {
+  const { euiTheme } = useEuiTheme();
   return (
     <>
       <EuiHeader
@@ -32,15 +33,13 @@ const Navbar = ({ breadcrumbs }) => {
           },
           {
             items: [
-              <EuiButtonIcon
-                iconType="help"
-                aria-label="Help"
-                css={css`
-                  color: #fff;
-                `}
-              />,
+              <EuiButtonIcon iconType="help" aria-label="Help" color="ghost" />,
               <EuiHeaderSectionItemButton aria-label="Account menu" key="user">
-                <EuiAvatar name="Emily Lin" size="s" color="#06bfb4" />
+                <EuiAvatar
+                  name="Emily Lin"
+                  size="s"
+                  color={euiTheme.colors.success}
+                />
               </EuiHeaderSectionItemButton>,
             ],
             borders: 'none',

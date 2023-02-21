@@ -3,16 +3,17 @@
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
-  EuiTitle,
   EuiPanel,
   EuiText,
   EuiSpacer,
   EuiImage,
   EuiLink,
+  useEuiTheme,
 } from '@elastic/eui';
 
 const IndexPage = () => {
   const router = useRouter();
+  const { euiTheme } = useEuiTheme();
 
   const flowLink = css`
     h4 {
@@ -26,7 +27,7 @@ const IndexPage = () => {
 
     p {
       font-size: 13px;
-      color: #6b6f7f;
+      color: ${euiTheme.colors.darkShade};
     }
   `;
 
@@ -52,7 +53,7 @@ const IndexPage = () => {
           css={css`
             margin-top: 60px;
             text-align: center;
-            color: #6b6f7f;
+            color: ${euiTheme.colors.darkShade};
             font-size: 15px;
           `}>
           <p>Below are relevant flows for each checkpoint</p>
@@ -66,7 +67,7 @@ const IndexPage = () => {
             <EuiText
               css={css`
                 text-transform: uppercase;
-                color: #6b6f7f;
+                color: ${euiTheme.colors.darkShade};
                 letter-spacing: 2px;
               `}>
               <h5>Integration Checkpoint #2</h5>
@@ -92,7 +93,7 @@ const IndexPage = () => {
             <EuiText
               css={css`
                 text-transform: uppercase;
-                color: #6b6f7f;
+                color: ${euiTheme.colors.darkShade};
                 letter-spacing: 2px;
               `}>
               <h5>Integration Checkpoint #3</h5>

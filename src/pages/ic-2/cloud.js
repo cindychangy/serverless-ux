@@ -18,12 +18,11 @@ import {
   EuiTableRowCell,
   EuiTableBody,
   EuiButtonEmpty,
-  useEuiTheme,
+  useEuiBackgroundColor,
 } from '@elastic/eui';
 import CloudHomepageLayout from '../../layouts/cloud/homepage';
 
 const CloudHomepage = () => {
-  const { euiTheme } = useEuiTheme();
   const router = useRouter();
 
   const logoCircle = css`
@@ -31,7 +30,7 @@ const CloudHomepage = () => {
     height: 32px;
     width: 32px;
     box-shadow: 0 3px 2px rgb(0 0 0 / 10%);
-    background: ${euiTheme.colors.lightestShade};
+    background: ${useEuiBackgroundColor('subdued')};
     display: flex;
     justify-content: center;
     align-items: center;

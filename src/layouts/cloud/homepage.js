@@ -18,6 +18,7 @@ import {
   EuiTextColor,
   EuiSearchBar,
   EuiHorizontalRule,
+  useEuiBackgroundColor,
 } from '@elastic/eui';
 import Navbar from '../../components/navbar';
 
@@ -25,7 +26,7 @@ const CloudHomepageLayout = ({ children, route }) => {
   const router = useRouter();
 
   const iconStyle = css`
-    background: #f5f7fa;
+    background: ${useEuiBackgroundColor('subdued')};
     width: 32px;
     height: 32px;
     border-radius: 50%;

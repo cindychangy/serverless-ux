@@ -15,10 +15,12 @@ import {
   EuiCode,
   EuiTextColor,
   EuiIcon,
+  useEuiTheme,
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 
 const WaitPanel = ({ type }) => {
+  const { euiTheme } = useEuiTheme();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -53,7 +55,7 @@ const WaitPanel = ({ type }) => {
               ) : (
                 <EuiText>
                   <EuiIcon
-                    color="#00BFB3"
+                    color={euiTheme.colors.success}
                     type="checkInCircleFilled"
                     css={css`
                       margin-right: 5px;
@@ -94,7 +96,9 @@ const WaitPanel = ({ type }) => {
                 max-width: 400px;
                 margin: auto;
               `}>
-              <EuiTextColor color="#f04e98">Username</EuiTextColor>
+              <EuiTextColor color={euiTheme.colors.accent}>
+                Username
+              </EuiTextColor>
               <EuiCode
                 transparentBackground
                 css={css`
@@ -104,7 +108,9 @@ const WaitPanel = ({ type }) => {
                 elastic
               </EuiCode>
               <EuiSpacer size="xl" />
-              <EuiTextColor color="#f04e98">Password</EuiTextColor>
+              <EuiTextColor color={euiTheme.colors.accent}>
+                Password
+              </EuiTextColor>
               <EuiCode
                 transparentBackground
                 css={css`

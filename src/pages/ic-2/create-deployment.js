@@ -15,12 +15,14 @@ import {
   EuiImage,
   EuiTextColor,
   EuiAccordion,
+  useEuiTheme,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
 import WaitPanel from '../../components/wait_panel';
 
 const CreateDeployment = () => {
+  const { euiTheme } = useEuiTheme();
   const [creating, setIsCreating] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,6 +30,19 @@ const CreateDeployment = () => {
   useEffect(() => {
     setIsLoading(false);
   }, []);
+
+  const formStyles = css`
+    .euiFormLabel.euiFormControlLayout__prepend {
+      width: 180px;
+    }
+  `;
+
+  const advancedSettingsIcon = css`
+    .euiButtonIcon,
+    .euiButtonIcon.euiAccordion__iconButton-isOpen {
+      color: ${euiTheme.colors.primary};
+    }
+  `;
 
   const PROVIDER = [
     {
@@ -78,19 +93,6 @@ const CreateDeployment = () => {
       inputDisplay: <p>8.5.2 (latest)</p>,
     },
   ];
-
-  const formStyles = css`
-    .euiFormLabel.euiFormControlLayout__prepend {
-      width: 180px;
-    }
-  `;
-
-  const advancedSettingsIcon = css`
-    .euiButtonIcon,
-    .euiButtonIcon.euiAccordion__iconButton-isOpen {
-      color: #07c;
-    }
-  `;
 
   return (
     <>
@@ -197,7 +199,7 @@ const CreateDeployment = () => {
                   <EuiAccordion
                     id="advancedSettings"
                     buttonContent={
-                      <EuiTextColor color="#0077CC">
+                      <EuiTextColor color={euiTheme.colors.primary}>
                         Advanced Settings
                       </EuiTextColor>
                     }
