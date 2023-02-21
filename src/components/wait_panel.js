@@ -19,7 +19,7 @@ import {
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 
-const WaitPanel = ({ type }) => {
+const WaitPanel = ({ type, solution }) => {
   const { euiTheme } = useEuiTheme();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -70,7 +70,17 @@ const WaitPanel = ({ type }) => {
                 size="s"
                 disabled={isLoading ? true : false}
                 fill
-                onClick={() => router.push('/guided-setup')}>
+                onClick={() =>
+                  router.push(
+                    {
+                      pathname: '/guided-setup',
+                      query: {
+                        solution,
+                      },
+                    },
+                    '/guided-setup'
+                  )
+                }>
                 Continue
               </EuiButton>
             </EuiFlexItem>

@@ -16,7 +16,11 @@ import {
   useEuiTheme,
 } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
-import { CARDS_OBS } from '../../constants/solution-cards';
+import {
+  CARDS_OBS,
+  CARDS_SEARCH,
+  CARDS_SECURITY,
+} from '../../constants/solution-cards';
 
 const GuidedSetup = () => {
   const { euiTheme } = useEuiTheme();
@@ -24,20 +28,32 @@ const GuidedSetup = () => {
   const [guideOpen, setGuide] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  const BREADCRUMBS = [
-    {
-      text: 'Home',
-      href: '#',
-    },
-    {
-      text: 'Guided setup',
-    },
-  ];
+  let CARDS;
+
+  if (router.query.solution === 'search') {
+    CARDS = CARDS_SEARCH;
+  }
+
+  if (router.query.solution === 'observability') {
+    CARDS = CARDS_OBS;
+  }
+
+  if (router.query.solution === 'security') {
+    CARDS = CARDS_SECURITY;
+  }
 
   return (
     <KibanaLayout
       template="empty"
-      breadcrumbs={BREADCRUMBS}
+      breadcrumbs={[
+        {
+          text: 'Home',
+          href: '#',
+        },
+        {
+          text: 'Guided setup',
+        },
+      ]}
       guideOpen={guideOpen}
       buttonDisabled={buttonDisabled}
       onClick={() => handleGuideClick(section)}>
@@ -57,12 +73,11 @@ const GuidedSetup = () => {
             <p>Select an option below and we'll help you get started</p>
           </EuiText>
           <EuiSpacer size="l" />
-
           <div>
             <EuiSpacer size="l" />
             <EuiSpacer size="xxl" />
             <EuiFlexGroup wrap responsive justifyContent="center">
-              {CARDS_OBS.map((guide, index) => (
+              {CARDS.map((guide, index) => (
                 <EuiFlexItem key={index} grow={1}>
                   <EuiCard
                     onClick={() => {}}

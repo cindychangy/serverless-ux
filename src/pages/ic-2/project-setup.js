@@ -51,6 +51,8 @@ const ProjectSetup = () => {
     }
   }, [router]);
 
+  console.log(solution);
+
   return (
     <>
       <Navbar
@@ -116,7 +118,17 @@ const ProjectSetup = () => {
                 <EuiButton
                   fill
                   disabled={solution == undefined && true}
-                  onClick={() => router.push('projects/create-project')}>
+                  onClick={() =>
+                    router.push(
+                      {
+                        pathname: 'projects/create-project',
+                        query: {
+                          solution: solution,
+                        },
+                      },
+                      'create-project'
+                    )
+                  }>
                   Next
                 </EuiButton>
               </EuiFlexItem>
@@ -184,7 +196,15 @@ const ProjectSetup = () => {
                         <EuiButton
                           fullWidth
                           onClick={() =>
-                            router.push('deployments/create-deployment')
+                            router.push(
+                              {
+                                pathname: 'deployments/create-deployment',
+                                query: {
+                                  solution: solution,
+                                },
+                              },
+                              'create-deployment'
+                            )
                           }>
                           Next
                         </EuiButton>
@@ -233,7 +253,16 @@ const ProjectSetup = () => {
                         <EuiButton
                           fullWidth
                           onClick={() =>
-                            router.push('projects/create-project')
+                            // router.push('projects/create-project')
+                            router.push(
+                              {
+                                pathname: 'projects/create-project',
+                                query: {
+                                  solution: solution,
+                                },
+                              },
+                              'create-project'
+                            )
                           }>
                           Next
                         </EuiButton>

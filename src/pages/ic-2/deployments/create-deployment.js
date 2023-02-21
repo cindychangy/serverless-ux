@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
   EuiButton,
@@ -22,6 +23,7 @@ import Navbar from '../../../components/navbar';
 import WaitPanel from '../../../components/wait_panel';
 
 const CreateDeployment = () => {
+  const router = useRouter();
   const { euiTheme } = useEuiTheme();
   const [creating, setIsCreating] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -114,7 +116,7 @@ const CreateDeployment = () => {
       />
       <EuiSpacer size="xxl" />
       {creating ? (
-        <WaitPanel />
+        <WaitPanel solution={router.query.solution} />
       ) : (
         <EuiPanel
           paddingSize="none"

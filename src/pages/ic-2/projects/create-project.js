@@ -159,7 +159,17 @@ const CreateProject = () => {
           <EuiButton
             fill
             isLoading={isLoading}
-            onClick={() => router.push('/guided-setup')}>
+            onClick={() =>
+              router.push(
+                {
+                  pathname: '/guided-setup',
+                  query: {
+                    solution: router.query.solution,
+                  },
+                },
+                '/guided-setup'
+              )
+            }>
             Create project
           </EuiButton>
         </EuiPanel>
