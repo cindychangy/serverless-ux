@@ -28,7 +28,7 @@ const GuidedSetup = () => {
   const [guideOpen, setGuide] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  let CARDS;
+  let CARDS = [];
 
   if (router.query.solution === 'search') {
     CARDS = CARDS_SEARCH;
