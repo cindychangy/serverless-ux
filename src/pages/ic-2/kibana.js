@@ -13,6 +13,7 @@ import {
   EuiText,
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
+import { css } from '@emotion/react';
 import KibanaLayout from '../../layouts/kibana';
 
 const KibanaHome = () => {
