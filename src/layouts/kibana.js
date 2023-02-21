@@ -37,7 +37,11 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
         </EuiHeaderSectionItemButton>
       }
       onClose={() => setNavIsOpen(false)}>
-      <EuiFlexItem grow={false} style={{ flexShrink: 0 }}>
+      <EuiFlexItem
+        grow={false}
+        css={css`
+          flex-shrink: 0;
+        `}>
         <EuiCollapsibleNavGroup isCollapsible={false} background="dark">
           <EuiListGroup
             color="ghost"

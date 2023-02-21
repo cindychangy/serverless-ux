@@ -157,7 +157,9 @@ const KibanaHome = () => {
                 <EuiText
                   size="s"
                   textAlign="left"
-                  style={{ marginLeft: '47px' }}>
+                  css={css`
+                    margin-left: 47px;
+                  `}>
                   <p>Control who has access and what tasks they can perform.</p>
                 </EuiText>
               </EuiCard>
@@ -191,8 +193,13 @@ const KibanaHome = () => {
                 <EuiText
                   size="s"
                   textAlign="left"
-                  style={{ marginLeft: '47px' }}>
-                  <p style={{ marginBottom: 0 }}>
+                  css={css`
+                    margin-left: 47px;
+                  `}>
+                  <p
+                    css={css`
+                      margin-bottom: 0;
+                    `}>
                     Track the real-time health and performance of your
                     deployment.
                   </p>
@@ -232,8 +239,13 @@ const KibanaHome = () => {
                 <EuiText
                   size="s"
                   textAlign="left"
-                  style={{ marginLeft: '47px' }}>
-                  <p style={{ marginBottom: 0 }}>
+                  css={css`
+                    margin-left: 47px;
+                  `}>
+                  <p
+                    css={css`
+                      margin-bottom: 0;
+                    `}>
                     Save snapshots to backup repository, restore to recover
                     index and cluster state.
                   </p>
@@ -271,8 +283,13 @@ const KibanaHome = () => {
                 <EuiText
                   size="s"
                   textAlign="left"
-                  style={{ marginLeft: '47px' }}>
-                  <p style={{ marginBottom: 0 }}>
+                  css={css`
+                    margin-left: 47px;
+                  `}>
+                  <p
+                    css={css`
+                      margin-bottom: 0;
+                    `}>
                     Define lifecycle policies to automatically perform
                     operations as an index ages.
                   </p>

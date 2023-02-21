@@ -32,7 +32,11 @@ const IndexPage = () => {
   `;
 
   return (
-    <div style={{ position: 'relative', height: '100vh' }}>
+    <div
+      css={css`
+        position: relative;
+        height: 100vh;
+      `}>
       <div
         css={css`
           position: relative;

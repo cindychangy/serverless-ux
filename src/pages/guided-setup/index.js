@@ -13,11 +13,13 @@ import {
   EuiIcon,
   EuiTextColor,
   EuiPageTemplate,
+  useEuiTheme,
 } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
 import { CARDS_OBS } from '../../constants/solution-cards';
 
 const GuidedSetup = () => {
+  const { euiTheme } = useEuiTheme();
   const router = useRouter();
   const [guideOpen, setGuide] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -40,10 +42,10 @@ const GuidedSetup = () => {
       buttonDisabled={buttonDisabled}
       onClick={() => handleGuideClick(section)}>
       <EuiPageTemplate
-        style={{ paddingBlockStart: 0 }}
         paddingSize="l"
         css={css`
           margin-top: 95px;
+          padding-block-start: 0;
         `}>
         <EuiSpacer size="xxl" />
         <EuiPageTemplate.Section color="subdued">
@@ -67,7 +69,12 @@ const GuidedSetup = () => {
                     title={
                       <>
                         <EuiSpacer size="s" />
-                        <h3 style={{ fontWeight: 600 }}>{guide.title}</h3>
+                        <h3
+                          css={css`
+                            font-weight: ${euiTheme.font.weight.semiBold}};
+                          `}>
+                          {guide.title}
+                        </h3>
                       </>
                     }
                     titleSize="xs"
