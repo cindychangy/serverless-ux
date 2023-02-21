@@ -76,11 +76,11 @@ const CreateProject = () => {
         breadcrumbs={[
           {
             text: 'Cloud',
-            href: 'cloud',
+            href: '/ic-2/cloud',
           },
           {
             text: 'Projects',
-            href: 'projects',
+            href: 'list',
           },
           {
             text: 'Create',

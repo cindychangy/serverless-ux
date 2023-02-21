@@ -15,8 +15,8 @@ import {
   EuiCard,
 } from '@elastic/eui';
 
-import Navbar from '../../../components/navbar';
-import { SOLUTION_CARDS } from '../../../constants/solution-cards';
+import Navbar from '../../components/navbar';
+import { SOLUTION_CARDS } from '../../constants/solution-cards';
 
 const ProjectSetup = () => {
   const router = useRouter();
@@ -116,7 +116,7 @@ const ProjectSetup = () => {
                 <EuiButton
                   fill
                   disabled={solution == undefined && true}
-                  onClick={() => router.push('create-project')}>
+                  onClick={() => router.push('projects/create-project')}>
                   Next
                 </EuiButton>
               </EuiFlexItem>
@@ -183,7 +183,9 @@ const ProjectSetup = () => {
                         <EuiSpacer size="m" />
                         <EuiButton
                           fullWidth
-                          onClick={() => router.push('create-deployment')}>
+                          onClick={() =>
+                            router.push('deployments/create-deployment')
+                          }>
                           Next
                         </EuiButton>
                       </EuiCard>
@@ -230,7 +232,9 @@ const ProjectSetup = () => {
                         <EuiSpacer size="m" />
                         <EuiButton
                           fullWidth
-                          onClick={() => router.push('create-project')}>
+                          onClick={() =>
+                            router.push('projects/create-project')
+                          }>
                           Next
                         </EuiButton>
                       </EuiCard>

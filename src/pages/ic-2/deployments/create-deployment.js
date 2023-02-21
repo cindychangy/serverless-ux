@@ -101,11 +101,11 @@ const CreateDeployment = () => {
         breadcrumbs={[
           {
             text: 'Cloud',
-            href: 'cloud',
+            href: '/ic-2/cloud',
           },
           {
             text: 'Deployments',
-            href: 'deployments',
+            href: 'list',
           },
           {
             text: 'Create',
