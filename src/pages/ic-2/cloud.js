@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
   EuiPanel,
-  EuiText,
   EuiLink,
   EuiSpacer,
   EuiBadge,
@@ -19,10 +18,12 @@ import {
   EuiTableBody,
   EuiButtonEmpty,
   useEuiBackgroundColor,
+  useEuiTheme,
 } from '@elastic/eui';
 import CloudHomepageLayout from '../../layouts/cloud/homepage';
 
 const CloudHomepage = () => {
+  const { euiTheme } = useEuiTheme();
   const router = useRouter();
 
   const logoCircle = css`
@@ -106,7 +107,7 @@ const CloudHomepage = () => {
                   href="#"
                   color="text"
                   css={css`
-                    font-weight: 700;
+                    font-weight: ${euiTheme.font.weight.bold};
                     font-size: 16px;
                   `}
                   onClick={() => router.push('deployments')}>
@@ -178,7 +179,7 @@ const CloudHomepage = () => {
                   href="#"
                   color="text"
                   css={css`
-                    font-weight: 700;
+                    font-weight: ${euiTheme.font.weight.bold};
                     font-size: 16px;
                   `}
                   onClick={() => router.push('projects')}>

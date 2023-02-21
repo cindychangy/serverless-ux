@@ -21,7 +21,7 @@ const IndexPage = () => {
       margin-top: 10px;
 
       a {
-        font-weight: 700;
+        font-weight: ${euiTheme.font.weight.bold};
       }
     }
 

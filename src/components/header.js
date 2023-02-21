@@ -10,9 +10,11 @@ import {
   EuiTitle,
   EuiStepsHorizontal,
   EuiSpacer,
+  useEuiTheme,
 } from '@elastic/eui';
 
 const Header = ({ accountType, signedIn, steps, logoLarge }) => {
+  const { euiTheme } = useEuiTheme();
   const stepStyles = css`
     .euiStepNumber {
       width: 24px;
@@ -22,7 +24,7 @@ const Header = ({ accountType, signedIn, steps, logoLarge }) => {
     }
 
     .euiStepHorizontal__title {
-      font-weight: 600;
+      font-weight: ${euiTheme.font.weight.semiBold};
     }
   `;
 

@@ -200,11 +200,10 @@ const ProjectSetup = () => {
                             Fully Managed
                             <EuiBadge
                               color="accent"
-                              style={{
-                                color: '#fff',
-                                marginLeft: '5px',
-                                marginTop: '-4px',
-                              }}>
+                              css={css`
+                                margin-left: 5px;
+                                margin-top: -4px;
+                              `}>
                               BETA
                             </EuiBadge>
                           </>

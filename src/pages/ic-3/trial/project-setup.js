@@ -19,12 +19,14 @@ import {
   EuiIcon,
   EuiCard,
   EuiFieldText,
+  useEuiTheme,
 } from '@elastic/eui';
 
 import Header from '../../../components/header';
 import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../../constants/global';
 
 const ProjectSetup = () => {
+  const { euiTheme } = useEuiTheme();
   const router = useRouter();
   const [projectType, setProjectType] = useState('none');
   const [solution, setSolution] = useState(undefined);
@@ -258,11 +260,10 @@ const ProjectSetup = () => {
                               Fully Managed
                               <EuiBadge
                                 color="accent"
-                                style={{
-                                  color: '#fff',
-                                  marginLeft: '5px',
-                                  marginTop: '-4px',
-                                }}>
+                                css={css`
+                                  margin-left: 5px;
+                                  margin-top: -4px;
+                                `}>
                                 BETA
                               </EuiBadge>
                             </>
@@ -315,7 +316,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem>
                         <h3
                           css={css`
-                            font-weight: 600;
+                            font-weight: ${euiTheme.font.weight.semiBold};
                           `}>
                           Cloud provider
                         </h3>
@@ -335,7 +336,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem>
                         <h3
                           css={css`
-                            font-weight: 600;
+                            font-weight: ${euiTheme.font.weight.semiBold};
                           `}>
                           Region
                         </h3>
@@ -355,7 +356,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem>
                         <h3
                           css={css`
-                            font-weight: 600;
+                            font-weight: ${euiTheme.font.weight.semiBold};
                           `}>
                           Hardware profile
                         </h3>
@@ -375,7 +376,7 @@ const ProjectSetup = () => {
                       <EuiFlexItem>
                         <h3
                           css={css`
-                            font-weight: 600;
+                            font-weight: ${euiTheme.font.weight.semiBold};
                           `}>
                           Version
                         </h3>

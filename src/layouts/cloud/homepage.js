@@ -19,11 +19,13 @@ import {
   EuiSearchBar,
   EuiHorizontalRule,
   useEuiBackgroundColor,
+  useEuiTheme,
 } from '@elastic/eui';
 import Navbar from '../../components/navbar';
 
 const CloudHomepageLayout = ({ children, route }) => {
   const router = useRouter();
+  const { euiTheme } = useEuiTheme();
 
   const iconStyle = css`
     background: ${useEuiBackgroundColor('subdued')};
@@ -174,7 +176,7 @@ const CloudHomepageLayout = ({ children, route }) => {
                         <EuiText
                           size="s"
                           css={css`
-                            font-weight: 500;
+                            font-weight: ${euiTheme.font.weight.medium};
                           `}>
                           How to build comprehensive customer financial profiles
                           with Elastic Cloud and Google Cloud
@@ -188,7 +190,7 @@ const CloudHomepageLayout = ({ children, route }) => {
                         <EuiText
                           size="s"
                           css={css`
-                            font-weight: 500;
+                            font-weight: ${euiTheme.font.weight.medium};
                           `}>
                           How tough was your workout? Take a closer look at
                           Strava data through Kibana Lens
@@ -202,7 +204,7 @@ const CloudHomepageLayout = ({ children, route }) => {
                         <EuiText
                           size="s"
                           css={css`
-                            font-weight: 500;
+                            font-weight: ${euiTheme.font.weight.medium};
                           `}>
                           Optimizing Strava data collection with Elastic APM and
                           a custom script solution
