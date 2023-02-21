@@ -76,7 +76,7 @@ const DeploymentsPage = () => {
           href: '/ic-2/cloud',
         },
         {
-          text: 'Projects',
+          text: 'Deployments',
         },
       ]}>
       <EuiHorizontalRule />
