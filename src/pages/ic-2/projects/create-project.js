@@ -82,7 +82,7 @@ const CreateProject = () => {
           },
           {
             text: 'Projects',
-            href: 'projects/list',
+            href: 'list',
           },
           {
             text: 'Create',

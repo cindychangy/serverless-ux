@@ -125,7 +125,7 @@ const ProjectSetup = () => {
                             solution: solution,
                           },
                         },
-                        'create-project'
+                        'projects/create-project'
                       )
                     }
                     css={buttonRound}>
@@ -200,7 +200,7 @@ const ProjectSetup = () => {
                                   solution: solution,
                                 },
                               },
-                              'create-deployment'
+                              'deployments/create-deployment'
                             )
                           }>
                           Next
@@ -252,7 +252,7 @@ const ProjectSetup = () => {
                                   solution: solution,
                                 },
                               },
-                              'create-project'
+                              'projects/create-project'
                             )
                           }>
                           Next
