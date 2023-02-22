@@ -30,11 +30,17 @@ const ProjectSetup = () => {
       padding: 10px 20px;
     }
     button {
-      border-top-right-radius: 0 !important;
-      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
       block-size: 28px;
       font-size: 13px;
     }
+  `;
+
+  const buttonRound = css`
+    border-radius: 6px !important;
+    block-size: 32px !important;
+    font-size: 1rem !important;
   `;
 
   const showProjectDetails = userSelection => {
@@ -79,10 +85,12 @@ const ProjectSetup = () => {
               <EuiCard
                 paddingSize="none"
                 css={soultionCard}
-                selectable={{
-                  onClick: () => showProjectDetails(card.solution),
-                  isSelected: solution === card.solution,
-                }}
+                selectable={
+                  pageViewExtended && {
+                    onClick: () => showProjectDetails(card.solution),
+                    isSelected: solution === card.solution,
+                  }
+                }
                 title={
                   <EuiFlexGroup alignItems="center">
                     <EuiFlexItem grow={false}>
@@ -105,36 +113,30 @@ const ProjectSetup = () => {
                   size="xs"
                   contentAriaLabel="dummy text"
                 />
+                <EuiSpacer size="m" />
+                {!pageViewExtended && (
+                  <EuiButton
+                    fullWidth
+                    onClick={() =>
+                      router.push(
+                        {
+                          pathname: 'projects/create-project',
+                          query: {
+                            solution: solution,
+                          },
+                        },
+                        'create-project'
+                      )
+                    }
+                    css={buttonRound}>
+                    Next
+                  </EuiButton>
+                )}
                 <EuiSpacer size="s" />
               </EuiCard>
             </EuiFlexItem>
           ))}
         </EuiFlexGroup>
-        {!pageViewExtended && (
-          <>
-            <EuiHorizontalRule margin="xl" />
-            <EuiFlexGroup justifyContent="flexEnd">
-              <EuiFlexItem grow={false}>
-                <EuiButton
-                  fill
-                  disabled={solution == undefined && true}
-                  onClick={() =>
-                    router.push(
-                      {
-                        pathname: 'projects/create-project',
-                        query: {
-                          solution: solution,
-                        },
-                      },
-                      'create-project'
-                    )
-                  }>
-                  Next
-                </EuiButton>
-              </EuiFlexItem>
-            </EuiFlexGroup>
-          </>
-        )}
         <EuiSpacer size="l" />
         {solution !== undefined && pageViewExtended && (
           <EuiAccordion
@@ -173,12 +175,7 @@ const ProjectSetup = () => {
                             Dedicated
                           </>
                         }
-                        titleElement="h4"
-                        // selectable={{
-                        //   onClick: () => setProjectType(PROJECT_CLASSIC),
-                        //   isSelected: projectType === PROJECT_CLASSIC,
-                        // }}
-                      >
+                        titleElement="h4">
                         <EuiHorizontalRule margin="s" />
                         <EuiSpacer size="s" />
                         <EuiSkeletonText
@@ -230,12 +227,7 @@ const ProjectSetup = () => {
                             </EuiBadge>
                           </>
                         }
-                        titleElement="h4"
-                        // selectable={{
-                        //   onClick: () => setProjectType(PROJECT_SERVERLESS),
-                        //   isSelected: projectType === PROJECT_SERVERLESS,
-                        // }}
-                      >
+                        titleElement="h4">
                         <EuiHorizontalRule margin="s" />
                         <EuiSpacer size="s" />
                         <EuiSkeletonText
@@ -253,7 +245,6 @@ const ProjectSetup = () => {
                         <EuiButton
                           fullWidth
                           onClick={() =>
-                            // router.push('projects/create-project')
                             router.push(
                               {
                                 pathname: 'projects/create-project',
