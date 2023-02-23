@@ -116,7 +116,10 @@ const CreateDeployment = () => {
       />
       <EuiSpacer size="xxl" />
       {creating ? (
-        <WaitPanel solution={router.query.solution} type="deployment" />
+        <WaitPanel
+          solution={(router.query.solution = 'all')}
+          type="deployment"
+        />
       ) : (
         <EuiPanel
           paddingSize="none"

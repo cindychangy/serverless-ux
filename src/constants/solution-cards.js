@@ -72,3 +72,46 @@ export const CARDS_SECURITY = [
     title: 'Monitor kubernetes clusters',
   },
 ];
+
+export const CARDS_ALL = [
+  {
+    section: 'Search',
+    title: 'Build an application on top of Elasticsearch',
+  },
+  {
+    section: 'Observability',
+    title: 'Monitor logs',
+  },
+  {
+    section: 'Security',
+    title: 'Detect threats in my data with SIEM',
+  },
+  {
+    section: 'Search',
+    title: 'Add search to your website',
+  },
+  {
+    section: 'Observability',
+    title: 'Monitor my application performance (APM/tracing)',
+  },
+  {
+    section: 'Security',
+    title: 'Secure my hosts',
+  },
+  {
+    section: 'Search',
+    title: 'Search across databases and business systems',
+  },
+  {
+    section: 'Observability',
+    title: 'Monitor hosts',
+  },
+  {
+    section: 'Security',
+    title: 'Secure my cloud assets',
+  },
+  {
+    section: 'Observability',
+    title: 'Monitor kubernetes clusters',
+  },
+];

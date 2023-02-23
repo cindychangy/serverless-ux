@@ -18,7 +18,7 @@ import {
 import Navbar from '../../components/navbar';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
 
-const ProjectSetup = () => {
+const Setup = () => {
   const router = useRouter();
   const [pageViewExtended, setPageViewExtended] = useState(false);
   const [solution, setSolution] = useState(undefined);
@@ -56,8 +56,6 @@ const ProjectSetup = () => {
       setPageViewExtended(true);
     }
   }, [router]);
-
-  console.log(solution);
 
   return (
     <>
@@ -122,7 +120,7 @@ const ProjectSetup = () => {
                         {
                           pathname: 'projects/create-project',
                           query: {
-                            solution: solution,
+                            solution: card.solution,
                           },
                         },
                         'projects/create-project'
@@ -271,4 +269,4 @@ const ProjectSetup = () => {
   );
 };
 
-export default ProjectSetup;
+export default Setup;

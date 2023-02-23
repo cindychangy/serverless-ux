@@ -20,6 +20,7 @@ import {
   CARDS_OBS,
   CARDS_SEARCH,
   CARDS_SECURITY,
+  CARDS_ALL,
 } from '../../constants/solution-cards';
 
 const GuidedSetup = () => {
@@ -42,6 +43,23 @@ const GuidedSetup = () => {
     CARDS = CARDS_SECURITY;
   }
 
+  if (router.query.solution === 'all') {
+    CARDS = CARDS_ALL;
+  }
+
+  const guideCard = css`
+    position: relative;
+    min-height: 110px;
+    width: 380px;
+
+    .euiCard__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  `;
+
   return (
     <KibanaLayout
       template="empty"
@@ -57,12 +75,7 @@ const GuidedSetup = () => {
       guideOpen={guideOpen}
       buttonDisabled={buttonDisabled}
       onClick={() => handleGuideClick(section)}>
-      <EuiPageTemplate
-        paddingSize="l"
-        css={css`
-          margin-top: 95px;
-          padding-block-start: 0;
-        `}>
+      <EuiPageTemplate paddingSize="l">
         <EuiSpacer size="xxl" />
         <EuiPageTemplate.Section color="subdued">
           <EuiTitle size="l" className="eui-textCenter">
@@ -78,9 +91,10 @@ const GuidedSetup = () => {
             <EuiSpacer size="xxl" />
             <EuiFlexGroup wrap responsive justifyContent="center">
               {CARDS.map((guide, index) => (
-                <EuiFlexItem key={index} grow={1}>
+                <EuiFlexItem key={index} grow={false}>
                   <EuiCard
                     onClick={() => {}}
+                    css={guideCard}
                     title={
                       <>
                         <EuiSpacer size="s" />
@@ -130,7 +144,7 @@ const GuidedSetup = () => {
           <EuiText size="s" textAlign="center">
             <EuiButtonEmpty
               iconSide="right"
-              onClick={() => router.push('kibana')}>
+              onClick={() => router.push('/ic-2/kibana')}>
               I'd like to do something else (skip)
             </EuiButtonEmpty>
           </EuiText>

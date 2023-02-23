@@ -18,7 +18,7 @@ const Profile = () => {
           },
         ]}
       />
-      <ProfilePanel route="project-setup" />
+      <ProfilePanel route="setup" />
     </>
   );
 };

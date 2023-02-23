@@ -99,12 +99,12 @@ const ProjectsPage = () => {
             onClick={() =>
               router.push(
                 {
-                  pathname: '/ic-2/project-setup',
+                  pathname: '/ic-2/setup',
                   query: {
                     root: 'projectList',
                   },
                 },
-                '/ic-2/project-setup'
+                '/ic-2/setup'
               )
             }>
             Create project
