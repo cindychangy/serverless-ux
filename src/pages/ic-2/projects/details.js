@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
 import { css } from '@emotion/react';
 
-const DetailPage = () => {
+const ProjectDetailPage = () => {
   const router = useRouter();
   const PROJECT_TITLE = router.query.projectTitle;
 
@@ -258,4 +258,4 @@ const DetailPage = () => {
   );
 };
 
-export default DetailPage;
+export default ProjectDetailPage;
