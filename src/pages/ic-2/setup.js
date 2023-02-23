@@ -17,6 +17,7 @@ import {
 
 import Navbar from '../../components/navbar';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
+import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../constants/global';
 
 const Setup = () => {
   const router = useRouter();
@@ -170,7 +171,7 @@ const Setup = () => {
                         title={
                           <>
                             <EuiSpacer size="m" />
-                            Dedicated
+                            {PROJECT_CLASSIC}
                           </>
                         }
                         titleElement="h4">
@@ -214,7 +215,7 @@ const Setup = () => {
                         title={
                           <>
                             <EuiSpacer size="m" />
-                            Fully Managed
+                            {PROJECT_SERVERLESS}
                             <EuiBadge
                               color="accent"
                               css={css`

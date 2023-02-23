@@ -5,11 +5,10 @@ import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
 
 const DetailPage = () => {
   const router = useRouter();
+  const PROJECT_TITLE = router.query.projectTitle;
   return (
     <CloudSubPageLayout
-      pageTitle={
-        router.query.projectTitle ? router.query.projectTitle : 'My deployment'
-      }
+      pageTitle={PROJECT_TITLE ? PROJECT_TITLE : 'My deployment'}
       breadcrumbs={[
         {
           text: 'Cloud',
@@ -20,9 +19,7 @@ const DetailPage = () => {
           href: 'list',
         },
         {
-          text: router.query.projectTitle
-            ? router.query.projectTitle
-            : 'My deployment',
+          text: PROJECT_TITLE ? PROJECT_TITLE : 'My deployment',
         },
       ]}>
       <EuiSpacer size="xxl" />

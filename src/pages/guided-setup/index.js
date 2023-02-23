@@ -28,22 +28,23 @@ const GuidedSetup = () => {
   const router = useRouter();
   const [guideOpen, setGuide] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const SOLUTION = router.query.solution;
 
   let CARDS = [];
 
-  if (router.query.solution === 'search') {
+  if (SOLUTION === 'search') {
     CARDS = CARDS_SEARCH;
   }
 
-  if (router.query.solution === 'observability') {
+  if (SOLUTION === 'observability') {
     CARDS = CARDS_OBS;
   }
 
-  if (router.query.solution === 'security') {
+  if (SOLUTION === 'security') {
     CARDS = CARDS_SECURITY;
   }
 
-  if (router.query.solution === 'all') {
+  if (SOLUTION === 'all') {
     CARDS = CARDS_ALL;
   }
 

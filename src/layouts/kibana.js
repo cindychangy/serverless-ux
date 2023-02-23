@@ -29,6 +29,9 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
       id={collapsibleNavId}
       aria-label="Main navigation"
       isOpen={navIsOpen}
+      css={css`
+        margin-top: 95px;
+      `}
       button={
         <EuiHeaderSectionItemButton
           aria-label="Toggle main navigation"

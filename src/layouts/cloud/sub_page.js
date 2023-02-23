@@ -16,6 +16,7 @@ const CloudSubPageLayout = ({
   children,
   navItems,
   pageTitle,
+  headerActions,
   bgColor,
 }) => {
   const sideNavStyles = css`
@@ -32,8 +33,6 @@ const CloudSubPageLayout = ({
           <EuiSideNav
             aria-label="Side naviation"
             mobileTitle="Side naviation"
-            // toggleOpenOnMobile={() => toggleOpenOnMobile()}
-            // isOpenOnMobile={isSideNavOpenOnMobile}
             items={navItems}
             css={sideNavStyles}
           />
@@ -46,7 +45,10 @@ const CloudSubPageLayout = ({
               height: 100vh;
             `}>
             <EuiSpacer size="l" />
-            <EuiPageHeader pageTitle={pageTitle} />
+            <EuiPageHeader
+              pageTitle={pageTitle}
+              rightSideItems={headerActions}
+            />
             {children}
           </EuiPageSection>
         </EuiPageBody>

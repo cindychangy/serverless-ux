@@ -2,7 +2,7 @@ export const SOLUTION_CARDS = [
   {
     solution: 'search',
     logo: 'logoElasticsearch',
-    title: 'Search',
+    title: 'Elasticsearch',
   },
   {
     solution: 'observability',

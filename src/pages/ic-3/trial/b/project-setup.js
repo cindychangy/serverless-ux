@@ -163,7 +163,7 @@ const ProjectSetup = () => {
               title={
                 <>
                   <EuiSpacer size="m" />
-                  Dedicated
+                  {PROJECT_SERVERLESS}
                 </>
               }
               titleElement="h4"

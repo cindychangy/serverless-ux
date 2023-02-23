@@ -224,7 +224,7 @@ const ProjectSetup = () => {
                           title={
                             <>
                               <EuiSpacer size="m" />
-                              Dedicated
+                              {PROJECT_CLASSIC}
                             </>
                           }
                           titleElement="h4"
