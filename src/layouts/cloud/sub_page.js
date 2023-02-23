@@ -23,6 +23,12 @@ const CloudSubPageLayout = ({
     .euiSideNavItem--root {
       padding-bottom: 0;
     }
+    //hide chevron icon
+    .euiSideNavItemButton__content {
+      svg {
+        display: none;
+      }
+    }
   `;
 
   return (

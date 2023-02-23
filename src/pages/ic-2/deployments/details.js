@@ -42,7 +42,7 @@ const DeploymentDetailPage = () => {
       href: 'list',
     },
     {
-      text: DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My project',
+      text: DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My deployment',
     },
   ];
 
@@ -51,42 +51,105 @@ const DeploymentDetailPage = () => {
       name: 'Deployments',
       id: 'deployments',
       isSelected: false,
-      onClick: () => router.push('/ic-2/deployments/list'),
+      onClick: () => router.push('/ic-2/projects/list'),
+      items: [
+        {
+          name: DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My deployment',
+          id: 'my-deployment',
+          isSelected: true,
+          onClick: () => router.push('#'),
+          forceOpen: true,
+          items: [
+            {
+              name: 'Edit',
+              id: 'edit',
+              isSelected: false,
+            },
+            {
+              name: 'Monitoring',
+              id: 'monitoring',
+              isSelected: false,
+              forceOpen: true,
+              items: [
+                {
+                  name: 'Health',
+                  id: 'edit',
+                  isSelected: false,
+                },
+                {
+                  name: 'Logs and metrics',
+                  id: 'logns-metrics',
+                  isSelected: false,
+                },
+                {
+                  name: 'Performance',
+                  id: 'perfomance',
+                  isSelected: false,
+                },
+              ],
+            },
+            {
+              name: 'Elasticsearch',
+              id: 'elasticsearch',
+              isSelected: false,
+              forceOpen: true,
+              items: [
+                {
+                  name: 'Snapshots',
+                  id: 'snapshots',
+                  isSelected: false,
+                },
+                {
+                  name: 'API console',
+                  id: 'api-console',
+                  isSelected: false,
+                },
+              ],
+            },
+            {
+              name: 'Kibana',
+              id: 'kibana',
+              isSelected: false,
+            },
+            {
+              name: 'Integrations Server',
+              id: 'integrations-server',
+              isSelected: false,
+            },
+            {
+              name: 'Enterprise Search',
+              id: 'ent-search',
+              isSelected: false,
+            },
+            {
+              name: 'Activity',
+              id: 'activity',
+              isSelected: false,
+            },
+            {
+              name: 'Security',
+              id: 'security',
+              isSelected: false,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Features',
+      id: 'features',
+      isSelected: false,
+    },
+    {
+      name: 'Support',
+      id: 'support',
+      isSelected: false,
     },
     {
       name: 'Projects',
       id: 'projects',
       isSelected: false,
       onClick: () => router.push('/ic-2/projects/list'),
-      items: [
-        {
-          name: DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My deployment',
-          id: 'access-logs',
-          isSelected: true,
-          onClick: () => router.push('#'),
-          forceOpen: true,
-          items: [
-            {
-              name: 'Ingest data',
-              id: 'ingest-data',
-              isSelected: false,
-              onClick: () => router.push('#'),
-            },
-            {
-              name: 'Performance',
-              id: 'performance',
-              isSelected: false,
-              onClick: () => router.push('#'),
-            },
-            {
-              name: 'Security',
-              id: 'security',
-              isSelected: false,
-              onClick: () => router.push('#'),
-            },
-          ],
-        },
-      ],
     },
   ];
 
@@ -158,8 +221,8 @@ const DeploymentDetailPage = () => {
       <EuiSpacer size="xxl" />
       <EuiFlexGroup justifyContent="spaceBetween">
         <EuiFlexItem grow={2}>
-          <EuiText size="xs">
-            <strong>Deployment name</strong>
+          <EuiText size="s">
+            <h5>Deployment name</h5>
           </EuiText>
           <EuiSpacer size="s" />
           <EuiFlexGroup alignItems="center">
@@ -191,8 +254,8 @@ const DeploymentDetailPage = () => {
         </EuiFlexItem>
 
         <EuiFlexItem grow={1}>
-          <EuiText size="xs">
-            <strong>Deployment version</strong>
+          <EuiText size="s">
+            <h5>Deployment version</h5>
           </EuiText>
           <EuiFlexGroup alignItems="center">
             <EuiFlexItem grow={false}>
@@ -208,8 +271,8 @@ const DeploymentDetailPage = () => {
 
       <EuiFlexGroup justifyContent="spaceBetween" alignItems="flexStart">
         <EuiFlexItem grow={2}>
-          <EuiText size="xs">
-            <strong>Applications</strong>
+          <EuiText size="s">
+            <h5>Applications</h5>
           </EuiText>
           <EuiSpacer size="l" />
           {PROJECT_ENDPOINTS.map(detail => (
@@ -219,8 +282,8 @@ const DeploymentDetailPage = () => {
                 css={css`
                   width: 180px;
                 `}>
-                <EuiText size="s">
-                  <strong>{detail.title}</strong>
+                <EuiText size="m">
+                  <h5>{detail.title}</h5>
                 </EuiText>
                 <EuiSpacer size="s" />
               </EuiFlexItem>
@@ -241,8 +304,8 @@ const DeploymentDetailPage = () => {
           ))}
         </EuiFlexItem>
         <EuiFlexItem grow={1}>
-          <EuiText size="xs">
-            <strong>Hardware profile</strong>
+          <EuiText size="s">
+            <h5>Hardware profile</h5>
           </EuiText>
           <EuiSpacer size="m" />
           <EuiFlexGroup alignItems="center">
@@ -255,8 +318,8 @@ const DeploymentDetailPage = () => {
           </EuiFlexGroup>
         </EuiFlexItem>
         <EuiFlexItem grow={1}>
-          <EuiText size="xs">
-            <strong>Cloud ID</strong>
+          <EuiText size="s">
+            <h5>Cloud ID</h5>
           </EuiText>
           <EuiSpacer size="l" />
           <EuiCode
@@ -279,8 +342,8 @@ const DeploymentDetailPage = () => {
       <EuiSpacer size="xxl" />
       <EuiFlexGroup direction="column">
         <EuiFlexItem>
-          <EuiText size="xs">
-            <strong>Tags</strong>
+          <EuiText size="s">
+            <h5>Tags</h5>
           </EuiText>
         </EuiFlexItem>
         <EuiFlexItem>

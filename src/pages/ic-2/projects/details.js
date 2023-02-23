@@ -10,6 +10,7 @@ import {
   EuiLink,
   EuiCode,
   EuiBadge,
+  EuiTitle,
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
 import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
@@ -48,7 +49,7 @@ const ProjectDetailPage = () => {
       items: [
         {
           name: PROJECT_TITLE ? PROJECT_TITLE : 'My project',
-          id: 'access-logs',
+          id: 'my-project',
           isSelected: true,
           onClick: () => router.push('#'),
           forceOpen: true,
@@ -57,19 +58,16 @@ const ProjectDetailPage = () => {
               name: 'Ingest data',
               id: 'ingest-data',
               isSelected: false,
-              onClick: () => router.push('#'),
             },
             {
               name: 'Performance',
               id: 'performance',
               isSelected: false,
-              onClick: () => router.push('#'),
             },
             {
               name: 'Security',
               id: 'security',
               isSelected: false,
-              onClick: () => router.push('#'),
             },
           ],
         },
@@ -77,7 +75,7 @@ const ProjectDetailPage = () => {
     },
   ];
 
-  const PROJECT_DETAILS = [
+  const PROJECT_INFO = [
     {
       title: 'Project name',
       content: PROJECT_TITLE ? PROJECT_TITLE : 'My project',
@@ -93,7 +91,7 @@ const ProjectDetailPage = () => {
     },
   ];
 
-  const PROJECT_SETTINGS = [
+  const PROJECT_ALIAS_TAGS = [
     {
       title: 'Custom endpoints alias',
       content: 'observability-cluster-ax2313a',
@@ -106,7 +104,7 @@ const ProjectDetailPage = () => {
     },
   ];
 
-  const PROJECT_ENDPOINTS = [
+  const PROJECT_APPLICATIONS = [
     {
       title: 'Endpoints',
       content: 'Elasticsearch',
@@ -130,27 +128,28 @@ const ProjectDetailPage = () => {
       ]}>
       <EuiHorizontalRule />
       <EuiSpacer size="xxl" />
-      {PROJECT_DETAILS.map(detail => (
+      <EuiTitle size="s">
+        <h3>Project Information</h3>
+      </EuiTitle>
+      <EuiSpacer size="l" />
+      {PROJECT_INFO.map(detail => (
         <EuiFlexGroup key={detail.title}>
           <EuiFlexItem
             css={css`
               width: 250px;
-              margin-bottom: 20px;
+              margin-bottom: 13px;
             `}
             grow={false}>
             <EuiText size="s">
-              <strong>{detail.title}</strong>
+              <h5>{detail.title}</h5>
             </EuiText>
           </EuiFlexItem>
-          <EuiFlexItem
-            css={css`
-              width: 100px;
-            `}
-            grow={false}>
+          <EuiFlexItem grow={false}>
             <EuiText size="s">{detail.content}</EuiText>
           </EuiFlexItem>
           {detail.link && (
             <EuiFlexItem>
+              <EuiSpacer size="xs" />
               <EuiLink href="#">Edit</EuiLink>
             </EuiFlexItem>
           )}
@@ -158,7 +157,11 @@ const ProjectDetailPage = () => {
       ))}
 
       <EuiSpacer size="xxl" />
-      {PROJECT_SETTINGS.map(detail => (
+      <EuiTitle size="s">
+        <h3>Aliases and tags</h3>
+      </EuiTitle>
+      <EuiSpacer size="l" />
+      {PROJECT_ALIAS_TAGS.map(detail => (
         <EuiFlexGroup key={detail.title}>
           <EuiFlexItem
             css={css`
@@ -167,7 +170,7 @@ const ProjectDetailPage = () => {
             `}
             grow={false}>
             <EuiText size="s">
-              <strong>{detail.title}</strong>
+              <h5>{detail.title}</h5>
             </EuiText>
           </EuiFlexItem>
           <EuiFlexItem
@@ -179,6 +182,7 @@ const ProjectDetailPage = () => {
           </EuiFlexItem>
           {detail.link && (
             <EuiFlexItem>
+              <EuiSpacer size="xs" />
               <EuiLink href="#">Edit</EuiLink>
             </EuiFlexItem>
           )}
@@ -186,7 +190,11 @@ const ProjectDetailPage = () => {
       ))}
 
       <EuiSpacer size="xxl" />
-      {PROJECT_ENDPOINTS.map(detail => (
+      <EuiTitle size="s">
+        <h3>Applications</h3>
+      </EuiTitle>
+      <EuiSpacer size="l" />
+      {PROJECT_APPLICATIONS.map(detail => (
         <EuiFlexGroup key={detail.content}>
           <EuiFlexItem
             css={css`
@@ -194,7 +202,7 @@ const ProjectDetailPage = () => {
             `}
             grow={false}>
             <EuiText size="s">
-              <strong>{detail.title}</strong>
+              <h5>{detail.title}</h5>
             </EuiText>
           </EuiFlexItem>
           <EuiFlexItem
@@ -219,10 +227,10 @@ const ProjectDetailPage = () => {
             width: 250px;
           `}>
           <EuiText size="s">
-            <strong>Cloud ID</strong>
+            <h5>Cloud ID</h5>
           </EuiText>
         </EuiFlexItem>
-        <EuiFlexItem>
+        <EuiFlexItem grow={false}>
           <EuiCode
             css={css`
               width: 295px;
@@ -238,6 +246,12 @@ const ProjectDetailPage = () => {
             jNTRmZmEzMjkyOQ==
           </EuiCode>
         </EuiFlexItem>
+        <EuiFlexItem
+          css={css`
+            align-self: flex-end;
+          `}>
+          <EuiLink href="#">Copy Cloud ID</EuiLink>
+        </EuiFlexItem>
       </EuiFlexGroup>
       <EuiSpacer size="xxl" />
       <EuiFlexGroup>
@@ -247,7 +261,7 @@ const ProjectDetailPage = () => {
           `}
           grow={false}>
           <EuiText size="s">
-            <strong>Version</strong>
+            <h5>Version</h5>
           </EuiText>
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
