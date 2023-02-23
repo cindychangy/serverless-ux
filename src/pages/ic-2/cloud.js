@@ -11,6 +11,7 @@ import {
   EuiFlexItem,
   EuiIcon,
   EuiTable,
+  EuiText,
   EuiTableHeader,
   EuiTableHeaderCell,
   EuiTableRow,
@@ -130,32 +131,40 @@ const CloudHomepage = () => {
             ))}
           </EuiTableHeader>
           <EuiTableBody>
-            {TABLE_ITEMS_DEPLOYMENTS.map((item, index) => (
-              <EuiTableRow key={item + index}>
-                <Fragment key={item.name}>
+            {TABLE_ITEMS_DEPLOYMENTS.map((deployment, index) => (
+              <EuiTableRow key={deployment + index}>
+                <Fragment key={deployment.name}>
                   <EuiTableRowCell>
-                    <EuiLink onClick={() => router.push('kibana')}>
-                      {item.name}
-                    </EuiLink>
+                    <EuiText
+                      size="s"
+                      css={css`
+                        font-weight: ${euiTheme.font.weight.semiBold};
+                      `}>
+                      {deployment.name}
+                    </EuiText>
                   </EuiTableRowCell>
-                  <EuiTableRowCell>{item.status}</EuiTableRowCell>
-                  <EuiTableRowCell>{item.version}</EuiTableRowCell>
-                  <EuiTableRowCell>{item.region}</EuiTableRowCell>
+                  <EuiTableRowCell>{deployment.status}</EuiTableRowCell>
+                  <EuiTableRowCell>{deployment.version}</EuiTableRowCell>
+                  <EuiTableRowCell>{deployment.region}</EuiTableRowCell>
                   <EuiTableRowCell>
-                    <EuiLink
+                    <EuiButtonEmpty onClick={() => router.push('kibana')}>
+                      Open
+                    </EuiButtonEmpty>
+                    <EuiButtonEmpty
+                      flush="right"
                       onClick={() =>
                         router.push(
                           {
                             pathname: 'deployments/details',
                             query: {
-                              projectTitle: item.name,
+                              projectTitle: deployment.name,
                             },
                           },
                           'deployments/details'
                         )
                       }>
                       Manage
-                    </EuiLink>
+                    </EuiButtonEmpty>
                   </EuiTableRowCell>
                 </Fragment>
               </EuiTableRow>
@@ -202,31 +211,39 @@ const CloudHomepage = () => {
             ))}
           </EuiTableHeader>
           <EuiTableBody>
-            {TABLE_ITEMS_PROJECTS.map((item, index) => (
-              <EuiTableRow key={item + index}>
+            {TABLE_ITEMS_PROJECTS.map((project, index) => (
+              <EuiTableRow key={project + index}>
                 <Fragment>
                   <EuiTableRowCell>
-                    <EuiLink onClick={() => router.push('kibana')}>
-                      {item.name}
-                    </EuiLink>
+                    <EuiText
+                      size="s"
+                      css={css`
+                        font-weight: ${euiTheme.font.weight.semiBold};
+                      `}>
+                      {project.name}
+                    </EuiText>
                   </EuiTableRowCell>
-                  <EuiTableRowCell>{item.type}</EuiTableRowCell>
-                  <EuiTableRowCell>{item.provider}</EuiTableRowCell>
+                  <EuiTableRowCell>{project.type}</EuiTableRowCell>
+                  <EuiTableRowCell>{project.provider}</EuiTableRowCell>
                   <EuiTableRowCell>
-                    <EuiLink
+                    <EuiButtonEmpty onClick={() => router.push('kibana')}>
+                      Open
+                    </EuiButtonEmpty>
+                    <EuiButtonEmpty
+                      flush="right"
                       onClick={() =>
                         router.push(
                           {
                             pathname: 'projects/details',
                             query: {
-                              projectTitle: item.name,
+                              projectTitle: project.name,
                             },
                           },
                           'projects/details'
                         )
                       }>
                       Manage
-                    </EuiLink>
+                    </EuiButtonEmpty>
                   </EuiTableRowCell>
                 </Fragment>
               </EuiTableRow>
