@@ -14,8 +14,12 @@ import {
   EuiListGroup,
   useGeneratedHtmlId,
   EuiAvatar,
+  EuiHeaderSection,
+  EuiHeaderBreadcrumbs,
+  EuiHeaderSectionItem,
   useEuiTheme,
 } from '@elastic/eui';
+import IcPill from '../components/ic_pill';
 
 const KibanaLayout = ({ breadcrumbs, children }) => {
   const { euiTheme } = useEuiTheme();
@@ -134,31 +138,29 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
             ]}
           />
 
-          <EuiHeader
-            position="fixed"
-            sections={[
-              {
-                items: leftSectionItems,
-                borders: 'right',
-              },
-              {
-                items: [
-                  <EuiHeaderSectionItemButton
-                    key="header-item"
-                    aria-label="Account menu">
-                    <EuiAvatar
-                      type="space"
-                      name="Default"
-                      size="s"
-                      color={euiTheme.colors.success}
-                    />
-                  </EuiHeaderSectionItemButton>,
-                ],
-                breadcrumbs: breadcrumbs,
-                borders: 'right',
-              },
-            ]}
-          />
+          <EuiHeader position="fixed">
+            <EuiHeaderSection grow={false}>
+              <EuiHeaderSectionItem>{leftSectionItems}</EuiHeaderSectionItem>
+              <EuiHeaderSectionItem>
+                <EuiHeaderSectionItemButton key="header-item">
+                  <EuiAvatar
+                    type="space"
+                    name="Default"
+                    size="s"
+                    color={euiTheme.colors.success}
+                  />
+                </EuiHeaderSectionItemButton>
+              </EuiHeaderSectionItem>
+              <EuiHeaderBreadcrumbs
+                aria-label="header breadcrumbs"
+                breadcrumbs={breadcrumbs}
+              />
+            </EuiHeaderSection>
+            <EuiHeaderSection side="right">
+              <IcPill icNumber="2" />
+            </EuiHeaderSection>
+          </EuiHeader>
+
           {children}
         </div>
       </>

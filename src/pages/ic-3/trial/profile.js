@@ -7,6 +7,7 @@ const Profile = () => {
     <>
       <Header
         signedIn
+        icNumber="#"
         steps={[
           {
             title: 'About you',

@@ -10,7 +10,9 @@ import {
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 
-const Navbar = ({ breadcrumbs }) => {
+import IcPill from '../components/ic_pill';
+
+const Navbar = ({ breadcrumbs, icNumber }) => {
   const { euiTheme } = useEuiTheme();
   return (
     <>
@@ -50,6 +52,9 @@ const Navbar = ({ breadcrumbs }) => {
         sections={[
           {
             breadcrumbs: breadcrumbs,
+          },
+          {
+            items: [<IcPill icNumber={icNumber} />],
           },
         ]}
       />

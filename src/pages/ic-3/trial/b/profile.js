@@ -7,6 +7,7 @@ const ProfilePage = () => {
     <>
       <Header
         signedIn
+        icNumber="3"
         steps={[
           {
             title: 'About you',

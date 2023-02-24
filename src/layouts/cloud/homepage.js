@@ -23,7 +23,7 @@ import {
 } from '@elastic/eui';
 import Navbar from '../../components/navbar';
 
-const CloudHomepageLayout = ({ children, route }) => {
+const CloudHomepageLayout = ({ children, route, icNumber }) => {
   const router = useRouter();
   const { euiTheme } = useEuiTheme();
 
@@ -59,6 +59,7 @@ const CloudHomepageLayout = ({ children, route }) => {
     <>
       <Navbar
         isCloud
+        icNumber={icNumber}
         breadcrumbs={[
           {
             text: 'Cloud',

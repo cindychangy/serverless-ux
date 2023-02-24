@@ -75,6 +75,7 @@ const CreateProject = () => {
     <>
       <Navbar
         isCloud
+        icNumber="2"
         breadcrumbs={[
           {
             text: 'Cloud',
