@@ -113,7 +113,7 @@ const ProjectDetailPage = () => {
       content: 'Kibana',
     },
     {
-      content: 'Elasticsearch',
+      content: 'APM',
     },
   ];
 

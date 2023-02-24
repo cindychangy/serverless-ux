@@ -177,7 +177,7 @@ const DeploymentDetailPage = () => {
 
   return (
     <CloudSubPageLayout
-      pageTitle={DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My project'}
+      pageTitle={DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My deployment'}
       breadcrumbs={BREADCRUMBS}
       navItems={SIDE_NAV}
       headerActions={[
@@ -229,6 +229,7 @@ const DeploymentDetailPage = () => {
             <EuiFlexItem grow={false}>
               <EuiFieldText
                 value={DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My deployment'}
+                onChange={() => {}}
               />
             </EuiFlexItem>
             <EuiFlexItem>
@@ -276,7 +277,7 @@ const DeploymentDetailPage = () => {
           </EuiText>
           <EuiSpacer size="l" />
           {PROJECT_ENDPOINTS.map(detail => (
-            <EuiFlexGroup key={detail.content}>
+            <EuiFlexGroup key={detail.title}>
               <EuiFlexItem
                 grow={false}
                 css={css`
@@ -386,20 +387,17 @@ const DeploymentDetailPage = () => {
       <EuiFlexGroup>
         <EuiFlexItem>
           <div css={instanceCard}>
-            <EuiCard
-              title={
-                <EuiFlexGroup alignItems="center" gutterSize="s">
-                  <EuiFlexItem grow={false}>
-                    <EuiIcon type="logoElasticsearch" size="m" />
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiText>
-                      <strong>Instance #1</strong>
-                    </EuiText>
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-              }
-              textAlign="left">
+            <EuiCard title="" textAlign="left">
+              <EuiFlexGroup alignItems="center" gutterSize="s">
+                <EuiFlexItem grow={false}>
+                  <EuiIcon type="logoElasticsearch" size="m" />
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiText>
+                    <strong>Instance #1</strong>
+                  </EuiText>
+                </EuiFlexItem>
+              </EuiFlexGroup>
               <EuiSkeletonText
                 lines={2}
                 size="s"
