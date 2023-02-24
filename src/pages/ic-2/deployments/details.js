@@ -398,6 +398,7 @@ const DeploymentDetailPage = () => {
                   </EuiText>
                 </EuiFlexItem>
               </EuiFlexGroup>
+              <EuiSpacer size="m" />
               <EuiSkeletonText
                 lines={2}
                 size="s"
@@ -425,6 +426,7 @@ const DeploymentDetailPage = () => {
                 </EuiFlexGroup>
               }
               textAlign="left">
+              <EuiSpacer size="s" />
               <EuiSkeletonText
                 lines={2}
                 size="s"
@@ -450,6 +452,7 @@ const DeploymentDetailPage = () => {
                 </EuiFlexGroup>
               }
               textAlign="left">
+              <EuiSpacer size="s" />
               <EuiSkeletonText
                 lines={2}
                 size="s"
@@ -477,6 +480,7 @@ const DeploymentDetailPage = () => {
                 </EuiFlexGroup>
               }
               textAlign="left">
+              <EuiSpacer size="s" />
               <EuiSkeletonText
                 lines={2}
                 size="s"
@@ -502,6 +506,7 @@ const DeploymentDetailPage = () => {
                 </EuiFlexGroup>
               }
               textAlign="left">
+              <EuiSpacer size="s" />
               <EuiSkeletonText
                 lines={2}
                 size="s"
@@ -529,6 +534,7 @@ const DeploymentDetailPage = () => {
                 </EuiFlexGroup>
               }
               textAlign="left">
+              <EuiSpacer size="s" />
               <EuiSkeletonText
                 lines={2}
                 size="s"
