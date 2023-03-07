@@ -18,6 +18,7 @@ import {
 import Navbar from '../../components/navbar';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
 import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../constants/global';
+import WipBadge from '../../components/wip_badge';
 
 const Setup = () => {
   const router = useRouter();
@@ -60,6 +61,7 @@ const Setup = () => {
 
   return (
     <>
+      <WipBadge />
       <Navbar
         isCloud
         icNumber="2"

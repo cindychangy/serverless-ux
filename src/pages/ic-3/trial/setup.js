@@ -24,6 +24,7 @@ import {
 
 import Header from '../../../components/header';
 import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../../constants/global';
+import WipBadge from '../../../components/wip_badge';
 
 const ProjectSetup = () => {
   const { euiTheme } = useEuiTheme();
@@ -128,6 +129,7 @@ const ProjectSetup = () => {
 
   return (
     <>
+      <WipBadge />
       <Header
         signedIn
         icNumber="3"
