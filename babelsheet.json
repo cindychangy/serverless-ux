@@ -1,0 +1,18 @@
+{
+  "cliVersion": "0.0.12",
+  "spreadsheetId": "13__R3ooJpDJ4FzcMvydt_jM_Qh8F_3CHA7ZPaLjQc1k",
+  "credentials": ".credentials.json",
+  "userInput": {
+    "credentials": ".credentials.json",
+    "title": "serverless-prototype-translations",
+    "includeManual": true,
+    "maxLevels": 5,
+    "outDir": "./i18n/",
+    "scriptPath": "./scripts/fetch-translations.ts",
+    "scriptName": "translations",
+    "example": true,
+    "languages": "en, de",
+    "email": "cindyisachang@gmail.com",
+    "scriptTemplate": "Nested JSON per language and 1st level category (recommended for Next.js apps)"
+  }
+}

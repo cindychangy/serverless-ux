@@ -164,7 +164,7 @@ const ProjectSetup = () => {
               title={
                 <>
                   <EuiSpacer size="m" />
-                  {PROJECT_SERVERLESS}
+                  Classic
                 </>
               }
               titleElement="h4"
@@ -197,7 +197,7 @@ const ProjectSetup = () => {
               title={
                 <>
                   <EuiSpacer size="m" />
-                  Fully Managed
+                  Serverless
                   <EuiBadge
                     color="accent"
                     css={css`
@@ -253,39 +253,6 @@ const ProjectSetup = () => {
 
             {projectType === PROJECT_SERVERLESS ? (
               <>
-                <EuiFlexGroup direction="column" alignItems="center">
-                  <EuiFlexItem
-                    css={css`
-                      width: 100%;
-                    `}>
-                    <EuiFlexGroup justifyContent="spaceBetween">
-                      <EuiFlexItem grow={2}>
-                        <EuiText>
-                          <h4>Cloud provider and region</h4>
-                        </EuiText>
-                      </EuiFlexItem>
-                      <EuiFlexGroup>
-                        <EuiFlexItem>
-                          <EuiSuperSelect
-                            id="provider"
-                            options={PROVIDER}
-                            value="google"
-                            onChange={() => {}}
-                          />
-                        </EuiFlexItem>
-                        <EuiFlexItem>
-                          <EuiSuperSelect
-                            id="region"
-                            options={REGION}
-                            value="Iowa"
-                            onChange={() => {}}
-                          />
-                        </EuiFlexItem>
-                      </EuiFlexGroup>
-                    </EuiFlexGroup>
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-                <EuiHorizontalRule margin="xxl" />
                 <EuiText>
                   <h4>Project type</h4>
                 </EuiText>
@@ -328,6 +295,39 @@ const ProjectSetup = () => {
                   ))}
                 </EuiFlexGroup>
                 <EuiHorizontalRule margin="xxl" />
+                <EuiFlexGroup direction="column" alignItems="center">
+                  <EuiFlexItem
+                    css={css`
+                      width: 100%;
+                    `}>
+                    <EuiFlexGroup justifyContent="spaceBetween">
+                      <EuiFlexItem grow={2}>
+                        <EuiText>
+                          <h4>Cloud provider and region</h4>
+                        </EuiText>
+                      </EuiFlexItem>
+                      <EuiFlexGroup>
+                        <EuiFlexItem>
+                          <EuiSuperSelect
+                            id="provider"
+                            options={PROVIDER}
+                            value="google"
+                            onChange={() => {}}
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiSuperSelect
+                            id="region"
+                            options={REGION}
+                            value="Iowa"
+                            onChange={() => {}}
+                          />
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                    </EuiFlexGroup>
+                    <EuiHorizontalRule margin="xxl" />
+                  </EuiFlexItem>
+                </EuiFlexGroup>
                 <EuiFlexGroup justifyContent="spaceBetween">
                   <EuiFlexItem>
                     <EuiText>

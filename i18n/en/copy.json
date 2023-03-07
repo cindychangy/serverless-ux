@@ -1,0 +1,11 @@
+{
+  "choice.page.title": "Get started with Elastic",
+  "setup.names.serverless": "Fully managed",
+  "setup.names.classic": "Managed-ish",
+  "step.label": "Choose setup",
+  "intro.sentence": "Lorem ipsum",
+  "project.type.names": "Elasticsearch",
+  "flow.a-setup.choice.card-serverless": "",
+  "flow.a-setup.choice.card-dedicated": "Managed-ish",
+  "flow.b-setup.choice.card-serverless": "Fully managed"
+}
