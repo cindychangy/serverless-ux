@@ -120,7 +120,7 @@ const Header = ({ accountType, signedIn, steps, logoLarge, icNumber }) => {
             right: 20px;
             top: 30px;
           `}>
-          <IcPill icNumber="3" />
+          {/* <IcPill icNumber="3" /> */}
         </div>
       )}
     </>

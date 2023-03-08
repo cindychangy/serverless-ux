@@ -53,9 +53,9 @@ const Navbar = ({ breadcrumbs, icNumber }) => {
           {
             breadcrumbs: breadcrumbs,
           },
-          {
-            items: [<IcPill icNumber={icNumber} />],
-          },
+          // {
+          //   items: [<IcPill icNumber={icNumber} />],
+          // },
         ]}
       />
     </>

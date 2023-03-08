@@ -157,7 +157,7 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
               />
             </EuiHeaderSection>
             <EuiHeaderSection side="right">
-              <IcPill icNumber="2" />
+              {/* <IcPill icNumber="2" /> */}
             </EuiHeaderSection>
           </EuiHeader>
 
