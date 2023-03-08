@@ -30,7 +30,7 @@ const GuidedSetup = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const SOLUTION = router.query.solution;
 
-  let CARDS = [];
+  let CARDS = CARDS_ALL;
 
   if (SOLUTION === 'search') {
     CARDS = CARDS_SEARCH;

@@ -125,7 +125,7 @@ const CreateProject = () => {
               <h4>Name</h4>
             </EuiTitle>
             <EuiSpacer size="s" />
-            <EuiFieldText fullWidth placeholder="My fully managed project" />
+            <EuiFieldText fullWidth placeholder="My serverless project" />
 
             <EuiSpacer size="l" />
             {!isLoading && (

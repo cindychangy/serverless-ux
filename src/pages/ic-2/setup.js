@@ -11,8 +11,11 @@ import {
   EuiAccordion,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiTextAlign,
   EuiIcon,
+  EuiTitle,
   EuiCard,
+  EuiText,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
@@ -22,11 +25,11 @@ import WipBadge from '../../components/wip_badge';
 
 const Setup = () => {
   const router = useRouter();
-  const [pageViewExtended, setPageViewExtended] = useState(false);
+  const [projectType, setProjectType] = useState('none');
   const [solution, setSolution] = useState(undefined);
   const [accordionTrigger, setAccordionTrigger] = useState('closed');
 
-  const soultionCard = css`
+  const cardContainer = css`
     .euiCard__content {
       text-align: left;
       padding: 10px 20px;
@@ -39,25 +42,34 @@ const Setup = () => {
     }
   `;
 
-  const buttonRound = css`
-    border-radius: 6px !important;
-    block-size: 32px !important;
-    font-size: 1rem !important;
+  const badgeStyle = css`
+    margin-left: 5px;
+    margin-top: -4px;
+    color: #fff !important;
   `;
 
-  const showProjectDetails = userSelection => {
-    setSolution(userSelection);
+  const handleUserSelection = userSelection => {
+    setProjectType(userSelection);
 
-    if (userSelection) {
+    if (userSelection === PROJECT_CLASSIC) {
+      setSolution('none');
+    }
+
+    if (userSelection === PROJECT_SERVERLESS) {
+      setSolution(undefined);
       setAccordionTrigger('open');
     }
   };
 
-  useEffect(() => {
-    if (router.query.root !== 'projectList') {
-      setPageViewExtended(true);
+  const handleNextClick = () => {
+    if (projectType === PROJECT_CLASSIC) {
+      router.push('deployments/create-deployment');
     }
-  }, [router]);
+
+    if (projectType === PROJECT_SERVERLESS) {
+      router.push('projects/create-project');
+    }
+  };
 
   return (
     <>
@@ -81,193 +93,186 @@ const Setup = () => {
           margin: 80px auto 0 auto;
           width: 100%;
         `}>
+        <EuiTextAlign textAlign="center">
+          <EuiTitle size="s">
+            <h1>Choose how you want to operate Elastic</h1>
+          </EuiTitle>
+        </EuiTextAlign>
+        <EuiSpacer size="xxl" />
         <EuiFlexGroup gutterSize="m">
-          {SOLUTION_CARDS.map(card => (
-            <EuiFlexItem key={card.title}>
-              <EuiCard
-                paddingSize="none"
-                css={soultionCard}
-                selectable={
-                  pageViewExtended && {
-                    onClick: () => showProjectDetails(card.solution),
-                    isSelected: solution === card.solution,
-                  }
-                }
-                title={
-                  <EuiFlexGroup alignItems="center">
-                    <EuiFlexItem grow={false}>
-                      <EuiIcon type={card.logo} size="m" />
-                    </EuiFlexItem>
-                    <EuiFlexItem
-                      grow={false}
-                      css={css`
-                        margin-left: -16px;
-                      `}>
-                      {card.title}
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                }
-                titleElement="h4"
-                titleSize="xs">
-                <EuiSpacer size="s" />
-                <EuiSkeletonText
-                  lines={4}
-                  size="xs"
-                  contentAriaLabel="dummy text"
-                />
-                <EuiSpacer size="m" />
-                {!pageViewExtended && (
-                  <EuiButton
-                    fullWidth
-                    onClick={() =>
-                      router.push(
-                        {
-                          pathname: 'projects/create-project',
-                          query: {
-                            solution: card.solution,
-                          },
-                        },
-                        'projects/create-project'
-                      )
-                    }
-                    css={buttonRound}>
-                    Next
-                  </EuiButton>
-                )}
-                <EuiSpacer size="s" />
-              </EuiCard>
-            </EuiFlexItem>
-          ))}
-        </EuiFlexGroup>
-        <EuiSpacer size="l" />
-        {solution !== undefined && pageViewExtended && (
-          <EuiAccordion
-            id="projectDetails"
-            arrowDisplay="none"
-            forceState={accordionTrigger}
+          <EuiFlexItem
             css={css`
-              position: relative;
-            `}
-            buttonContent={
-              <div
-                css={css`
-                  position: absolute;
-                  left: 49%;
-                `}>
-                <EuiIcon type="arrowDown" color="primary" size="l" />
-              </div>
-            }
-            padding="l">
-            <EuiSpacer size="xxl" />
-            {accordionTrigger === 'open' && (
-              <EuiFlexGroup gutterSize="m">
-                <EuiFlexItem
-                  css={css`
-                    padding: 0 5px;
-                    width: 100%;
-                  `}>
-                  <EuiFlexGroup>
-                    <EuiFlexItem>
-                      <EuiCard
-                        textAlign="left"
-                        paddingSize="l"
-                        title={
-                          <>
-                            <EuiSpacer size="m" />
-                            {PROJECT_CLASSIC}
-                          </>
-                        }
-                        titleElement="h4">
-                        <EuiHorizontalRule margin="s" />
-                        <EuiSpacer size="s" />
-                        <EuiSkeletonText
-                          lines={2}
-                          size="s"
-                          contentAriaLabel="dummy text"
-                        />
-                        <EuiSpacer size="m" />
-                        <EuiSkeletonText
-                          lines={2}
-                          size="s"
-                          contentAriaLabel="dummy text"
-                        />
-                        <EuiSpacer size="m" />
-                        <EuiButton
-                          fullWidth
-                          onClick={() =>
-                            router.push(
-                              {
-                                pathname: 'deployments/create-deployment',
-                                query: {
-                                  solution: solution,
-                                },
-                              },
-                              'deployments/create-deployment'
-                            )
-                          }>
-                          Next
-                        </EuiButton>
-                      </EuiCard>
-                      <EuiSpacer size="l" />
-                    </EuiFlexItem>
+              padding: 0 5px;
+              width: 100%;
+            `}>
+            <EuiFlexGroup>
+              <EuiFlexItem>
+                <EuiCard
+                  textAlign="left"
+                  paddingSize="none"
+                  css={cardContainer}
+                  selectable={{
+                    onClick: () => handleUserSelection(PROJECT_CLASSIC),
+                    isSelected: projectType === PROJECT_CLASSIC,
+                  }}
+                  title={
+                    <>
+                      <EuiSpacer size="m" />
+                      {PROJECT_CLASSIC}
+                    </>
+                  }
+                  titleElement="h4">
+                  <EuiHorizontalRule margin="s" />
+                  <EuiSpacer size="s" />
+                  <EuiSkeletonText
+                    lines={2}
+                    size="s"
+                    contentAriaLabel="dummy text"
+                  />
+                  <EuiSpacer size="m" />
+                  <EuiSkeletonText
+                    lines={6}
+                    size="s"
+                    contentAriaLabel="dummy text"
+                  />
+                  <EuiSpacer size="m" />
+                  <EuiSkeletonText
+                    lines={2}
+                    size="s"
+                    contentAriaLabel="dummy text"
+                  />
+                  <EuiSpacer size="m" />
+                </EuiCard>
+                <EuiSpacer size="l" />
+              </EuiFlexItem>
 
-                    <EuiFlexItem>
-                      <EuiCard
-                        textAlign="left"
-                        paddingSize="l"
-                        title={
-                          <>
-                            <EuiSpacer size="m" />
-                            {PROJECT_SERVERLESS}
-                            <EuiBadge
-                              color="accent"
-                              css={css`
-                                margin-left: 5px;
-                                margin-top: -4px;
-                              `}>
-                              BETA
-                            </EuiBadge>
-                          </>
-                        }
-                        titleElement="h4">
-                        <EuiHorizontalRule margin="s" />
-                        <EuiSpacer size="s" />
-                        <EuiSkeletonText
-                          lines={2}
-                          size="s"
-                          contentAriaLabel="dummy text"
-                        />
-                        <EuiSpacer size="m" />
-                        <EuiSkeletonText
-                          lines={2}
-                          size="s"
-                          contentAriaLabel="dummy text"
-                        />
-                        <EuiSpacer size="m" />
-                        <EuiButton
-                          fullWidth
-                          onClick={() =>
-                            router.push(
-                              {
-                                pathname: 'projects/create-project',
-                                query: {
-                                  solution: solution,
-                                },
-                              },
-                              'projects/create-project'
-                            )
-                          }>
-                          Next
-                        </EuiButton>
-                      </EuiCard>
-                      <EuiSpacer size="l" />
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
-                </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiCard
+                  textAlign="left"
+                  paddingSize="none"
+                  css={cardContainer}
+                  selectable={{
+                    onClick: () => handleUserSelection(PROJECT_SERVERLESS),
+                    isSelected: projectType === PROJECT_SERVERLESS,
+                  }}
+                  title={
+                    <>
+                      <EuiSpacer size="m" />
+                      {PROJECT_SERVERLESS}
+                      <EuiBadge color="accent" css={badgeStyle}>
+                        BETA
+                      </EuiBadge>
+                    </>
+                  }
+                  titleElement="h4">
+                  <EuiHorizontalRule margin="s" />
+                  <EuiSpacer size="s" />
+                  <EuiSkeletonText
+                    lines={2}
+                    size="s"
+                    contentAriaLabel="dummy text"
+                  />
+                  <EuiSpacer size="m" />
+                  <EuiSkeletonText
+                    lines={6}
+                    size="s"
+                    contentAriaLabel="dummy text"
+                  />
+                  <EuiSpacer size="m" />
+                  <EuiSkeletonText
+                    lines={2}
+                    size="s"
+                    contentAriaLabel="dummy text"
+                  />
+                  <EuiSpacer size="m" />
+                </EuiCard>
+                <EuiSpacer size="l" />
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+        {projectType === PROJECT_SERVERLESS && (
+          <>
+            <EuiAccordion
+              id="projectDetails"
+              arrowDisplay="none"
+              forceState={accordionTrigger}
+              css={css`
+                position: relative;
+              `}
+              buttonContent={
+                <div
+                  css={css`
+                    position: absolute;
+                    left: 49%;
+                  `}>
+                  <EuiIcon type="arrowDown" color="primary" size="l" />
+                </div>
+              }
+              padding="l">
+              <EuiSpacer size="xxl" />
+              <EuiTextAlign textAlign="center">
+                <EuiText color="subdued" size="s">
+                  What do you want to do with Elastic?
+                </EuiText>
+              </EuiTextAlign>
+              <EuiSpacer size="l" />
+              <EuiFlexGroup
+                gutterSize="m"
+                css={css`
+                  padding: 0 8px;
+                `}>
+                {SOLUTION_CARDS.map(card => (
+                  <EuiFlexItem key={card.title}>
+                    <EuiCard
+                      paddingSize="none"
+                      css={cardContainer}
+                      selectable={{
+                        onClick: () => setSolution(card.solution),
+                        isSelected: solution === card.solution,
+                      }}
+                      title={
+                        <EuiFlexGroup alignItems="center">
+                          <EuiFlexItem grow={false}>
+                            <EuiIcon type={card.logo} size="m" />
+                          </EuiFlexItem>
+                          <EuiFlexItem
+                            grow={false}
+                            css={css`
+                              margin-left: -16px;
+                            `}>
+                            {card.title}
+                          </EuiFlexItem>
+                        </EuiFlexGroup>
+                      }
+                      titleElement="h4"
+                      titleSize="xs">
+                      <EuiSpacer size="s" />
+                      <EuiSkeletonText
+                        lines={4}
+                        size="xs"
+                        contentAriaLabel="dummy text"
+                      />
+                      <EuiSpacer size="s" />
+                    </EuiCard>
+                  </EuiFlexItem>
+                ))}
               </EuiFlexGroup>
-            )}
-          </EuiAccordion>
+              <EuiSpacer size="l" />
+            </EuiAccordion>
+          </>
         )}
+        <EuiHorizontalRule margin="s" />
+        <EuiFlexGroup justifyContent="flexEnd">
+          <EuiFlexItem grow={false}>
+            <EuiButton
+              fill
+              onClick={handleNextClick}
+              disabled={projectType === 'none' || solution === undefined}>
+              Next
+            </EuiButton>
+          </EuiFlexItem>
+        </EuiFlexGroup>
       </div>
     </>
   );

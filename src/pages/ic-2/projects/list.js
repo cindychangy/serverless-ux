@@ -98,17 +98,7 @@ const ProjectsPage = () => {
           <EuiButton
             fill
             iconType="plusInCircle"
-            onClick={() =>
-              router.push(
-                {
-                  pathname: '/ic-2/setup',
-                  query: {
-                    root: 'projectList',
-                  },
-                },
-                '/ic-2/setup'
-              )
-            }>
+            onClick={() => router.push('setup')}>
             Create project
           </EuiButton>
         </EuiFlexItem>
