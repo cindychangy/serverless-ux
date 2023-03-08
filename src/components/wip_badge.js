@@ -4,12 +4,12 @@ import { css } from '@emotion/react';
 
 const wipBadge = css`
   position: absolute;
-  bottom: 80px;
-  left: 80px;
+  bottom: 40px;
+  left: 40px;
   z-index: 1;
   font-size: 40px;
   font-weight: 800;
-  color: #fff;
+  color: #000;
   background: #ffc74b;
   padding: 40px;
 `;
@@ -19,7 +19,7 @@ const WipBadge = () => {
       <span role="img" aria-label="emoji">
         🚧
       </span>
-      WIP
+      &nbsp;WIP
     </div>
   );
 };

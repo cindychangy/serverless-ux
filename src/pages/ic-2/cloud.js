@@ -22,6 +22,7 @@ import {
   useEuiTheme,
 } from '@elastic/eui';
 import CloudHomepageLayout from '../../layouts/cloud/homepage';
+import WipBadge from '../../components/wip_badge';
 
 const CloudHomepage = () => {
   const { euiTheme } = useEuiTheme();
@@ -93,6 +94,7 @@ const CloudHomepage = () => {
 
   return (
     <CloudHomepageLayout route="setup" icNumber="2">
+      <WipBadge />
       <EuiSpacer size="m" />
       <EuiPanel>
         <EuiFlexGroup gutterSize="s" alignItems="center">

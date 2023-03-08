@@ -14,6 +14,7 @@ import {
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
 import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
+import WipBadge from '../../../components/wip_badge';
 import { css } from '@emotion/react';
 
 const ProjectDetailPage = () => {
@@ -126,6 +127,7 @@ const ProjectDetailPage = () => {
         <EuiButtonEmpty color="danger">Delete project</EuiButtonEmpty>,
         <EuiButton fill>Open project</EuiButton>,
       ]}>
+      <WipBadge />
       <EuiHorizontalRule />
       <EuiSpacer size="xxl" />
       <EuiTitle size="s">
