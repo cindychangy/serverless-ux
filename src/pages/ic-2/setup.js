@@ -42,6 +42,13 @@ const Setup = () => {
     }
   `;
 
+  const buttonSmall = css`
+    button {
+      block-size: 21px;
+      font-size: 12px;
+    }
+  `;
+
   const badgeStyle = css`
     margin-left: 5px;
     margin-top: -4px;
@@ -234,7 +241,7 @@ const Setup = () => {
                   <EuiFlexItem key={card.title}>
                     <EuiCard
                       paddingSize="none"
-                      css={cardContainer}
+                      css={[cardContainer, buttonSmall]}
                       selectable={{
                         onClick: () => setSolution(card.solution),
                         isSelected: solution === card.solution,
