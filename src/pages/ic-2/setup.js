@@ -67,7 +67,15 @@ const Setup = () => {
     }
 
     if (projectType === PROJECT_SERVERLESS) {
-      router.push('projects/create-project');
+      router.push(
+        {
+          pathname: 'projects/create-project',
+          query: {
+            solution,
+          },
+        },
+        'projects/create-project'
+      );
     }
   };
 
@@ -89,7 +97,7 @@ const Setup = () => {
       />
       <div
         css={css`
-          max-width: 800px;
+          max-width: 700px;
           margin: 80px auto 0 auto;
           width: 100%;
         `}>
