@@ -19,7 +19,6 @@ import {
   EuiHeaderSectionItem,
   useEuiTheme,
 } from '@elastic/eui';
-import IcPill from '../components/ic_pill';
 
 const KibanaLayout = ({ breadcrumbs, children }) => {
   const { euiTheme } = useEuiTheme();
@@ -155,9 +154,6 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
                 aria-label="header breadcrumbs"
                 breadcrumbs={breadcrumbs}
               />
-            </EuiHeaderSection>
-            <EuiHeaderSection side="right">
-              {/* <IcPill icNumber="2" /> */}
             </EuiHeaderSection>
           </EuiHeader>
 

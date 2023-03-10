@@ -12,9 +12,8 @@ import {
   EuiSpacer,
   useEuiTheme,
 } from '@elastic/eui';
-import IcPill from '../components/ic_pill';
 
-const Header = ({ accountType, signedIn, steps, logoLarge, icNumber }) => {
+const Header = ({ accountType, signedIn, steps, logoLarge }) => {
   const { euiTheme } = useEuiTheme();
   const stepStyles = css`
     .euiStepNumber {
@@ -113,16 +112,6 @@ const Header = ({ accountType, signedIn, steps, logoLarge, icNumber }) => {
           </div>
         )}
       </div>
-      {icNumber && (
-        <div
-          css={css`
-            position: absolute;
-            right: 20px;
-            top: 30px;
-          `}>
-          {/* <IcPill icNumber="3" /> */}
-        </div>
-      )}
     </>
   );
 };
