@@ -60,7 +60,7 @@ const IndexPage = () => {
             color: ${euiTheme.colors.darkShade};
             font-size: 15px;
           `}>
-          <p>Below are relevant flows for each checkpoint</p>
+          <p>Select a flow below:</p>
         </div>
         <div
           css={css`
@@ -74,51 +74,61 @@ const IndexPage = () => {
                 color: ${euiTheme.colors.darkShade};
                 letter-spacing: 2px;
               `}>
-              <h5>Integration Checkpoint #2</h5>
+              {/* <h5>Flows</h5> */}
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/ic-2/login">Exisiting users (WIP)</EuiLink>
+                <EuiLink href="/ic-2/login">
+                  Integration Checkpoint 2 (WIP)
+                </EuiLink>
               </h4>
               <p>Starts at login</p>
-            </EuiText>
-            <EuiSpacer size="s" />
-            {/* <EuiText css={flowLink}>
-              <h4>
-                <EuiLink href="">Deployment list view</EuiLink>
-              </h4>
-              <p>Starts at Cloud homepage</p>
-            </EuiText> */}
-            <EuiSpacer size="s" />
-          </EuiPanel>
-          <EuiSpacer size="xxl" />
-          <EuiPanel paddingSize="xl" color="transparent" hasBorder>
-            <EuiText
-              css={css`
-                text-transform: uppercase;
-                color: ${euiTheme.colors.darkShade};
-                letter-spacing: 2px;
-              `}>
-              <h5>Integration Checkpoint #3</h5>
-            </EuiText>
-            <EuiSpacer size="s" />
-            <EuiText css={flowLink}>
-              <h4>
-                <EuiLink href="/ic-3/trial/signup">Trial user v1 (WIP)</EuiLink>
-              </h4>
-              <p>Solution led project selection</p>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
                 <EuiLink href="/ic-3/trial/b/signup">
-                  Trial user v2 (WIP)
+                  Integration Checkpoint 3 (WIP)
                 </EuiLink>
               </h4>
-              <p>Project type led selection</p>
+              <p>Starts a create account</p>
             </EuiText>
+            <EuiSpacer size="s" />
+            <EuiText css={flowLink}>
+              <h4
+                css={css`
+                  color: #c9c9cb !important;
+                  font-weight: 500 !important;
+                `}>
+                Private Preview
+                {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
+              </h4>
+            </EuiText>
+            <EuiText css={flowLink}>
+              <h4
+                css={css`
+                  color: #c9c9cb !important;
+                  font-weight: 500 !important;
+                `}>
+                Public Gated Preview
+                {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
+              </h4>
+            </EuiText>
+            <EuiText css={flowLink}>
+              <h4
+                css={css`
+                  color: #c9c9cb !important;
+                  font-weight: 500 !important;
+                `}>
+                Public Ungated Preview
+                {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
+              </h4>
+            </EuiText>
+
+            <EuiSpacer size="s" />
           </EuiPanel>
+          <EuiSpacer size="xxl" />
         </div>
       </div>
       <EuiImage
