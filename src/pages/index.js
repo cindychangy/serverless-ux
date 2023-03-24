@@ -80,7 +80,7 @@ const IndexPage = () => {
             <EuiText css={flowLink}>
               <h4>
                 <EuiLink href="/ic-2/login">
-                  Integration Checkpoint 2 (WIP)
+                  Private Preview - IC #2 (WIP)
                 </EuiLink>
               </h4>
               <p>Starts at login</p>
@@ -89,7 +89,7 @@ const IndexPage = () => {
             <EuiText css={flowLink}>
               <h4>
                 <EuiLink href="/ic-3/trial/b/signup">
-                  Integration Checkpoint 3 (WIP)
+                  Gated Public Preview - IC #3 (WIP)
                 </EuiLink>
               </h4>
               <p>Starts a create account</p>
@@ -101,27 +101,7 @@ const IndexPage = () => {
                   color: #c9c9cb !important;
                   font-weight: 500 !important;
                 `}>
-                Private Preview
-                {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
-              </h4>
-            </EuiText>
-            <EuiText css={flowLink}>
-              <h4
-                css={css`
-                  color: #c9c9cb !important;
-                  font-weight: 500 !important;
-                `}>
-                Public Gated Preview
-                {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
-              </h4>
-            </EuiText>
-            <EuiText css={flowLink}>
-              <h4
-                css={css`
-                  color: #c9c9cb !important;
-                  font-weight: 500 !important;
-                `}>
-                Public Ungated Preview
+                Ungated Public Preview
                 {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
               </h4>
             </EuiText>
