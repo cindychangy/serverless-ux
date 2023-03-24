@@ -125,6 +125,16 @@ const IndexPage = () => {
                 {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
               </h4>
             </EuiText>
+            <EuiText css={flowLink}>
+              <h4
+                css={css`
+                  color: #c9c9cb !important;
+                  font-weight: 500 !important;
+                `}>
+                General Access
+                {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
+              </h4>
+            </EuiText>
 
             <EuiSpacer size="s" />
           </EuiPanel>
