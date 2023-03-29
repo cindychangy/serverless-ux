@@ -83,10 +83,7 @@ const CloudHomepageLayout = ({ children, route, icNumber }) => {
                     </EuiTitle>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
-                    <EuiButton
-                      iconType="plusInCircle"
-                      fill
-                      onClick={() => router.push(route)}>
+                    <EuiButton fill onClick={() => router.push(route)}>
                       Create
                     </EuiButton>
                   </EuiFlexItem>

@@ -13,9 +13,8 @@ import {
   EuiTitle,
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
-import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
-import WipBadge from '../../../components/wip_badge';
 import { css } from '@emotion/react';
+import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
 
 const ProjectDetailPage = () => {
   const router = useRouter();
@@ -127,9 +126,8 @@ const ProjectDetailPage = () => {
         <EuiButtonEmpty color="danger">Delete project</EuiButtonEmpty>,
         <EuiButton fill>Open project</EuiButton>,
       ]}>
-      <WipBadge />
       <EuiHorizontalRule />
-      <EuiSpacer size="xxl" />
+      <EuiSpacer size="s" />
       <EuiTitle size="s">
         <h3>Project Information</h3>
       </EuiTitle>
@@ -195,6 +193,18 @@ const ProjectDetailPage = () => {
       <EuiTitle size="s">
         <h3>Applications</h3>
       </EuiTitle>
+      <EuiSpacer size="s" />
+      <EuiText
+        size="s"
+        css={css`
+          max-width: 640px;
+        `}>
+        <p>
+          Helpful for connecting other applications to your project. You can set
+          a custom endpoint alias for your project that it is reflected in each
+          application endpoint.
+        </p>
+      </EuiText>
       <EuiSpacer size="l" />
       {PROJECT_APPLICATIONS.map(detail => (
         <EuiFlexGroup key={detail.content}>
