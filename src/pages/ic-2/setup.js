@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
   EuiButton,
   EuiSpacer,
   EuiHorizontalRule,
-  EuiSkeletonText,
   EuiBadge,
   EuiAccordion,
   EuiFlexGroup,
@@ -22,7 +21,6 @@ import {
 
 import Navbar from '../../components/navbar';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
-import SolutionCard from '../../components/solution_card';
 import { PROJECT_BETA, PROJECT_CLASSIC } from '../../constants/global';
 
 const Setup = () => {
@@ -32,6 +30,7 @@ const Setup = () => {
   const [accordionTrigger, setAccordionTrigger] = useState('closed');
 
   const cardContainer = css`
+    position: relative;
     .euiCard__content {
       padding: 10px 20px;
     }
@@ -51,9 +50,9 @@ const Setup = () => {
   `;
 
   const badgeStyle = css`
-    margin-left: 5px;
-    margin-top: -4px;
-    color: #fff !important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
   `;
 
   const handleUserSelection = userSelection => {
@@ -142,7 +141,7 @@ const Setup = () => {
                   control and access all solutions.
                 </p>
               </EuiText>
-              <EuiListGroup>
+              <EuiListGroup flush="false">
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
                   label={
@@ -189,7 +188,7 @@ const Setup = () => {
                 <EuiTextAlign textAlign="center">
                   <EuiSpacer size="m" />
                   {PROJECT_BETA}
-                  <EuiBadge color="accent" css={badgeStyle}>
+                  <EuiBadge color="warning" css={badgeStyle}>
                     BETA
                   </EuiBadge>
                 </EuiTextAlign>
@@ -203,7 +202,7 @@ const Setup = () => {
                   the tools you need.
                 </p>
               </EuiText>
-              <EuiListGroup>
+              <EuiListGroup flush="false">
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
                   label={
@@ -268,12 +267,42 @@ const Setup = () => {
                 `}>
                 {SOLUTION_CARDS.map(card => (
                   <EuiFlexItem key={card.title}>
-                    <SolutionCard
-                      title={card.title}
-                      logo={card.logo}
-                      description={card.description}
-                      features={card.features}
-                    />
+                    <EuiCard
+                      paddingSize="none"
+                      css={[cardContainer, buttonSmall]}
+                      selectable={{
+                        onClick: () => setSolution(card.solution),
+                        isSelected: solution === card.solution,
+                      }}
+                      title={
+                        <>
+                          <EuiSpacer size="s" />
+                          <EuiIcon type={card.logo} size="m" />
+                          <div>{card.title}</div>
+                        </>
+                      }
+                      titleElement="h4"
+                      titleSize="xs">
+                      <EuiBadge color="warning" css={badgeStyle}>
+                        <small>BETA</small>
+                      </EuiBadge>
+                      <EuiHorizontalRule margin="s" />
+                      <EuiSpacer size="s" />
+                      <EuiTextAlign align="left">
+                        <EuiText size="s">
+                          <p>{card.description}</p>
+                        </EuiText>
+                        <EuiSpacer size="m" />
+                        <EuiText size="xs">
+                          <h4>Includes:</h4>
+                        </EuiText>
+                        <EuiText size="s">
+                          <p>{card.features}</p>
+                        </EuiText>
+                      </EuiTextAlign>
+
+                      <EuiSpacer size="s" />
+                    </EuiCard>
                   </EuiFlexItem>
                 ))}
               </EuiFlexGroup>
