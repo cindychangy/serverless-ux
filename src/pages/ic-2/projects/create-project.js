@@ -18,7 +18,6 @@ import {
 
 import Navbar from '../../../components/navbar';
 import WaitPanel from '../../../components/wait_panel';
-import WipBadge from '../../../components/wip_badge';
 
 const CreateProject = () => {
   const router = useRouter();
@@ -74,7 +73,6 @@ const CreateProject = () => {
 
   return (
     <>
-      <WipBadge />
       <Navbar
         isCloud
         icNumber="2"

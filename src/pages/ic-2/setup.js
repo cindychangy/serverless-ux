@@ -20,7 +20,11 @@ import {
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
-import { SOLUTION_CARDS } from '../../constants/solution-cards';
+import {
+  SOLUTION_CARDS,
+  DEDICATED_CARD,
+  SERVERLESS_CARD,
+} from '../../constants/cards';
 import { PROJECT_BETA, PROJECT_CLASSIC } from '../../constants/global';
 
 const Setup = () => {
@@ -103,7 +107,7 @@ const Setup = () => {
       />
       <div
         css={css`
-          max-width: 700px;
+          max-width: 720px;
           margin: 80px auto 0 auto;
           width: 100%;
         `}>
@@ -116,7 +120,7 @@ const Setup = () => {
         <EuiFlexGroup justifyContent="center">
           <EuiFlexItem
             css={css`
-              max-width: 330px;
+              max-width: 350px;
             `}>
             <EuiCard
               textAlign="left"
@@ -133,7 +137,7 @@ const Setup = () => {
                 </EuiTextAlign>
               }
               titleElement="h4">
-              <EuiHorizontalRule margin="m" />
+              <EuiHorizontalRule margin="s" />
               <EuiSpacer size="s" />
               <EuiText size="s">
                 <p>
@@ -141,7 +145,8 @@ const Setup = () => {
                   control and access all solutions.
                 </p>
               </EuiText>
-              <EuiListGroup flush="false">
+              <EuiSpacer size="s" />
+              <EuiListGroup gutterSize="none">
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
                   label={
@@ -150,6 +155,7 @@ const Setup = () => {
                       any provisioned solutions
                     </EuiText>
                   }
+                  wrapText
                 />
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
@@ -158,6 +164,7 @@ const Setup = () => {
                       Manage hardware settings and capacity
                     </EuiText>
                   }
+                  wrapText
                 />
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
@@ -166,6 +173,7 @@ const Setup = () => {
                       Control upgrades, performance, and healthy
                     </EuiText>
                   }
+                  wrapText
                 />
               </EuiListGroup>
               <EuiSpacer size="m" />
@@ -174,7 +182,7 @@ const Setup = () => {
           </EuiFlexItem>
           <EuiFlexItem
             css={css`
-              max-width: 330px;
+              max-width: 350px;
             `}>
             <EuiCard
               textAlign="left"
@@ -195,14 +203,15 @@ const Setup = () => {
               }
               titleElement="h4">
               <EuiHorizontalRule margin="s" />
-              <EuiSpacer size="m" />
+              <EuiSpacer size="s" />
               <EuiText size="s">
                 <p>
                   Optimized experiences for each solution and quick access to
                   the tools you need.
                 </p>
               </EuiText>
-              <EuiListGroup flush="false">
+              <EuiSpacer size="s" />
+              <EuiListGroup gutterSize="none">
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
                   label={
@@ -211,6 +220,7 @@ const Setup = () => {
                       Elastic
                     </EuiText>
                   }
+                  wrapText
                 />
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
@@ -219,6 +229,7 @@ const Setup = () => {
                       Always on latest software version
                     </EuiText>
                   }
+                  wrapText
                 />
                 <EuiListGroupItem
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
@@ -227,6 +238,7 @@ const Setup = () => {
                       Specific pricing per solution used
                     </EuiText>
                   }
+                  wrapText
                 />
               </EuiListGroup>
               <EuiSpacer size="m" />
@@ -286,8 +298,8 @@ const Setup = () => {
                       <EuiBadge color="warning" css={badgeStyle}>
                         <small>BETA</small>
                       </EuiBadge>
-                      <EuiHorizontalRule margin="s" />
-                      <EuiSpacer size="s" />
+                      <EuiHorizontalRule margin="xs" />
+                      <EuiSpacer size="xs" />
                       <EuiTextAlign align="left">
                         <EuiText size="s">
                           <p>{card.description}</p>

@@ -1,3 +1,29 @@
+export const DEDICATED_CARD = [
+  {
+    service: 'Dedicated',
+    description:
+      'Provision and deploy your own Elastic Stack. Get maximum control and access all solutions',
+    features: [
+      'Ingest data, manage its lifecycle, and access it in any provisioned solutions',
+      'Manage hardware settings and capacity',
+      'Control upgrades, performance, and health',
+    ],
+  },
+];
+
+export const SERVERLESS_CARD = [
+  {
+    service: 'Fully-managed',
+    description:
+      'Optimized experiences for each solution and quick access to the tools you need.s',
+    features: [
+      'Health, performance and infrastructure scaling managed by Elastic',
+      'Always on latest software version',
+      'Specific pricing per solution used ',
+    ],
+  },
+];
+
 export const SOLUTION_CARDS = [
   {
     solution: 'search',
