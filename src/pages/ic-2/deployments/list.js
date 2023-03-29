@@ -19,7 +19,6 @@ import {
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
-import WipBadge from '../../../components/wip_badge';
 
 const DeploymentsPage = () => {
   const router = useRouter();
@@ -80,7 +79,6 @@ const DeploymentsPage = () => {
           text: 'Deployments',
         },
       ]}>
-      <WipBadge />
       <EuiHorizontalRule />
       <EuiFlexGroup justifyContent="spaceBetween">
         <EuiFlexItem grow={true}>

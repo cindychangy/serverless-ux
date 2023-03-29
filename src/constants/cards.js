@@ -28,7 +28,7 @@ export const SOLUTION_CARDS = [
   {
     solution: 'search',
     logo: 'logoElasticsearch',
-    title: 'Elasticsearch',
+    title: 'Elasticsearch serverless',
     description:
       'Build applications and search experiences on top of Elasticsearch.',
     features: 'APIs, connectors, web crawler, behavioral analytics',

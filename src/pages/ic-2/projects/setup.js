@@ -5,44 +5,38 @@ import { css } from '@emotion/react';
 import {
   EuiButton,
   EuiSpacer,
-  EuiSkeletonText,
+  EuiBadge,
   EuiFlexGroup,
   EuiFlexItem,
   EuiTextAlign,
+  EuiHorizontalRule,
+  EuiText,
   EuiIcon,
   EuiTitle,
   EuiCard,
 } from '@elastic/eui';
 
 import Navbar from '../../../components/navbar';
-import { SOLUTION_CARDS } from '../../../constants/solution-cards';
-import WipBadge from '../../../components/wip_badge';
+import { SOLUTION_CARDS } from '../../../constants/cards';
 
 const SetupFromProjectList = () => {
   const router = useRouter();
 
   const cardContainer = css`
+    position: relative;
     .euiCard__content {
-      text-align: left;
       padding: 10px 20px;
-    }
-    button {
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-      block-size: 28px;
-      font-size: 13px;
     }
   `;
 
-  const buttonRound = css`
-    border-radius: 6px !important;
-    block-size: 32px !important;
-    font-size: 1rem !important;
+  const badgeStyle = css`
+    position: absolute;
+    top: 10px;
+    right: 10px;
   `;
 
   return (
     <>
-      <WipBadge />
       <Navbar
         isCloud
         icNumber="2"
@@ -58,7 +52,7 @@ const SetupFromProjectList = () => {
       />
       <div
         css={css`
-          max-width: 700px;
+          max-width: 740px;
           margin: 80px auto 0 auto;
           width: 100%;
         `}>
@@ -69,38 +63,43 @@ const SetupFromProjectList = () => {
         </EuiTextAlign>
         <EuiSpacer size="xxl" />
 
-        <EuiFlexGroup justifyContent="center">
+        <EuiFlexGroup justifyContent="center" gutterSize="m">
           {SOLUTION_CARDS.map(card => (
             <EuiFlexItem key={card.title}>
               <EuiCard
                 paddingSize="none"
                 css={cardContainer}
                 title={
-                  <EuiFlexGroup alignItems="center">
-                    <EuiFlexItem grow={false}>
-                      <EuiIcon type={card.logo} size="m" />
-                    </EuiFlexItem>
-                    <EuiFlexItem
-                      grow={false}
-                      css={css`
-                        margin-left: -16px;
-                      `}>
-                      {card.title}
-                    </EuiFlexItem>
-                  </EuiFlexGroup>
+                  <>
+                    <EuiSpacer size="s" />
+                    <EuiIcon type={card.logo} size="m" />
+                    <div>{card.title}</div>
+                  </>
                 }
                 titleElement="h4"
                 titleSize="xs">
+                <EuiBadge color="warning" css={badgeStyle}>
+                  <small>BETA</small>
+                </EuiBadge>
+                <EuiHorizontalRule margin="xs" />
+                <EuiSpacer size="xs" />
+                <EuiTextAlign align="left">
+                  <EuiText size="s">
+                    <p>{card.description}</p>
+                  </EuiText>
+                  <EuiSpacer size="m" />
+                  <EuiText size="xs">
+                    <h4>Includes:</h4>
+                  </EuiText>
+                  <EuiText size="s">
+                    <p>{card.features}</p>
+                  </EuiText>
+                </EuiTextAlign>
+
                 <EuiSpacer size="s" />
-                <EuiSkeletonText
-                  lines={4}
-                  size="xs"
-                  contentAriaLabel="dummy text"
-                />
-                <EuiSpacer size="m" />
                 <EuiButton
                   fullWidth
-                  css={buttonRound}
+                  size="s"
                   onClick={() =>
                     router.push(
                       {

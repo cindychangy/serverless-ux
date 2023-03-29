@@ -21,7 +21,7 @@ import {
   CARDS_SEARCH,
   CARDS_SECURITY,
   CARDS_ALL,
-} from '../../constants/solution-cards';
+} from '../../constants/cards';
 
 const GuidedSetup = () => {
   const { euiTheme } = useEuiTheme();

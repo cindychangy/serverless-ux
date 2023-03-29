@@ -20,11 +20,7 @@ import {
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
-import {
-  SOLUTION_CARDS,
-  DEDICATED_CARD,
-  SERVERLESS_CARD,
-} from '../../constants/cards';
+import { SOLUTION_CARDS } from '../../constants/cards';
 import { PROJECT_BETA, PROJECT_CLASSIC } from '../../constants/global';
 
 const Setup = () => {
@@ -107,7 +103,7 @@ const Setup = () => {
       />
       <div
         css={css`
-          max-width: 720px;
+          max-width: 740px;
           margin: 80px auto 0 auto;
           width: 100%;
         `}>
