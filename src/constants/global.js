@@ -1,2 +1,2 @@
-export const PROJECT_SERVERLESS = 'Serverless';
-export const PROJECT_CLASSIC = 'Classic';
+export const PROJECT_BETA = 'Fully-managed';
+export const PROJECT_CLASSIC = 'Dedicated';

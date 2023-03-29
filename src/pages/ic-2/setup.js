@@ -20,8 +20,7 @@ import {
 
 import Navbar from '../../components/navbar';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
-import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../constants/global';
-import WipBadge from '../../components/wip_badge';
+import { PROJECT_BETA, PROJECT_CLASSIC } from '../../constants/global';
 
 const Setup = () => {
   const router = useRouter();
@@ -62,7 +61,7 @@ const Setup = () => {
       setSolution('none');
     }
 
-    if (userSelection === PROJECT_SERVERLESS) {
+    if (userSelection === PROJECT_BETA) {
       setSolution(undefined);
       setAccordionTrigger('open');
     }
@@ -73,7 +72,7 @@ const Setup = () => {
       router.push('deployments/create-deployment');
     }
 
-    if (projectType === PROJECT_SERVERLESS) {
+    if (projectType === PROJECT_BETA) {
       router.push(
         {
           pathname: 'projects/create-project',
@@ -88,7 +87,6 @@ const Setup = () => {
 
   return (
     <>
-      <WipBadge />
       <Navbar
         isCloud
         icNumber="2"
@@ -167,13 +165,13 @@ const Setup = () => {
                   paddingSize="none"
                   css={cardContainer}
                   selectable={{
-                    onClick: () => handleUserSelection(PROJECT_SERVERLESS),
-                    isSelected: projectType === PROJECT_SERVERLESS,
+                    onClick: () => handleUserSelection(PROJECT_BETA),
+                    isSelected: projectType === PROJECT_BETA,
                   }}
                   title={
                     <>
                       <EuiSpacer size="m" />
-                      {PROJECT_SERVERLESS}
+                      {PROJECT_BETA}
                       <EuiBadge color="accent" css={badgeStyle}>
                         BETA
                       </EuiBadge>
@@ -206,7 +204,7 @@ const Setup = () => {
             </EuiFlexGroup>
           </EuiFlexItem>
         </EuiFlexGroup>
-        {projectType === PROJECT_SERVERLESS && (
+        {projectType === PROJECT_BETA && (
           <>
             <EuiAccordion
               id="projectDetails"

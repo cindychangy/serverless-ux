@@ -79,9 +79,7 @@ const IndexPage = () => {
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/ic-2/login">
-                  Private Preview - IC #2 (WIP)
-                </EuiLink>
+                <EuiLink href="/ic-2/login">Private Preview - IC #2</EuiLink>
               </h4>
               <p>Starts at login</p>
             </EuiText>

@@ -61,6 +61,11 @@ const GuidedSetup = () => {
     }
   `;
 
+  const handleGuideClick = () => {
+    setGuide(!guideOpen);
+    setButtonDisabled(!buttonDisabled);
+  };
+
   return (
     <KibanaLayout
       template="empty"
@@ -94,7 +99,7 @@ const GuidedSetup = () => {
               {CARDS.map((guide, index) => (
                 <EuiFlexItem key={index} grow={false}>
                   <EuiCard
-                    onClick={() => {}}
+                    onClick={() => handleGuideClick}
                     css={guideCard}
                     title={
                       <>

@@ -23,7 +23,7 @@ import {
 } from '@elastic/eui';
 
 import Header from '../../../components/header';
-import { PROJECT_SERVERLESS, PROJECT_CLASSIC } from '../../../constants/global';
+import { PROJECT_BETA, PROJECT_CLASSIC } from '../../../constants/global';
 import WipBadge from '../../../components/wip_badge';
 
 const ProjectSetup = () => {
@@ -273,8 +273,8 @@ const ProjectSetup = () => {
                           }
                           titleElement="h4"
                           selectable={{
-                            onClick: () => setProjectType(PROJECT_SERVERLESS),
-                            isSelected: projectType === PROJECT_SERVERLESS,
+                            onClick: () => setProjectType(PROJECT_BETA),
+                            isSelected: projectType === PROJECT_BETA,
                           }}>
                           <EuiHorizontalRule margin="s" />
                           <EuiSpacer size="s" />
@@ -412,7 +412,7 @@ const ProjectSetup = () => {
                 </EuiFlexGroup>
               </div>
             )}
-            {projectType === PROJECT_SERVERLESS && (
+            {projectType === PROJECT_BETA && (
               <EuiFlexItem
                 css={css`
                   width: 100%;

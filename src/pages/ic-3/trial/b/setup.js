@@ -23,10 +23,7 @@ import {
 } from '@elastic/eui';
 
 import Header from '../../../../components/header';
-import {
-  PROJECT_SERVERLESS,
-  PROJECT_CLASSIC,
-} from '../../../../constants/global';
+import { PROJECT_BETA, PROJECT_CLASSIC } from '../../../../constants/global';
 import WipBadge from '../../../../components/wip_badge';
 
 const ProjectSetup = () => {
@@ -123,8 +120,8 @@ const ProjectSetup = () => {
   ];
 
   const showProjectDetails = userSelection => {
-    if (userSelection === PROJECT_SERVERLESS) {
-      setProjectType(PROJECT_SERVERLESS);
+    if (userSelection === PROJECT_BETA) {
+      setProjectType(PROJECT_BETA);
       setAccordionTrigger('open');
     } else {
       setProjectType(PROJECT_CLASSIC);
@@ -212,8 +209,8 @@ const ProjectSetup = () => {
               }
               titleElement="h4"
               selectable={{
-                onClick: () => showProjectDetails(PROJECT_SERVERLESS),
-                isSelected: projectType === PROJECT_SERVERLESS,
+                onClick: () => showProjectDetails(PROJECT_BETA),
+                isSelected: projectType === PROJECT_BETA,
               }}>
               <EuiHorizontalRule margin="s" />
               <EuiSpacer size="s" />
@@ -253,7 +250,7 @@ const ProjectSetup = () => {
             padding="l">
             <EuiSpacer size="xxl" />
 
-            {projectType === PROJECT_SERVERLESS ? (
+            {projectType === PROJECT_BETA ? (
               <>
                 <EuiText>
                   <h4>Project type</h4>
