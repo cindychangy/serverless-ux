@@ -36,7 +36,7 @@ export const SOLUTION_CARDS = [
   {
     solution: 'security',
     logo: 'logoSecurity',
-    title: 'Security',
+    title: 'Security service',
     description:
       'Unify and analyze security data in a project specialized for security.',
     features: 'SIEM, endpoint security, cloud security',
@@ -44,7 +44,7 @@ export const SOLUTION_CARDS = [
   {
     solution: 'observability',
     logo: 'logoObservability',
-    title: 'Observability',
+    title: 'Observability service',
     description:
       'Monitor systems and services in a project specialized for observability.',
     features: 'Logs, metrics, traces, synthetics',

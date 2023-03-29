@@ -147,8 +147,8 @@ const Setup = () => {
                   icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
                   label={
                     <EuiText size="s">
-                      First Ingest data, manage its lifecycle, and access it in
-                      any provisioned solutions
+                      Ingest data, manage its lifecycle, and access it in any
+                      provisioned solutions
                     </EuiText>
                   }
                   wrapText
@@ -264,7 +264,7 @@ const Setup = () => {
               <EuiSpacer size="xxl" />
               <EuiTextAlign textAlign="center">
                 <EuiText color="subdued" size="s">
-                  Select a solution
+                  Select a solution.
                 </EuiText>
               </EuiTextAlign>
               <EuiSpacer size="l" />

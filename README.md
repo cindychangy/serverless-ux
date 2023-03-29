@@ -16,7 +16,7 @@
 
     ```shell
     #run the project locally
-    yarn develop
+    yarn dev
     ```
 
 2.  **View the site**
