@@ -16,10 +16,13 @@ import {
   EuiTitle,
   EuiCard,
   EuiText,
+  EuiListGroup,
+  EuiListGroupItem,
 } from '@elastic/eui';
 
 import Navbar from '../../components/navbar';
 import { SOLUTION_CARDS } from '../../constants/solution-cards';
+import SolutionCard from '../../components/solution_card';
 import { PROJECT_BETA, PROJECT_CLASSIC } from '../../constants/global';
 
 const Setup = () => {
@@ -30,7 +33,6 @@ const Setup = () => {
 
   const cardContainer = css`
     .euiCard__content {
-      text-align: left;
       padding: 10px 20px;
     }
     button {
@@ -112,96 +114,125 @@ const Setup = () => {
           </EuiTitle>
         </EuiTextAlign>
         <EuiSpacer size="xxl" />
-        <EuiFlexGroup gutterSize="m">
+        <EuiFlexGroup justifyContent="center">
           <EuiFlexItem
             css={css`
-              padding: 0 5px;
-              width: 100%;
+              max-width: 330px;
             `}>
-            <EuiFlexGroup>
-              <EuiFlexItem>
-                <EuiCard
-                  textAlign="left"
-                  paddingSize="none"
-                  css={cardContainer}
-                  selectable={{
-                    onClick: () => handleUserSelection(PROJECT_CLASSIC),
-                    isSelected: projectType === PROJECT_CLASSIC,
-                  }}
-                  title={
-                    <>
-                      <EuiSpacer size="m" />
-                      {PROJECT_CLASSIC}
-                    </>
+            <EuiCard
+              textAlign="left"
+              paddingSize="none"
+              css={cardContainer}
+              selectable={{
+                onClick: () => handleUserSelection(PROJECT_CLASSIC),
+                isSelected: projectType === PROJECT_CLASSIC,
+              }}
+              title={
+                <EuiTextAlign textAlign="center">
+                  <EuiSpacer size="m" />
+                  {PROJECT_CLASSIC}
+                </EuiTextAlign>
+              }
+              titleElement="h4">
+              <EuiHorizontalRule margin="m" />
+              <EuiSpacer size="s" />
+              <EuiText size="s">
+                <p>
+                  Provision and deploy your own Elastic Stack. Get maximum
+                  control and access all solutions.
+                </p>
+              </EuiText>
+              <EuiListGroup>
+                <EuiListGroupItem
+                  icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
+                  label={
+                    <EuiText size="s">
+                      First Ingest data, manage its lifecycle, and access it in
+                      any provisioned solutions
+                    </EuiText>
                   }
-                  titleElement="h4">
-                  <EuiHorizontalRule margin="s" />
-                  <EuiSpacer size="s" />
-                  <EuiSkeletonText
-                    lines={2}
-                    size="s"
-                    contentAriaLabel="dummy text"
-                  />
-                  <EuiSpacer size="m" />
-                  <EuiSkeletonText
-                    lines={6}
-                    size="s"
-                    contentAriaLabel="dummy text"
-                  />
-                  <EuiSpacer size="m" />
-                  <EuiSkeletonText
-                    lines={2}
-                    size="s"
-                    contentAriaLabel="dummy text"
-                  />
-                  <EuiSpacer size="m" />
-                </EuiCard>
-                <EuiSpacer size="l" />
-              </EuiFlexItem>
-
-              <EuiFlexItem>
-                <EuiCard
-                  textAlign="left"
-                  paddingSize="none"
-                  css={cardContainer}
-                  selectable={{
-                    onClick: () => handleUserSelection(PROJECT_BETA),
-                    isSelected: projectType === PROJECT_BETA,
-                  }}
-                  title={
-                    <>
-                      <EuiSpacer size="m" />
-                      {PROJECT_BETA}
-                      <EuiBadge color="accent" css={badgeStyle}>
-                        BETA
-                      </EuiBadge>
-                    </>
+                />
+                <EuiListGroupItem
+                  icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
+                  label={
+                    <EuiText size="s">
+                      Manage hardware settings and capacity
+                    </EuiText>
                   }
-                  titleElement="h4">
-                  <EuiHorizontalRule margin="s" />
-                  <EuiSpacer size="s" />
-                  <EuiSkeletonText
-                    lines={2}
-                    size="s"
-                    contentAriaLabel="dummy text"
-                  />
+                />
+                <EuiListGroupItem
+                  icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
+                  label={
+                    <EuiText size="s">
+                      Control upgrades, performance, and healthy
+                    </EuiText>
+                  }
+                />
+              </EuiListGroup>
+              <EuiSpacer size="m" />
+            </EuiCard>
+            <EuiSpacer size="l" />
+          </EuiFlexItem>
+          <EuiFlexItem
+            css={css`
+              max-width: 330px;
+            `}>
+            <EuiCard
+              textAlign="left"
+              paddingSize="none"
+              css={cardContainer}
+              selectable={{
+                onClick: () => handleUserSelection(PROJECT_BETA),
+                isSelected: projectType === PROJECT_BETA,
+              }}
+              title={
+                <EuiTextAlign textAlign="center">
                   <EuiSpacer size="m" />
-                  <EuiSkeletonText
-                    lines={6}
-                    size="s"
-                    contentAriaLabel="dummy text"
-                  />
-                  <EuiSpacer size="m" />
-                  <EuiSkeletonText
-                    lines={2}
-                    size="s"
-                    contentAriaLabel="dummy text"
-                  />
-                  <EuiSpacer size="m" />
-                </EuiCard>
-                <EuiSpacer size="l" />
-              </EuiFlexItem>
-            </EuiFlexGroup>
+                  {PROJECT_BETA}
+                  <EuiBadge color="accent" css={badgeStyle}>
+                    BETA
+                  </EuiBadge>
+                </EuiTextAlign>
+              }
+              titleElement="h4">
+              <EuiHorizontalRule margin="s" />
+              <EuiSpacer size="m" />
+              <EuiText size="s">
+                <p>
+                  Optimized experiences for each solution and quick access to
+                  the tools you need.
+                </p>
+              </EuiText>
+              <EuiListGroup>
+                <EuiListGroupItem
+                  icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
+                  label={
+                    <EuiText size="s">
+                      Health, performance and infrastructure scaling managed by
+                      Elastic
+                    </EuiText>
+                  }
+                />
+                <EuiListGroupItem
+                  icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
+                  label={
+                    <EuiText size="s">
+                      Always on latest software version
+                    </EuiText>
+                  }
+                />
+                <EuiListGroupItem
+                  icon={<EuiIcon type="check" size="m" color="#00bfb3" />}
+                  label={
+                    <EuiText size="s">
+                      Specific pricing per solution used
+                    </EuiText>
+                  }
+                />
+              </EuiListGroup>
+              <EuiSpacer size="m" />
+            </EuiCard>
+            <EuiSpacer size="l" />
           </EuiFlexItem>
         </EuiFlexGroup>
         {projectType === PROJECT_BETA && (
@@ -226,7 +257,7 @@ const Setup = () => {
               <EuiSpacer size="xxl" />
               <EuiTextAlign textAlign="center">
                 <EuiText color="subdued" size="s">
-                  What do you want to do with Elastic?
+                  Select a solution
                 </EuiText>
               </EuiTextAlign>
               <EuiSpacer size="l" />
@@ -237,37 +268,12 @@ const Setup = () => {
                 `}>
                 {SOLUTION_CARDS.map(card => (
                   <EuiFlexItem key={card.title}>
-                    <EuiCard
-                      paddingSize="none"
-                      css={[cardContainer, buttonSmall]}
-                      selectable={{
-                        onClick: () => setSolution(card.solution),
-                        isSelected: solution === card.solution,
-                      }}
-                      title={
-                        <EuiFlexGroup alignItems="center">
-                          <EuiFlexItem grow={false}>
-                            <EuiIcon type={card.logo} size="m" />
-                          </EuiFlexItem>
-                          <EuiFlexItem
-                            grow={false}
-                            css={css`
-                              margin-left: -16px;
-                            `}>
-                            {card.title}
-                          </EuiFlexItem>
-                        </EuiFlexGroup>
-                      }
-                      titleElement="h4"
-                      titleSize="xs">
-                      <EuiSpacer size="s" />
-                      <EuiSkeletonText
-                        lines={4}
-                        size="xs"
-                        contentAriaLabel="dummy text"
-                      />
-                      <EuiSpacer size="s" />
-                    </EuiCard>
+                    <SolutionCard
+                      title={card.title}
+                      logo={card.logo}
+                      description={card.description}
+                      features={card.features}
+                    />
                   </EuiFlexItem>
                 ))}
               </EuiFlexGroup>

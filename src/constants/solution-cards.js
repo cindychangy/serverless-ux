@@ -3,16 +3,25 @@ export const SOLUTION_CARDS = [
     solution: 'search',
     logo: 'logoElasticsearch',
     title: 'Elasticsearch',
+    description:
+      'Build applications and search experiences on top of Elasticsearch.',
+    features: 'APIs, connectors, web crawler, behavioral analytics',
   },
   {
     solution: 'observability',
     logo: 'logoObservability',
     title: 'Observability',
+    description:
+      'Monitor systems and services in a project specialized for observability.',
+    features: 'Logs, metrics, traces, synthetics',
   },
   {
     solution: 'security',
     logo: 'logoSecurity',
     title: 'Security',
+    description:
+      'Unify and analyze security data in a project specialized for security.',
+    features: 'SIEM, endpoint security, cloud security',
   },
 ];
 
