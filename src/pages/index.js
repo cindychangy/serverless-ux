@@ -85,12 +85,17 @@ const IndexPage = () => {
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
-              <h4>
-                <EuiLink href="/ic-3/trial/b/signup">
+              <h4
+                css={css`
+                  color: #c9c9cb !important;
+                  font-weight: 500 !important;
+                `}>
+                {/* <EuiLink href="/ic-3/trial/b/signup">
                   Gated Public Preview - IC #3 (WIP)
-                </EuiLink>
+                </EuiLink> */}
+                Gated Public Preview - IC #3 (WIP)
               </h4>
-              <p>Starts a create account</p>
+              {/* <p>Starts a create account</p> */}
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
