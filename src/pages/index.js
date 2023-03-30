@@ -60,7 +60,7 @@ const IndexPage = () => {
             color: ${euiTheme.colors.darkShade};
             font-size: 15px;
           `}>
-          <p>Select a flow below:</p>
+          <p>Select a checkpoint below to see the flow</p>
         </div>
         <div
           css={css`
@@ -79,9 +79,10 @@ const IndexPage = () => {
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4>
-                <EuiLink href="/ic-2/login">Private Preview - IC #2</EuiLink>
+                <EuiLink href="/ic-april/login">
+                  IC April - Private Preview
+                </EuiLink>
               </h4>
-              <p>Starts at login</p>
             </EuiText>
             <EuiSpacer size="s" />
             <EuiText css={flowLink}>
@@ -93,27 +94,29 @@ const IndexPage = () => {
                 {/* <EuiLink href="/ic-3/trial/b/signup">
                   Gated Public Preview - IC #3 (WIP)
                 </EuiLink> */}
-                Gated Public Preview - IC #3
+                IC June - Gated Public Preview
               </h4>
               {/* <p>Starts a create account</p> */}
             </EuiText>
+            <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4
                 css={css`
                   color: #c9c9cb !important;
                   font-weight: 500 !important;
                 `}>
-                Ungated Public Preview
+                IC August - Ungated Public Preview
                 {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
               </h4>
             </EuiText>
+            <EuiSpacer size="s" />
             <EuiText css={flowLink}>
               <h4
                 css={css`
                   color: #c9c9cb !important;
                   font-weight: 500 !important;
                 `}>
-                General Access
+                IC October - General Access
                 {/* <EuiLink href="/ic-3/trial/b/signup">Private Preview</EuiLink> */}
               </h4>
             </EuiText>

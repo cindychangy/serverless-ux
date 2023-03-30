@@ -35,7 +35,7 @@ const DeploymentDetailPage = () => {
   const BREADCRUMBS = [
     {
       text: 'Cloud',
-      href: '/ic-2/cloud',
+      href: '/ic-april/cloud',
     },
     {
       text: 'Deployments',
@@ -51,7 +51,7 @@ const DeploymentDetailPage = () => {
       name: 'Deployments',
       id: 'deployments',
       isSelected: false,
-      onClick: () => router.push('/ic-2/projects/list'),
+      onClick: () => router.push('/ic-april/projects/list'),
       items: [
         {
           name: DEPLOYMENT_TITLE ? DEPLOYMENT_TITLE : 'My deployment',
@@ -149,7 +149,7 @@ const DeploymentDetailPage = () => {
       name: 'Projects',
       id: 'projects',
       isSelected: false,
-      onClick: () => router.push('/ic-2/projects/list'),
+      onClick: () => router.push('/ic-april/projects/list'),
     },
   ];
 

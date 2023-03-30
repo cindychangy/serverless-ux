@@ -23,7 +23,7 @@ const ProjectDetailPage = () => {
   const BREADCRUMBS = [
     {
       text: 'Cloud',
-      href: '/ic-2/cloud',
+      href: '/ic-april/cloud',
     },
     {
       text: 'Projects',
@@ -39,13 +39,13 @@ const ProjectDetailPage = () => {
       name: 'Deployments',
       id: 'deployments',
       isSelected: false,
-      onClick: () => router.push('/ic-2/deployments/list'),
+      onClick: () => router.push('/ic-april/deployments/list'),
     },
     {
       name: 'Projects',
       id: 'projects',
       isSelected: false,
-      onClick: () => router.push('/ic-2/projects/list'),
+      onClick: () => router.push('/ic-april/projects/list'),
       items: [
         {
           name: PROJECT_TITLE ? PROJECT_TITLE : 'My project',
@@ -55,7 +55,7 @@ const ProjectDetailPage = () => {
           forceOpen: true,
           items: [
             {
-              name: 'Ingest data',
+              name: 'Ingest & data',
               id: 'ingest-data',
               isSelected: false,
             },

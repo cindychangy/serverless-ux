@@ -14,12 +14,13 @@ import {
   EuiTableHeaderCell,
   EuiTableRow,
   EuiLink,
+  EuiBadge,
   EuiHorizontalRule,
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
 
-const ProjectsPage = () => {
+const DeploymentsPage = () => {
   const router = useRouter();
 
   const handleClick = route => {
@@ -27,8 +28,8 @@ const ProjectsPage = () => {
   };
 
   const tableStyles = css`
-    .euiTableHeaderCell:nth-child(4),
-    .euiTableRowCell:nth-child(4) {
+    .euiTableHeaderCell:nth-child(5),
+    .euiTableRowCell:nth-child(5) {
       .euiTableCellContent {
         justify-content: flex-end;
       }
@@ -36,28 +37,18 @@ const ProjectsPage = () => {
   `;
 
   const TABLE_HEADER = [
-    'Project',
-    'Type',
+    'Deployment',
+    'Status',
+    'Version',
     'Cloud provider & region',
     'Actions',
   ];
 
   const TABLE_ITEMS = [
     {
-      name: 'Access Logs POC',
-      type: 'Observability',
-      region: 'GCP - Iowa (us-central1)',
-      actions: <EuiLink href="#">Manage</EuiLink>,
-    },
-    {
-      name: 'Access Logs POC',
-      type: 'Observability',
-      region: 'GCP - Iowa (us-central1)',
-      actions: <EuiLink href="#">Manage</EuiLink>,
-    },
-    {
-      name: 'Access Logs POC',
-      type: 'Observability',
+      name: 'Security xyz2064',
+      status: <EuiBadge color="success">Healthy</EuiBadge>,
+      version: '8.5.0',
       region: 'GCP - Iowa (us-central1)',
       actions: <EuiLink href="#">Manage</EuiLink>,
     },
@@ -69,35 +60,38 @@ const ProjectsPage = () => {
         {
           name: 'Deployments',
           id: `nav_deployments`,
-          onClick: () => handleClick('/ic-2/deployments/list'),
+          isSelected: true,
+          onClick: handleClick,
         },
         {
           name: 'Projects',
           id: `nav_projects`,
-          isSelected: true,
+          onClick: () => handleClick('/ic-april/projects/list'),
         },
       ]}
-      pageTitle="Projects"
+      pageTitle="Deployments"
       breadcrumbs={[
         {
           text: 'Cloud',
-          href: '/ic-2/cloud',
+          href: '/ic-april/cloud',
         },
         {
-          text: 'Projects',
+          text: 'Deployments',
         },
       ]}>
       <EuiHorizontalRule />
       <EuiFlexGroup justifyContent="spaceBetween">
         <EuiFlexItem grow={true}>
-          <EuiSearchBar box={{ placeholder: 'e.g: type:Observability ' }} />
+          <EuiSearchBar
+            box={{ placeholder: 'e.g: healthy:y us-east tag:(apm:on)' }}
+          />
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
           <EuiButton
             fill
             iconType="plusInCircle"
-            onClick={() => router.push('setup')}>
-            Create project
+            onClick={() => router.push('create-deployment')}>
+            Create deployment
           </EuiButton>
         </EuiFlexItem>
       </EuiFlexGroup>
@@ -105,19 +99,22 @@ const ProjectsPage = () => {
       <EuiTable css={tableStyles}>
         <EuiTableHeader key="header">
           {TABLE_HEADER.map((header, index) => (
-            <EuiTableHeaderCell key={index}>{header}</EuiTableHeaderCell>
+            <EuiTableHeaderCell key={header + index}>
+              {header}
+            </EuiTableHeaderCell>
           ))}
         </EuiTableHeader>
         <EuiTableBody>
-          {TABLE_ITEMS.map((item, index) => (
-            <EuiTableRow key={item.name + index}>
-              <Fragment>
+          {TABLE_ITEMS.map(item => (
+            <EuiTableRow key="row">
+              <Fragment key={item.name}>
                 <EuiTableRowCell>
                   <EuiLink onClick={() => router.push('kibana')}>
                     {item.name}
                   </EuiLink>
                 </EuiTableRowCell>
-                <EuiTableRowCell>{item.type}</EuiTableRowCell>
+                <EuiTableRowCell>{item.status}</EuiTableRowCell>
+                <EuiTableRowCell>{item.version}</EuiTableRowCell>
                 <EuiTableRowCell>{item.region}</EuiTableRowCell>
                 <EuiTableRowCell>
                   <EuiLink
@@ -144,4 +141,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default DeploymentsPage;
