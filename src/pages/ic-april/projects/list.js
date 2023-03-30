@@ -44,8 +44,8 @@ const ProjectsPage = () => {
 
   const TABLE_ITEMS = [
     {
-      name: 'Access Logs POC',
-      type: 'Observability',
+      name: 'Search_docs',
+      type: 'Elasticsearch',
       region: 'GCP - Iowa (us-central1)',
       actions: <EuiLink href="#">Manage</EuiLink>,
     },
@@ -56,8 +56,8 @@ const ProjectsPage = () => {
       actions: <EuiLink href="#">Manage</EuiLink>,
     },
     {
-      name: 'Access Logs POC',
-      type: 'Observability',
+      name: 'dev-search-engine',
+      type: 'Elasticsearch',
       region: 'GCP - Iowa (us-central1)',
       actions: <EuiLink href="#">Manage</EuiLink>,
     },

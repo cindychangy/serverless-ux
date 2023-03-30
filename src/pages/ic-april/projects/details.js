@@ -20,6 +20,8 @@ const ProjectDetailPage = () => {
   const router = useRouter();
   const PROJECT_TITLE = router.query.projectTitle;
 
+  console.log(router);
+
   const BREADCRUMBS = [
     {
       text: 'Cloud',
@@ -58,16 +60,48 @@ const ProjectDetailPage = () => {
               name: 'Ingest & data',
               id: 'ingest-data',
               isSelected: false,
+              onClick: () =>
+                router.push(
+                  {
+                    pathname: 'injest-data',
+                    query: {
+                      projectTitle: PROJECT_TITLE,
+                    },
+                  },
+                  'injest-data'
+                ),
             },
             {
               name: 'Performance',
               id: 'performance',
               isSelected: false,
+              onClick: () =>
+                router.push(
+                  {
+                    pathname: 'performance',
+                    query: {
+                      projectTitle: PROJECT_TITLE,
+                    },
+                    shallow: true,
+                  },
+                  'performance'
+                ),
             },
             {
               name: 'Security',
               id: 'security',
               isSelected: false,
+              onClick: () =>
+                router.push(
+                  {
+                    pathname: 'security',
+                    query: {
+                      projectTitle: PROJECT_TITLE,
+                    },
+                    shallow: true,
+                  },
+                  'security'
+                ),
             },
           ],
         },

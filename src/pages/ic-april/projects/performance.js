@@ -1,21 +1,20 @@
 /** @jsxImportSource @emotion/react */
+/* eslint-disable @next/next/no-img-element */
 import {
   EuiSpacer,
-  EuiButton,
-  EuiButtonEmpty,
+  EuiSwitch,
   EuiHorizontalRule,
   EuiFlexGroup,
   EuiFlexItem,
   EuiText,
   EuiLink,
-  EuiTtitle,
-  EuiBadge,
   EuiTitle,
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
 import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
+import { css } from '@emotion/react';
 
-const InjestDataPage = () => {
+const PerformancePage = () => {
   const router = useRouter();
   const PROJECT_TITLE = router.query.projectTitle;
 
@@ -66,23 +65,23 @@ const InjestDataPage = () => {
             {
               name: 'Ingest data',
               id: 'ingest-data',
-              isSelected: true,
-            },
-            {
-              name: 'Performance',
-              id: 'performance',
               isSelected: false,
               onClick: () =>
                 router.push(
                   {
-                    pathname: 'performance',
+                    pathname: 'ingest-data',
                     query: {
                       projectTitle: PROJECT_TITLE,
                     },
                     shallow: true,
                   },
-                  'performance'
+                  'injest-data'
                 ),
+            },
+            {
+              name: 'Performance',
+              id: 'performance',
+              isSelected: true,
             },
             {
               name: 'Security',
@@ -108,50 +107,79 @@ const InjestDataPage = () => {
 
   return (
     <CloudSubPageLayout
-      pageTitle="Injest & data"
+      pageTitle="Performance"
       breadcrumbs={BREADCRUMBS}
       navItems={SIDE_NAV}>
       <EuiHorizontalRule />
 
       <EuiTitle size="s">
-        <h4>Ingest</h4>
+        <h4>Search performance</h4>
       </EuiTitle>
       <EuiSpacer size="s" />
       <EuiText size="s">
-        <p>Manage how to transform data and load it to your project</p>
+        <p>
+          See how your project has performed based on current search power
+          settings
+        </p>
       </EuiText>
-      <EuiSpacer size="xl" />
-      <EuiFlexGroup direction="column" gutterSize="l">
-        <EuiFlexItem>
-          <EuiLink href="#">Ingest pipelines</EuiLink>
-        </EuiFlexItem>
-        <EuiFlexItem>
-          <EuiLink href="#">Logstash pipelines</EuiLink>
-        </EuiFlexItem>
-      </EuiFlexGroup>
+      <img
+        src="/images/chart.png"
+        alt="chart"
+        width="550"
+        css={css`
+          margin-left: -15px;
+        `}
+      />
+
       <EuiSpacer size="xl" />
       <EuiSpacer size="xxl" />
       <EuiTitle size="s">
-        <h4>Data</h4>
+        <h4>Search autoscaling</h4>
       </EuiTitle>
       <EuiSpacer size="s" />
       <EuiText size="s">
-        <p>Manage data in your project</p>
+        <p>Search capacity is automatically scaled as your workload changes</p>
       </EuiText>
       <EuiSpacer size="xl" />
-      <EuiFlexGroup direction="column" gutterSize="l">
-        <EuiFlexItem>
-          <EuiLink href="#">Index management</EuiLink>
+      <EuiFlexGroup
+        alignContent="center"
+        css={css`
+          max-width: 800px;
+        `}>
+        <EuiFlexItem grow={1}>
+          <EuiTitle size="xxs">
+            <h5>Maximum autoscaling threshold</h5>
+          </EuiTitle>
         </EuiFlexItem>
-        <EuiFlexItem>
-          <EuiLink href="#">Index lifecycle policies</EuiLink>
+        <EuiFlexItem grow={1}>
+          <EuiSwitch label="Enabled" checked onChange={() => {}} />
         </EuiFlexItem>
-        <EuiFlexItem>
-          <EuiLink href="#">Transforms</EuiLink>
+        <EuiFlexItem grow={1}>
+          <EuiLink href="#">Advanced controls</EuiLink>
         </EuiFlexItem>
       </EuiFlexGroup>
+
+      <EuiSpacer size="xl" />
+      <EuiSpacer size="xxl" />
+      <EuiTitle size="s">
+        <h4>Cost</h4>
+      </EuiTitle>
+      <EuiSpacer size="s" />
+      <EuiText size="s">
+        <p>
+          See how your project has performed based on current search power
+          settings
+        </p>
+      </EuiText>
+      <EuiSpacer size="xl" />
+      <EuiText>
+        <p>
+          Go to <a href="#">Billing</a> to see your project costs on current
+          search power settings
+        </p>
+      </EuiText>
     </CloudSubPageLayout>
   );
 };
 
-export default InjestDataPage;
+export default PerformancePage;
