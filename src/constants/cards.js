@@ -54,15 +54,15 @@ export const SOLUTION_CARDS = [
 export const CARDS_OBS = [
   {
     section: 'Observability',
-    title: 'Collect and analyze my logs',
+    title: 'Monitor logs',
   },
   {
     section: 'Observability',
-    title: 'Monitor my application performance (APM / tracing)',
+    title: 'Monitor my application performance (APM/tracing)',
   },
   {
     section: 'Observability',
-    title: 'Monitor my host metrics',
+    title: 'Monitor hosts',
   },
   {
     section: 'Observability',
@@ -73,38 +73,30 @@ export const CARDS_OBS = [
 export const CARDS_SEARCH = [
   {
     section: 'Search',
-    title: 'Collect and analyze my logs',
+    title: 'Build an application on top of Elasticsearch',
   },
   {
     section: 'Search',
-    title: 'Monitor my application performance (APM / tracing)',
+    title: 'Add search to your website',
   },
   {
     section: 'Search',
-    title: 'Monitor my host metrics',
-  },
-  {
-    section: 'Search',
-    title: 'Monitor kubernetes clusters',
+    title: 'Search across databases and business systems',
   },
 ];
 
 export const CARDS_SECURITY = [
   {
     section: 'Security',
-    title: 'Collect and analyze my logs',
+    title: 'Detect threats in my data with SIEM',
   },
   {
     section: 'Security',
-    title: 'Monitor my application performance (APM / tracing)',
+    title: 'Secure my hosts',
   },
   {
     section: 'Security',
-    title: 'Monitor my host metrics',
-  },
-  {
-    section: 'Security',
-    title: 'Monitor kubernetes clusters',
+    title: 'Secure my cloud assets',
   },
 ];
 

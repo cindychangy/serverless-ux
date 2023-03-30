@@ -22,13 +22,19 @@ import {
   EuiHorizontalRule,
 } from '@elastic/eui';
 import PanelSection from './panel_section/panel_section';
-import { GUIDE_DATA } from '../../constants/guides';
+import {
+  GUIDES_SEARCH,
+  GUIDES_OBS,
+  GUIDES_SECURITY,
+  GUIDES_ALL,
+} from '../../constants/guides';
 
-const GuidedSetupPanel = ({ handleGuideClick, guideOpen }) => {
+const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
   const router = useRouter();
   const { euiTheme } = useEuiTheme();
   const HEADER_BG = '/images/panel-bg-top.svg';
   const FOOTER_BG = '/images/panel-bg-bottom.svg';
+  const SOLUTION = router.query.solution;
 
   const iconQuestion = css`
     .euiIcon {
@@ -54,6 +60,20 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen }) => {
       width: 100%;
     }
   `;
+
+  let GUIDE_DATA = [];
+
+  if (SOLUTION === 'search') {
+    GUIDE_DATA = GUIDES_SEARCH[guideIndex];
+  }
+
+  if (SOLUTION === 'observability') {
+    GUIDE_DATA = GUIDES_OBS;
+  }
+
+  if (SOLUTION === 'security') {
+    GUIDE_DATA = GUIDES_SECURITY;
+  }
 
   const mountedStyle = { animation: 'transitionIn 850ms ease-in-out' };
 
@@ -119,10 +139,20 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen }) => {
           <>
             <EuiFlyoutHeader css={panelHeaderBg}>
               <EuiSpacer size="m" />
-              {/* <EuiLink href="guided-setup" onClick={onClick} color="text">
+              <EuiLink href="guided-setup" onClick={() => {}} color="text">
                 <EuiIcon type="arrowLeft" size="m" />
                 Back to guides
               </EuiLink>
+              <EuiSpacer size="m" />
+              <EuiTitle size="m">
+                {/* <h2 css={endGuide && mountedStyle}>
+                  {endGuide ? 'Well done!' : data.title}
+                </h2> */}
+                <h2>{GUIDE_DATA.title}</h2>
+              </EuiTitle>
+              <EuiSpacer size="s" />
+              <EuiHorizontalRule margin="s" />
+              {/* 
               <EuiSpacer size="m" />
               <EuiTitle size="m">
                 <h2 css={endGuide && mountedStyle}>
@@ -133,6 +163,9 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen }) => {
               <EuiHorizontalRule margin="s" /> */}
             </EuiFlyoutHeader>
 
+            {/* {GUIDE_DATA.map((guide, index) => (
+              <p>dsadsa</p>
+            ))} */}
             {/* <EuiFlyoutBody>
               {data.media && (
                 <div css={media}>

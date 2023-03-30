@@ -27,7 +27,7 @@ const GuidedSetup = () => {
   const { euiTheme } = useEuiTheme();
   const router = useRouter();
   const [guideOpen, setGuideOpen] = useState(false);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [guideIndex, setGuideIndex] = useState(0);
   const SOLUTION = router.query.solution;
 
   const guideCard = css`
@@ -61,10 +61,9 @@ const GuidedSetup = () => {
     CARDS = CARDS_ALL;
   }
 
-  const handleGuideClick = (section, index) => {
+  const handleGuideClick = index => {
     setGuideOpen(!guideOpen);
-    // setButtonDisabled(!buttonDisabled);
-    // setGuideIndex(index);
+    setGuideIndex(index);
 
     // if (section) {
     //   setSection(section);
@@ -85,6 +84,7 @@ const GuidedSetup = () => {
         },
       ]}
       guideOpen={guideOpen}
+      guideIndex={guideIndex}
       handleGuideClick={() => handleGuideClick()}>
       <EuiPageTemplate paddingSize="l">
         <EuiSpacer size="xxl" />
@@ -104,7 +104,7 @@ const GuidedSetup = () => {
               {CARDS.map((guide, index) => (
                 <EuiFlexItem key={index} grow={false}>
                   <EuiCard
-                    onClick={() => handleGuideClick(guide.section, index)}
+                    onClick={() => handleGuideClick(index)}
                     css={guideCard}
                     title={
                       <>

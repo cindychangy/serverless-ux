@@ -137,6 +137,7 @@ const KibanaLayout = ({
                   <GuidedSetupPanel
                     handleGuideClick={handleGuideClick}
                     guideOpen={guideOpen}
+                    guideIndex={guideIndex}
                     // key="onboarding-setup"
                     // onClick={onClick}
                     // handleOptOut={handleOptOut}
