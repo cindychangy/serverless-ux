@@ -264,7 +264,7 @@ const Setup = () => {
               <EuiSpacer size="xxl" />
               <EuiTextAlign textAlign="center">
                 <EuiText color="subdued" size="s">
-                  Select a solution.
+                  Select a solution
                 </EuiText>
               </EuiTextAlign>
               <EuiSpacer size="l" />
