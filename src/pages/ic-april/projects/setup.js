@@ -43,7 +43,7 @@ const SetupFromProjectList = () => {
         breadcrumbs={[
           {
             text: 'Cloud',
-            href: 'cloud',
+            href: '/ic-april/cloud',
           },
           {
             text: 'Create',
@@ -108,7 +108,7 @@ const SetupFromProjectList = () => {
                           solution: card.solution,
                         },
                       },
-                      'create-deployment'
+                      'create-project'
                     )
                   }>
                   Next

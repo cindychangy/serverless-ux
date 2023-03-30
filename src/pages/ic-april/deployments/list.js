@@ -87,10 +87,7 @@ const DeploymentsPage = () => {
           />
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
-          <EuiButton
-            fill
-            iconType="plusInCircle"
-            onClick={() => router.push('create-deployment')}>
+          <EuiButton fill onClick={() => router.push('create-deployment')}>
             Create deployment
           </EuiButton>
         </EuiFlexItem>

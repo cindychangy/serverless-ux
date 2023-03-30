@@ -93,10 +93,7 @@ const ProjectsPage = () => {
           <EuiSearchBar box={{ placeholder: 'e.g: type:Observability ' }} />
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
-          <EuiButton
-            fill
-            iconType="plusInCircle"
-            onClick={() => router.push('setup')}>
+          <EuiButton fill onClick={() => router.push('setup')}>
             Create project
           </EuiButton>
         </EuiFlexItem>
