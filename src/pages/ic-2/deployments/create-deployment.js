@@ -134,14 +134,14 @@ const CreateDeployment = () => {
               padding: 40px 48px;
             `}>
             <EuiTitle size="l">
-              <h1>Create a deployment</h1>
+              <h1>Create dedicated deployment</h1>
             </EuiTitle>
             <EuiSpacer size="s" />
             <EuiText color="subdued" size="s">
               <p>
-                In a deployment, find all the capabilities you need to integrate
-                your data, and solve your search, observability and security
-                challenges.
+                In a dedicated deployment, get maximum control over your Elastic
+                Stack. Collect data and use it in any solutions to solve your
+                search, observability, and security challenges.
               </p>
             </EuiText>
             <EuiHorizontalRule />

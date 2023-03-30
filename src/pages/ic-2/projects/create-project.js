@@ -106,14 +106,14 @@ const CreateProject = () => {
               padding: 40px 48px;
             `}>
             <EuiTitle size="l">
-              <h1>Create a project</h1>
+              <h1>Create fully-managed project</h1>
             </EuiTitle>
             <EuiSpacer size="s" />
             <EuiText color="subdued" size="s">
               <p>
-                In a project, find all the capabilities you need to integrate
-                your data, and solve your search, observability
-                <br /> and security challenges.
+                In a fully-managed project, get quick access to the tools you
+                need to collect and use data to build experiences, monitor your
+                services, or protect your systems.
               </p>
             </EuiText>
             <EuiHorizontalRule />
@@ -123,7 +123,7 @@ const CreateProject = () => {
               <h4>Name</h4>
             </EuiTitle>
             <EuiSpacer size="s" />
-            <EuiFieldText fullWidth placeholder="My serverless project" />
+            <EuiFieldText fullWidth placeholder="My project" />
 
             <EuiSpacer size="l" />
             {!isLoading && (
