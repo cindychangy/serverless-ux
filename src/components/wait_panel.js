@@ -69,12 +69,12 @@ const WaitPanel = ({ type, solution }) => {
                 onClick={() =>
                   router.push(
                     {
-                      pathname: '/guided-setup',
+                      pathname: '../guided-setup',
                       query: {
                         solution,
                       },
                     },
-                    '/guided-setup'
+                    '../guided-setup'
                   )
                 }>
                 Continue

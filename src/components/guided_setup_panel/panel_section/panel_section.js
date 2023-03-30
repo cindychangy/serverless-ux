@@ -90,7 +90,8 @@ const PanelSection = ({
   `;
 
   const currentStep = stepNumber === step.order;
-  const nowFinished = completedSteps[`step-${step.order}`] === 'done';
+  // const nowFinished = completedSteps[`step-${step.order}`] === 'done';
+  const nowFinished = false;
   const stepGif = '/images/step-complete-animation.gif?v=';
 
   useEffect(() => {

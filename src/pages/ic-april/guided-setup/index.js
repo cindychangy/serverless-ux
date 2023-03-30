@@ -15,20 +15,33 @@ import {
   EuiPageTemplate,
   useEuiTheme,
 } from '@elastic/eui';
-import KibanaLayout from '../../layouts/kibana';
+import KibanaLayout from '../../../layouts/kibana';
 import {
   CARDS_OBS,
   CARDS_SEARCH,
   CARDS_SECURITY,
   CARDS_ALL,
-} from '../../constants/cards';
+} from '../../../constants/cards';
 
 const GuidedSetup = () => {
   const { euiTheme } = useEuiTheme();
   const router = useRouter();
-  const [guideOpen, setGuide] = useState(false);
+  const [guideOpen, setGuideOpen] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const SOLUTION = router.query.solution;
+
+  const guideCard = css`
+    position: relative;
+    min-height: 110px;
+    width: 380px;
+
+    .euiCard__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  `;
 
   let CARDS = CARDS_ALL;
 
@@ -48,22 +61,15 @@ const GuidedSetup = () => {
     CARDS = CARDS_ALL;
   }
 
-  const guideCard = css`
-    position: relative;
-    min-height: 110px;
-    width: 380px;
+  const handleGuideClick = (section, index) => {
+    setGuideOpen(!guideOpen);
+    // setButtonDisabled(!buttonDisabled);
+    // setGuideIndex(index);
 
-    .euiCard__content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  `;
-
-  const handleGuideClick = () => {
-    setGuide(!guideOpen);
-    setButtonDisabled(!buttonDisabled);
+    // if (section) {
+    //   setSection(section);
+    //   setNewUserStartPage(true);
+    // }
   };
 
   return (
@@ -79,8 +85,7 @@ const GuidedSetup = () => {
         },
       ]}
       guideOpen={guideOpen}
-      buttonDisabled={buttonDisabled}
-      onClick={() => handleGuideClick(section)}>
+      handleGuideClick={() => handleGuideClick()}>
       <EuiPageTemplate paddingSize="l">
         <EuiSpacer size="xxl" />
         <EuiPageTemplate.Section color="subdued">
@@ -99,7 +104,7 @@ const GuidedSetup = () => {
               {CARDS.map((guide, index) => (
                 <EuiFlexItem key={index} grow={false}>
                   <EuiCard
-                    onClick={() => handleGuideClick}
+                    onClick={() => handleGuideClick(guide.section, index)}
                     css={guideCard}
                     title={
                       <>
@@ -123,7 +128,7 @@ const GuidedSetup = () => {
                             <small>{guide.progress}</small>
                           </EuiTextColor>
                         )}
-                        {guide.complete && (
+                        {/* {guide.complete && (
                           <EuiFlexGroup gutterSize="s" alignItems="center">
                             <EuiFlexItem grow={false}>
                               <EuiIcon
@@ -137,7 +142,7 @@ const GuidedSetup = () => {
                               <small>Guide Complete</small>
                             </EuiFlexItem>
                           </EuiFlexGroup>
-                        )}
+                        )} */}
                       </>
                     }
                   />

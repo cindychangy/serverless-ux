@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
-import { css } from '@emotion/react';
 import {
   EuiCollapsibleNav,
   EuiCollapsibleNavGroup,
@@ -17,10 +16,30 @@ import {
   EuiHeaderSection,
   EuiHeaderBreadcrumbs,
   EuiHeaderSectionItem,
+  EuiModal,
+  EuiModalBody,
+  EuiSpacer,
+  EuiText,
   useEuiTheme,
 } from '@elastic/eui';
+import { css } from '@emotion/react';
+import GuidedSetupPanel from '../components/guided_setup_panel/guided_setup_panel';
 
-const KibanaLayout = ({ breadcrumbs, children }) => {
+const KibanaLayout = ({
+  breadcrumbs,
+  children,
+  handleGuideClick,
+  guideOpen,
+  onClick,
+  buttonDisabled,
+  section,
+  confetti,
+  newUserStartPage,
+  stepNumber,
+  completedSteps,
+  loadGif,
+  guideIndex,
+}) => {
   const { euiTheme } = useEuiTheme();
   const [navIsOpen, setNavIsOpen] = useState(false);
 
@@ -115,6 +134,22 @@ const KibanaLayout = ({ breadcrumbs, children }) => {
               },
               {
                 items: [
+                  <GuidedSetupPanel
+                    handleGuideClick={handleGuideClick}
+                    guideOpen={guideOpen}
+                    // key="onboarding-setup"
+                    // onClick={onClick}
+                    // handleOptOut={handleOptOut}
+                    // guideOpen={guideOpen}
+                    // buttonDisabled={buttonDisabled}
+                    // section={section}
+                    // confetti={confetti}
+                    // newUserStartPage={newUserStartPage}
+                    // stepNumber={stepNumber}
+                    // completedSteps={completedSteps}
+                    // loadGif={loadGif}
+                    // guideIndex={guideIndex}
+                  />,
                   <EuiHeaderSectionItemButton flush="both">
                     <EuiAvatar
                       color={euiTheme.colors.darkestShade}
