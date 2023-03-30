@@ -36,6 +36,8 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
   const FOOTER_BG = '/images/panel-bg-bottom.svg';
   const SOLUTION = router.query.solution;
 
+  const endGuide = false;
+
   const iconQuestion = css`
     .euiIcon {
       width: 21px;
@@ -145,33 +147,21 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
               </EuiLink>
               <EuiSpacer size="m" />
               <EuiTitle size="m">
-                {/* <h2 css={endGuide && mountedStyle}>
-                  {endGuide ? 'Well done!' : data.title}
-                </h2> */}
-                <h2>{GUIDE_DATA.title}</h2>
-              </EuiTitle>
-              <EuiSpacer size="s" />
-              <EuiHorizontalRule margin="s" />
-              {/* 
-              <EuiSpacer size="m" />
-              <EuiTitle size="m">
                 <h2 css={endGuide && mountedStyle}>
-                  {endGuide ? 'Well done!' : data.title}
+                  {endGuide ? 'Well done!' : GUIDE_DATA.title}
                 </h2>
               </EuiTitle>
               <EuiSpacer size="s" />
-              <EuiHorizontalRule margin="s" /> */}
+              <EuiHorizontalRule margin="s" />
             </EuiFlyoutHeader>
-
-            {/* {GUIDE_DATA.map((guide, index) => (
-              <p>dsadsa</p>
-            ))} */}
-            {/* <EuiFlyoutBody>
-              {data.media && (
+            <EuiFlyoutBody>
+              {GUIDE_DATA.media && (
                 <div css={media}>
                   {endGuide ? null : (
                     <>
-                      <div dangerouslySetInnerHTML={{ __html: data.media }} />
+                      <div
+                        dangerouslySetInnerHTML={{ __html: GUIDE_DATA.media }}
+                      />
                       <EuiSpacer size="m" />
                     </>
                   )}
@@ -192,26 +182,26 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
                     </p>
                   </div>
                 ) : (
-                  <p>{data.intro}</p>
+                  <p>{GUIDE_DATA.intro}</p>
                 )}
               </EuiText>
-              {data.link && !endGuide && (
+              {GUIDE_DATA.link && !endGuide && (
                 <>
                   <EuiSpacer size="m" />
                   <EuiText size="m">
                     <EuiLink
                       target="_blank"
-                      href={data.link.url}
+                      href={GUIDE_DATA.link.url}
                       css={css`
                         font-weight: ${euiTheme.font.weight.regular};
                       `}>
-                      {data.link.title}
+                      {GUIDE_DATA.link.title}
                     </EuiLink>
                   </EuiText>
                 </>
               )}
               <EuiSpacer size="xs" />
-              {Object.keys(completedSteps).length === 0 && confetti && (
+              {/* {Object.keys(completedSteps).length === 0 && confetti && (
                 <div style={{ paddingTop: '15px' }}>
                   <EuiProgress
                     valueText={`${Object.keys(completedSteps).length}/4 steps`}
@@ -230,8 +220,8 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
                   />
                   <EuiSpacer size="s" />
                 </div>
-              )}
-              {Object.keys(completedSteps).length !== 0 && (
+              )} */}
+              {/* {Object.keys(completedSteps).length !== 0 && (
                 <div style={{ paddingTop: '15px' }}>
                   <EuiProgress
                     valueText={`${Object.keys(completedSteps).length}/4 steps`}
@@ -250,36 +240,38 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
                   />
                   <EuiSpacer size="s" />
                 </div>
-              )}
+              )} */}
               <EuiHorizontalRule />
-              {data.steps.map(step => (
-                <PanelSection
-                  key={step.order}
-                  step={step}
-                  confetti={confetti}
-                  newUserStartPage={newUserStartPage}
-                  stepNumber={stepNumber}
-                  section={section}
-                  stepComplete={step.stepComplete}
-                  completedSteps={completedSteps}
-                  loadGif={loadGif}
-                  forceState={
-                    toggleStep === step.order
-                      ? 'open'
-                      : '' ||
-                        (toggleStep - 1 === step.order && 'closed') ||
-                        (newUserStartPage === false &&
-                          section === 'Search' &&
-                          step.order === 1 &&
-                          'open') ||
-                        (newUserStartPage === false &&
-                          section === 'Observe' &&
-                          step.order === 3 &&
-                          'open')
-                  }
-                />
+              {GUIDE_DATA.steps.map(step => (
+                // <PanelSection
+                //   key={step.order}
+                //   step={step}
+                //   confetti={confetti}
+                //   newUserStartPage={newUserStartPage}
+                //   stepNumber={stepNumber}
+                //   section={section}
+                //   stepComplete={step.stepComplete}
+                //   completedSteps={completedSteps}
+                //   loadGif={loadGif}
+                //   forceState={
+                //     toggleStep === step.order
+                //       ? 'open'
+                //       : '' ||
+                //         (toggleStep - 1 === step.order && 'closed') ||
+                //         (newUserStartPage === false &&
+                //           section === 'Search' &&
+                //           step.order === 1 &&
+                //           'open') ||
+                //         (newUserStartPage === false &&
+                //           section === 'Observe' &&
+                //           step.order === 3 &&
+                //           'open')
+                //   }
+                // />
+                <p>dsada</p>
               ))}
-            </EuiFlyoutBody> */}
+            </EuiFlyoutBody>
+
             <EuiFlyoutFooter css={panelFooterBg}>
               {/* <EuiFlexGroup
                 alignItems="center"
