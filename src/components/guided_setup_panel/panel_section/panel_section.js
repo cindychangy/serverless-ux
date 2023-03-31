@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -20,7 +20,7 @@ import {
 const PanelSection = ({
   step,
   confetti,
-  stepNumber,
+
   stepComplete,
   completedSteps,
   section,
@@ -88,22 +88,18 @@ const PanelSection = ({
     }
   `;
 
-  const currentStep = stepNumber === step.order;
+  // current step - open accordion, highlight in green
 
   useEffect(() => {
-    if (stepNumber !== 0) {
-      setTimeout(() => {
-        document
-          .getElementById('currentStep')
-          ?.scrollIntoView({ behavior: 'smooth' });
-      }, 0);
-    }
-  }, [stepNumber]);
+    // if(currentStep === 1) {
+    // }
+  });
 
-  const accordionStyles = [stepStyle, stepNumber === 1 && stepOutline];
+  const [currentStep, setCurrentStep] = useState(null);
+  const accordionStyles = [stepStyle, step.number === 1 && stepOutline];
 
   return (
-    <div id={currentStep && 'currentStep'}>
+    <div>
       <EuiFlexGroup
         gutterSize="none"
         responsive={false}
@@ -137,14 +133,23 @@ const PanelSection = ({
               </EuiFlexGroup>
             }
             paddingSize="none"
-            // initialIsOpen={stepNumber === 1}
-          >
+            initialIsOpen={step.order === 1}>
             <EuiSpacer size="s" />
             <EuiText
               size="s"
               dangerouslySetInnerHTML={{ __html: step.description }}
               css={stepText}
             />
+            <EuiFlexGroup justifyContent="flexEnd" gutterSize="none">
+              <EuiFlexItem grow={false}>
+                <EuiSpacer size="m" />
+                <EuiButton
+                  fill
+                  onClick={() => router.push('guided-setup/mock-page')}>
+                  Start
+                </EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
           </EuiAccordion>
           <EuiHorizontalRule margin="l" />
         </EuiFlexItem>

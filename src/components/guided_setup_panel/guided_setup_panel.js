@@ -36,7 +36,9 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
   const FOOTER_BG = '/images/panel-bg-bottom.svg';
   const SOLUTION = router.query.solution;
 
-  const endGuide = false;
+  useEffect(() => {
+    //dsada
+  });
 
   const iconQuestion = css`
     .euiIcon {
@@ -120,7 +122,7 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
                 </div>
               )}
               <EuiText size="m">{GUIDE_DATA.intro}</EuiText>
-              {GUIDE_DATA.link && !endGuide && (
+              {GUIDE_DATA.link && (
                 <>
                   <EuiSpacer size="m" />
                   <EuiText size="m">
@@ -138,7 +140,7 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
               <EuiSpacer size="xs" />
               <EuiHorizontalRule />
               {GUIDE_DATA.steps.map(step => (
-                <PanelSection step={step} stepNumber={step.order} />
+                <PanelSection step={step} />
               ))}
             </EuiFlyoutBody>
 
