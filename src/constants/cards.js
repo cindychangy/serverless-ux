@@ -73,7 +73,7 @@ export const CARDS_OBS = [
 export const CARDS_SEARCH = [
   {
     section: 'Search',
-    title: 'Build an application on top of Elasticsearch',
+    title: 'Build an application <br/>on top of Elasticsearch',
   },
   {
     section: 'Search',
@@ -81,7 +81,7 @@ export const CARDS_SEARCH = [
   },
   {
     section: 'Search',
-    title: 'Search across databases and business systems',
+    title: 'Search across databases<br/> and business systems',
   },
 ];
 
@@ -103,7 +103,7 @@ export const CARDS_SECURITY = [
 export const CARDS_ALL = [
   {
     section: 'Search',
-    title: 'Build an application on top of Elasticsearch',
+    title: 'Build an application <br/>on top of Elasticsearch',
   },
   {
     section: 'Observability',

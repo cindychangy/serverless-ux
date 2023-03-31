@@ -30,6 +30,7 @@ const KibanaLayout = ({
   children,
   handleGuideClick,
   guideOpen,
+  solution,
   onClick,
   buttonDisabled,
   section,
@@ -138,18 +139,6 @@ const KibanaLayout = ({
                     handleGuideClick={handleGuideClick}
                     guideOpen={guideOpen}
                     guideIndex={guideIndex}
-                    // key="onboarding-setup"
-                    // onClick={onClick}
-                    // handleOptOut={handleOptOut}
-                    // guideOpen={guideOpen}
-                    // buttonDisabled={buttonDisabled}
-                    // section={section}
-                    // confetti={confetti}
-                    // newUserStartPage={newUserStartPage}
-                    // stepNumber={stepNumber}
-                    // completedSteps={completedSteps}
-                    // loadGif={loadGif}
-                    // guideIndex={guideIndex}
                   />,
                   <EuiHeaderSectionItemButton flush="both">
                     <EuiAvatar

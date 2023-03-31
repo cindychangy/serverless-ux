@@ -64,11 +64,6 @@ const GuidedSetup = () => {
   const handleGuideClick = index => {
     setGuideOpen(!guideOpen);
     setGuideIndex(index);
-
-    // if (section) {
-    //   setSection(section);
-    //   setNewUserStartPage(true);
-    // }
   };
 
   return (
@@ -112,9 +107,10 @@ const GuidedSetup = () => {
                         <h3
                           css={css`
                             font-weight: ${euiTheme.font.weight.semiBold}};
-                          `}>
-                          {guide.title}
-                        </h3>
+                          `}
+                          dangerouslySetInnerHTML={{
+                            __html: guide.title,
+                          }}></h3>
                       </>
                     }
                     titleSize="xs"

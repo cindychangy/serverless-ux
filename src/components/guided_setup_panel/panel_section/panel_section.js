@@ -20,7 +20,6 @@ import {
 const PanelSection = ({
   step,
   confetti,
-  newUserStartPage,
   stepNumber,
   stepComplete,
   completedSteps,
@@ -90,9 +89,6 @@ const PanelSection = ({
   `;
 
   const currentStep = stepNumber === step.order;
-  // const nowFinished = completedSteps[`step-${step.order}`] === 'done';
-  const nowFinished = false;
-  const stepGif = '/images/step-complete-animation.gif?v=';
 
   useEffect(() => {
     if (stepNumber !== 0) {
@@ -104,23 +100,7 @@ const PanelSection = ({
     }
   }, [stepNumber]);
 
-  const accordionStyles = [
-    stepStyle,
-    newUserStartPage && step.order === 1 && stepOutline,
-    currentStep && stepOutline,
-    forceState && stepOutline,
-    nowFinished && stepDone,
-  ];
-
-  const showStartButton =
-    (newUserStartPage !== undefined && step.order === 1) ||
-    (newUserStartPage === false && step.pageProgressOpen) ||
-    (!newUserStartPage !== undefined && step.order === stepNumber + 1);
-
-  const showPanelInitialOpen =
-    (newUserStartPage && step.order === 1) ||
-    (newUserStartPage === false && section === 'Search' && step.order === 1) ||
-    (newUserStartPage === false && section === 'Observe' && step.order === 3);
+  const accordionStyles = [stepStyle, stepNumber === 1 && stepOutline];
 
   return (
     <div id={currentStep && 'currentStep'}>
@@ -136,22 +116,15 @@ const PanelSection = ({
             css={accordionStyles}
             buttonContent={
               <EuiFlexGroup gutterSize="none" responsive={false}>
-                {/* Need to add this class "guideStep to target styles */}
                 <EuiFlexItem grow={false} class="guideStep">
-                  {(stepComplete && currentStep) ||
-                  stepComplete ||
-                  nowFinished ? (
-                    <EuiIcon type="check" size="m" color="white" />
-                  ) : (
-                    <EuiText
-                      size="s"
-                      css={css`
-                        font-weight: ${euiTheme.font.weight.medium};
-                        line-height: 1.4;
-                      `}>
-                      {step.order}
-                    </EuiText>
-                  )}
+                  <EuiText
+                    size="s"
+                    css={css`
+                      font-weight: ${euiTheme.font.weight.medium};
+                      line-height: 1.4;
+                    `}>
+                    {step.order}
+                  </EuiText>
                 </EuiFlexItem>
                 <EuiFlexItem>
                   <EuiText
@@ -164,52 +137,14 @@ const PanelSection = ({
               </EuiFlexGroup>
             }
             paddingSize="none"
-            initialIsOpen={showPanelInitialOpen}>
-            <EuiPanel
-              paddingSize="none"
-              style={{ position: 'relative', boxShadow: 'none' }}
-              css={confetti && currentStep && !stepComplete && checkAnimate}
-              // css={confetti && currentStep && !stepComplete && styles.confetti}
-            >
-              {confetti && currentStep && !stepComplete && loadGif ? (
-                <img src={stepGif + loadGif} alt="Step complete" width="70%" />
-              ) : (
-                <>
-                  <>
-                    <EuiSpacer size="s" />
-                    <EuiText
-                      size="s"
-                      dangerouslySetInnerHTML={{ __html: step.description }}
-                      css={stepText}
-                    />
-                    {step.link && (
-                      <EuiButtonEmpty
-                        iconType="popout"
-                        iconSide="right"
-                        iconSize="s"
-                        href={step.link.url}
-                        style={{ marginLeft: '24px' }}>
-                        <EuiText size="xs">{step.link.title}</EuiText>
-                      </EuiButtonEmpty>
-                    )}
-                    {showStartButton ? (
-                      <EuiFlexGroup justifyContent="flexEnd" gutterSize="none">
-                        <EuiFlexItem grow={false}>
-                          <EuiSpacer size="m" />
-                          <EuiButton
-                            fill
-                            onClick={() =>
-                              router.push(`/8.6/guided-setup/${step.stepPath}`)
-                            }>
-                            Start
-                          </EuiButton>
-                        </EuiFlexItem>
-                      </EuiFlexGroup>
-                    ) : null}
-                  </>
-                </>
-              )}
-            </EuiPanel>
+            // initialIsOpen={stepNumber === 1}
+          >
+            <EuiSpacer size="s" />
+            <EuiText
+              size="s"
+              dangerouslySetInnerHTML={{ __html: step.description }}
+              css={stepText}
+            />
           </EuiAccordion>
           <EuiHorizontalRule margin="l" />
         </EuiFlexItem>
