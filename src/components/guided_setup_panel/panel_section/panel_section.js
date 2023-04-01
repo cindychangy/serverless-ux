@@ -1,38 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
   EuiButton,
-  EuiButtonEmpty,
   EuiText,
   EuiSpacer,
   EuiAccordion,
   EuiFlexGroup,
   EuiFlexItem,
   EuiHorizontalRule,
-  EuiPanel,
-  EuiIcon,
   useEuiTheme,
 } from '@elastic/eui';
+import { GuideContext } from '../../../pages/_app';
 
-const PanelSection = ({
-  step,
-  confetti,
-
-  stepComplete,
-  completedSteps,
-  section,
-  forceState,
-  loadGif,
-}) => {
+const PanelSection = ({ step, guideProgress, forceState }) => {
   const router = useRouter();
   const { euiTheme } = useEuiTheme();
-  const checkAnimate = css`
-    height: 150px;
-    text-align: center;
-  `;
+
+  const { activeGuide, setActiveGuide } = useContext(GuideContext);
 
   const stepText = css`
     p {
@@ -88,15 +75,15 @@ const PanelSection = ({
     }
   `;
 
-  // current step - open accordion, highlight in green
+  const handleGuideStart = () => {
+    setActiveGuide(activeGuide);
 
-  useEffect(() => {
-    // if(currentStep === 1) {
-    // }
-  });
+    router.push(`guided-setup/${step.stepPath}`);
+  };
 
-  const [currentStep, setCurrentStep] = useState(null);
-  const accordionStyles = [stepStyle, step.number === 1 && stepOutline];
+  // const currentStep = step.order === stepNumber;
+  // const accordionStyles = [stepStyle, currentStep && stepOutline];
+  const accordionStyles = [stepStyle];
 
   return (
     <div>
@@ -108,7 +95,7 @@ const PanelSection = ({
           <EuiAccordion
             id={`step-${step.order}`}
             arrowDisplay="right"
-            forceState={forceState || (stepComplete && 'closed')}
+            forceState={forceState}
             css={accordionStyles}
             buttonContent={
               <EuiFlexGroup gutterSize="none" responsive={false}>
@@ -143,9 +130,23 @@ const PanelSection = ({
             <EuiFlexGroup justifyContent="flexEnd" gutterSize="none">
               <EuiFlexItem grow={false}>
                 <EuiSpacer size="m" />
+
                 <EuiButton
                   fill
-                  onClick={() => router.push('guided-setup/mock-page')}>
+                  onClick={handleGuideStart}
+                  // onClick={() => router.push(`guided-setup/${step.stepPath}`)}
+                  // onClick={() =>
+                  //   router.push(
+                  //     {
+                  //       pathname: `guided-setup/${step.stepPath}`,
+                  //       query: {
+                  //         stepsCompleted: guideProgress,
+                  //       },
+                  //     },
+                  //     `guided-setup/${step.stepPath}`
+                  //   )
+                  // }
+                >
                   Start
                 </EuiButton>
               </EuiFlexItem>

@@ -13,7 +13,7 @@ import {
   EuiTitle,
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
-import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
+import CloudSubPageLayout from '../../../layouts/cloud/subpage';
 
 const InjestDataPage = () => {
   const router = useRouter();

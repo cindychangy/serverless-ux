@@ -18,7 +18,7 @@ import {
   EuiHorizontalRule,
 } from '@elastic/eui';
 import { css } from '@emotion/react';
-import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
+import CloudSubPageLayout from '../../../layouts/cloud/subpage';
 
 const DeploymentsPage = () => {
   const router = useRouter();

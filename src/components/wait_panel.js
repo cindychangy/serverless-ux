@@ -69,12 +69,12 @@ const WaitPanel = ({ type, solution }) => {
                 onClick={() =>
                   router.push(
                     {
-                      pathname: '../guided-setup',
+                      pathname: '../kibana/guided-setup',
                       query: {
                         solution,
                       },
                     },
-                    '../guided-setup'
+                    '../kibana/guided-setup'
                   )
                 }>
                 Continue
@@ -164,12 +164,12 @@ const WaitPanel = ({ type, solution }) => {
                 onClick={() =>
                   router.push(
                     {
-                      pathname: '/guided-setup',
+                      pathname: '../kibana/guided-setup',
                       query: {
                         solution,
                       },
                     },
-                    '/guided-setup'
+                    '../kibana/guided-setup'
                   )
                 }>
                 Continue

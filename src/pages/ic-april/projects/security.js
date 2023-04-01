@@ -16,7 +16,7 @@ import {
   EuiTableHeaderCell,
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
-import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
+import CloudSubPageLayout from '../../../layouts/cloud/subpage';
 import { css } from '@emotion/react';
 
 const SecurityPage = () => {

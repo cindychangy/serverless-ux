@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -15,9 +15,9 @@ import {
   EuiFlyoutBody,
   EuiFlyoutHeader,
   EuiFlyoutFooter,
-  EuiProgress,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiProgress,
   useEuiTheme,
   EuiHorizontalRule,
 } from '@elastic/eui';
@@ -28,17 +28,22 @@ import {
   GUIDES_SECURITY,
   GUIDES_ALL,
 } from '../../constants/guides';
+import { GuideContext } from '../../layouts/kibana/page';
 
-const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
+const GuidedSetupPanel = ({
+  handleGuideClick,
+  guideOpen,
+  activeGuide,
+  buttonDisabled,
+  guideProgress,
+  user,
+}) => {
   const router = useRouter();
   const { euiTheme } = useEuiTheme();
+  // const [toggleStep, setToggleStep] = useState(stepNumber);
   const HEADER_BG = '/images/panel-bg-top.svg';
   const FOOTER_BG = '/images/panel-bg-bottom.svg';
   const SOLUTION = router.query.solution;
-
-  useEffect(() => {
-    //dsada
-  });
 
   const iconQuestion = css`
     .euiIcon {
@@ -65,19 +70,29 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
     }
   `;
 
-  let GUIDE_DATA = GUIDES_SEARCH[guideIndex];
+  let GUIDE_DATA = [...GUIDES_SEARCH, ...GUIDES_OBS, ...GUIDES_SECURITY][
+    activeGuide
+  ];
 
   if (SOLUTION === 'search') {
-    GUIDE_DATA = GUIDES_SEARCH[guideIndex];
+    GUIDE_DATA = GUIDES_SEARCH[activeGuide];
   }
 
   if (SOLUTION === 'observability') {
-    GUIDE_DATA = GUIDES_OBS[guideIndex];
+    GUIDE_DATA = GUIDES_OBS[activeGuide];
   }
 
   if (SOLUTION === 'security') {
-    GUIDE_DATA = GUIDES_SECURITY[guideIndex];
+    GUIDE_DATA = GUIDES_SECURITY[activeGuide];
   }
+
+  useEffect(() => {
+    if (guideProgress) {
+      setTimeout(() => {
+        setToggleStep(guideProgress);
+      }, 500);
+    }
+  }, []);
 
   return (
     <>
@@ -90,7 +105,7 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
           size="s"
           onClick={handleGuideClick}
           key="onboarding-setup-button"
-          disabled={!guideOpen && 'true'}
+          disabled={buttonDisabled}
           fill>
           Setup guide
         </EuiButton>
@@ -107,6 +122,9 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
                 <EuiIcon type="arrowLeft" size="m" />
                 Back to guides
               </EuiLink>
+              {/* <button onClick={() => setActiveGuide(guideIndex)}>
+                Click me
+              </button> */}
               <EuiSpacer size="m" />
               <EuiTitle size="m">
                 <h2>{GUIDE_DATA.title}</h2>
@@ -122,6 +140,7 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
                 </div>
               )}
               <EuiText size="m">{GUIDE_DATA.intro}</EuiText>
+
               {GUIDE_DATA.link && (
                 <>
                   <EuiSpacer size="m" />
@@ -137,10 +156,28 @@ const GuidedSetupPanel = ({ handleGuideClick, guideOpen, guideIndex }) => {
                   </EuiText>
                 </>
               )}
-              <EuiSpacer size="xs" />
+              {!!guideProgress && (
+                <>
+                  <EuiSpacer size="m" />
+
+                  <EuiProgress
+                    valueText={`${guideProgress ? guideProgress : 0}/4 steps`}
+                    value={guideProgress}
+                    max={4}
+                    size="l"
+                    label="Progress"
+                  />
+                  <EuiSpacer size="s" />
+                </>
+              )}
               <EuiHorizontalRule />
               {GUIDE_DATA.steps.map(step => (
-                <PanelSection step={step} />
+                <PanelSection
+                  step={step}
+                  guideProgress={guideProgress}
+                  // forceState={toggleStep === stepNumber ? 'open' : 'closed'}
+                  forceState="open"
+                />
               ))}
             </EuiFlyoutBody>
 

@@ -14,13 +14,11 @@ import {
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
-import CloudSubPageLayout from '../../../layouts/cloud/sub_page';
+import CloudSubPageLayout from '../../../layouts/cloud/subpage';
 
 const ProjectDetailPage = () => {
   const router = useRouter();
   const PROJECT_TITLE = router.query.projectTitle;
-
-  console.log(router);
 
   const BREADCRUMBS = [
     {

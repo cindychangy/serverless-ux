@@ -9,7 +9,6 @@ export const GUIDES_SEARCH = [
       url: '#',
     },
     media: '<img src="/images/mock-animation.gif">',
-    progress: '3/4 steps complete',
     steps: [
       {
         title: 'Add data',
@@ -19,7 +18,7 @@ export const GUIDES_SEARCH = [
           title: 'Getting started with Elastic Enterprise Search',
           url: '#',
         },
-        stepPath: 'search/add-data',
+        stepPath: '../search/new-index',
         order: 1,
       },
       {
@@ -27,7 +26,7 @@ export const GUIDES_SEARCH = [
         description:
           "<p>Learn more about Elastic's Search UI, try our Search UI tutorial for Elasticsearch, and build a search experience.</p>",
         link: null,
-        stepPath: 'search/build',
+        stepPath: '../search/search-experiences',
         order: 2,
       },
     ],
@@ -35,7 +34,6 @@ export const GUIDES_SEARCH = [
   {
     section: 'Search',
     title: 'Add search to your website',
-    complete: true,
     intro:
       "We'll help you build a search experience with your data using Elastic's web crawler, connectors, and APIs.",
     steps: [

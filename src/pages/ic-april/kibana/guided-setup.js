@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -10,25 +10,25 @@ import {
   EuiButtonEmpty,
   EuiFlexGroup,
   EuiCard,
-  EuiIcon,
-  EuiTextColor,
   EuiPageTemplate,
   useEuiTheme,
 } from '@elastic/eui';
-import KibanaLayout from '../../../layouts/kibana';
+import KibanaLayout from '../../../layouts/kibana/page';
 import {
   CARDS_OBS,
   CARDS_SEARCH,
   CARDS_SECURITY,
   CARDS_ALL,
 } from '../../../constants/cards';
+import { GuideContext } from '../../../pages/_app';
 
 const GuidedSetup = () => {
   const { euiTheme } = useEuiTheme();
   const router = useRouter();
   const [guideOpen, setGuideOpen] = useState(false);
-  const [guideIndex, setGuideIndex] = useState(0);
   const SOLUTION = router.query.solution;
+
+  const { activeGuide, setActiveGuide } = useContext(GuideContext);
 
   const guideCard = css`
     position: relative;
@@ -63,7 +63,7 @@ const GuidedSetup = () => {
 
   const handleGuideClick = index => {
     setGuideOpen(!guideOpen);
-    setGuideIndex(index);
+    setActiveGuide(index);
   };
 
   return (
@@ -79,8 +79,8 @@ const GuidedSetup = () => {
         },
       ]}
       guideOpen={guideOpen}
-      guideIndex={guideIndex}
-      handleGuideClick={() => handleGuideClick()}>
+      buttonDisabled={!guideOpen && true}
+      handleGuideClick={() => handleGuideClick(activeGuide)}>
       <EuiPageTemplate paddingSize="l">
         <EuiSpacer size="xxl" />
         <EuiPageTemplate.Section color="subdued">
@@ -117,30 +117,6 @@ const GuidedSetup = () => {
                     betaBadgeProps={{
                       label: guide.section,
                     }}
-                    description={
-                      <>
-                        {guide.progress && (
-                          <EuiTextColor color="subdued">
-                            <small>{guide.progress}</small>
-                          </EuiTextColor>
-                        )}
-                        {/* {guide.complete && (
-                          <EuiFlexGroup gutterSize="s" alignItems="center">
-                            <EuiFlexItem grow={false}>
-                              <EuiIcon
-                                type="checkInCircleFilled"
-                                css={css`
-                                  color: ${euiTheme.colors.success};
-                                `}
-                              />
-                            </EuiFlexItem>
-                            <EuiFlexItem grow={false}>
-                              <small>Guide Complete</small>
-                            </EuiFlexItem>
-                          </EuiFlexGroup>
-                        )} */}
-                      </>
-                    }
                   />
                   <EuiSpacer size="m" />
                 </EuiFlexItem>
@@ -154,6 +130,7 @@ const GuidedSetup = () => {
               onClick={() => router.push('/ic-april/kibana')}>
               I'd like to do something else (skip)
             </EuiButtonEmpty>
+            <h1>{activeGuide}</h1>
           </EuiText>
         </EuiPageTemplate.Section>
       </EuiPageTemplate>

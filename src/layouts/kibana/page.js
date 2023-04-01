@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {
   EuiCollapsibleNav,
   EuiCollapsibleNavGroup,
@@ -12,39 +12,36 @@ import {
   EuiHorizontalRule,
   EuiListGroup,
   useGeneratedHtmlId,
+  EuiTitle,
+  EuiSpacer,
   EuiAvatar,
+  EuiPageTemplate,
   EuiHeaderSection,
   EuiHeaderBreadcrumbs,
   EuiHeaderSectionItem,
-  EuiModal,
-  EuiModalBody,
-  EuiSpacer,
-  EuiText,
   useEuiTheme,
 } from '@elastic/eui';
 import { css } from '@emotion/react';
-import GuidedSetupPanel from '../components/guided_setup_panel/guided_setup_panel';
+import GuidedSetupPanel from '../../components/guided_setup_panel/guided_setup_panel';
+import SolutionSidebar from '../../components/solution_sidebar';
+import { GuideContext } from '../../pages/_app';
 
 const KibanaLayout = ({
   breadcrumbs,
+  buttonDisabled,
   children,
   handleGuideClick,
   guideOpen,
-  solution,
-  onClick,
-  buttonDisabled,
+  guideProgress,
+  sidebar,
   section,
-  confetti,
-  newUserStartPage,
-  stepNumber,
-  completedSteps,
-  loadGif,
-  guideIndex,
+  title,
 }) => {
   const { euiTheme } = useEuiTheme();
   const [navIsOpen, setNavIsOpen] = useState(false);
-
   const collapsibleNavId = useGeneratedHtmlId({ prefix: 'collapsibleNav' });
+
+  const { activeGuide } = useContext(GuideContext);
 
   const collapsibleNav = (
     <EuiCollapsibleNav
@@ -138,18 +135,18 @@ const KibanaLayout = ({
                   <GuidedSetupPanel
                     handleGuideClick={handleGuideClick}
                     guideOpen={guideOpen}
-                    guideIndex={guideIndex}
+                    activeGuide={activeGuide}
+                    buttonDisabled={buttonDisabled}
+                    guideProgress={guideProgress}
                   />,
-                  <EuiHeaderSectionItemButton flush="both">
+                  <EuiHeaderSectionItemButton flush="both" key="user-menu">
                     <EuiAvatar
                       color={euiTheme.colors.darkestShade}
                       iconType="cheer"
                       name="account"
                     />
                   </EuiHeaderSectionItemButton>,
-                  <EuiHeaderSectionItemButton
-                    key="user"
-                    aria-label="Account menu">
+                  <EuiHeaderSectionItemButton aria-label="Account menu">
                     <EuiAvatar
                       size="s"
                       name="Emily Lin"
@@ -181,8 +178,25 @@ const KibanaLayout = ({
               />
             </EuiHeaderSection>
           </EuiHeader>
-
-          {children}
+          {/* <div style={{ height: '300px', paddingTop: '200px' }}>
+            {activeGuide}
+          </div> */}
+          {sidebar ? (
+            <EuiPageTemplate style={{ paddingBlockStart: 90 }}>
+              <EuiPageTemplate.Sidebar>
+                <SolutionSidebar sidebar={sidebar} section={section} />
+              </EuiPageTemplate.Sidebar>
+              <EuiPageTemplate.Section>
+                <EuiTitle size="l">
+                  <h1>{title}</h1>
+                </EuiTitle>
+                <EuiSpacer size="l" />
+                {children}
+              </EuiPageTemplate.Section>
+            </EuiPageTemplate>
+          ) : (
+            children
+          )}
         </div>
       </>
     );
