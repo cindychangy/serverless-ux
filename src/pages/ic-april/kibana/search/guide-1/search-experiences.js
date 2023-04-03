@@ -1,5 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import KibanaSubpageLayout from '../../../../layouts/kibana/subpage';
+import { useContext } from 'react';
+import { EuiButton } from '@elastic/eui';
+import GuideStep from '../../../../../components/guide_step';
+import { GuideContext } from '../../../../../context/guide';
 
 const BREADCRUMBS = [
   {
@@ -102,14 +105,28 @@ const SIDEBAR = [
 ];
 
 const SearchExperiencePage = () => {
+  const { guideOpen, setGuideOpen, setGuideProgress } =
+    useContext(GuideContext);
+
+  const handleStep = () => {
+    setGuideOpen(!guideOpen);
+    setTimeout(() => {
+      setGuideProgress(1);
+    }, 1000);
+  };
+
   return (
-    <KibanaSubpageLayout
+    <GuideStep
       title="Search Experiences"
-      section="Search"
-      stepNumber={2}
+      solution="Search"
       breadcrumbs={BREADCRUMBS}
       sidebar={SIDEBAR}
-    />
+      stepNumber={1}
+      guideIndex={0}>
+      <EuiButton onClick={handleStep} fill>
+        Complete this step
+      </EuiButton>
+    </GuideStep>
   );
 };
 
