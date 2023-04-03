@@ -14,7 +14,7 @@ import {
 } from '@elastic/eui';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
-import KibanaLayout from '../../../layouts/kibana';
+import KibanaLayout from '../../../layouts/kibana/page';
 
 const KibanaHome = () => {
   const router = useRouter();
