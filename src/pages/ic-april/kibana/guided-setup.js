@@ -20,15 +20,15 @@ import {
   CARDS_SECURITY,
   CARDS_ALL,
 } from '../../../constants/cards';
-import { GuideContext } from '../../../pages/_app';
+import { GuideContext } from '../../../context/guide';
 
 const GuidedSetup = () => {
   const { euiTheme } = useEuiTheme();
   const router = useRouter();
-  const [guideOpen, setGuideOpen] = useState(false);
+  const [guideIndex, setGuideIndex] = useState(undefined);
   const SOLUTION = router.query.solution;
 
-  const { activeGuide, setActiveGuide } = useContext(GuideContext);
+  const { guideOpen, setGuideOpen } = useContext(GuideContext);
 
   const guideCard = css`
     position: relative;
@@ -63,7 +63,7 @@ const GuidedSetup = () => {
 
   const handleGuideClick = index => {
     setGuideOpen(!guideOpen);
-    setActiveGuide(index);
+    setGuideIndex(index);
   };
 
   return (
@@ -79,8 +79,9 @@ const GuidedSetup = () => {
         },
       ]}
       guideOpen={guideOpen}
+      guideIndex={guideIndex}
       buttonDisabled={!guideOpen && true}
-      handleGuideClick={() => handleGuideClick(activeGuide)}>
+      handleGuideClick={() => handleGuideClick()}>
       <EuiPageTemplate paddingSize="l">
         <EuiSpacer size="xxl" />
         <EuiPageTemplate.Section color="subdued">
@@ -130,7 +131,6 @@ const GuidedSetup = () => {
               onClick={() => router.push('/ic-april/kibana')}>
               I'd like to do something else (skip)
             </EuiButtonEmpty>
-            <h1>{activeGuide}</h1>
           </EuiText>
         </EuiPageTemplate.Section>
       </EuiPageTemplate>

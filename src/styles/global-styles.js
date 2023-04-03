@@ -17,7 +17,7 @@ export const globalStyes = css`
     width: 480px;
     height: unset !important;
     animation: euiModal 350ms cubic-bezier(0.34, 1.61, 0.7, 1);
-    max-height: 76vh;
+    max-height: 90vh;
     box-shadow: none;
     overflow: hidden;
   }

@@ -1,9 +1,8 @@
-/** @jsxImportSource @emotion/react */
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+// /** @jsxImportSource @emotion/react */
+import { useContext } from 'react';
 import { EuiButton } from '@elastic/eui';
-import KibanaLayout from '../../../../layouts/kibana/page';
-
+import GuideStep from '../../../../../components/guide_step';
+import { GuideContext } from '../../../../../context/guide';
 const BREADCRUMBS = [
   {
     text: 'Search',
@@ -105,25 +104,28 @@ const SIDEBAR = [
 ];
 
 const NewIndexPage = () => {
-  const router = useRouter();
-  const [guideOpen, setGuideOpen] = useState(false);
+  const { guideOpen, setGuideOpen, setGuideProgress } =
+    useContext(GuideContext);
 
   const handleStep = () => {
     setGuideOpen(!guideOpen);
+    setTimeout(() => {
+      setGuideProgress(1);
+    }, 1000);
   };
 
   return (
-    <KibanaLayout
+    <GuideStep
       title="Add data"
-      section="Search"
+      solution="Search"
       breadcrumbs={BREADCRUMBS}
       sidebar={SIDEBAR}
-      guideOpen={guideOpen}
-      stepNumber={1}>
+      stepNumber={1}
+      guideIndex={0}>
       <EuiButton onClick={handleStep} fill>
         Complete this step
       </EuiButton>
-    </KibanaLayout>
+    </GuideStep>
   );
 };
 

@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import { EuiAvatar, EuiSideNav, EuiSpacer, EuiTitle } from '@elastic/eui';
 
-const SolutionSidebar = ({ sidebar, section }) => {
+const SolutionSidebar = ({ sidebar, solution }) => {
   return (
     <>
       <EuiTitle size="xs">
@@ -17,7 +17,7 @@ const SolutionSidebar = ({ sidebar, section }) => {
             name="Enterprise Search"
             size="m"
           />
-          <strong>{section}</strong>
+          <strong>{solution}</strong>
         </h2>
       </EuiTitle>
       <EuiSpacer />

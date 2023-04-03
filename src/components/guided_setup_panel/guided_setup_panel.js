@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -16,7 +16,6 @@ import {
   EuiFlyoutHeader,
   EuiFlyoutFooter,
   EuiFlexGroup,
-  EuiFlexItem,
   EuiProgress,
   useEuiTheme,
   EuiHorizontalRule,
@@ -26,24 +25,35 @@ import {
   GUIDES_SEARCH,
   GUIDES_OBS,
   GUIDES_SECURITY,
-  GUIDES_ALL,
 } from '../../constants/guides';
-import { GuideContext } from '../../layouts/kibana/page';
+import { GuideContext } from '../../context/guide';
 
-const GuidedSetupPanel = ({
-  handleGuideClick,
-  guideOpen,
-  activeGuide,
-  buttonDisabled,
-  guideProgress,
-  user,
-}) => {
+const GuidedSetupPanel = ({ handleGuideClick, guideIndex, stepNumber }) => {
   const router = useRouter();
   const { euiTheme } = useEuiTheme();
   // const [toggleStep, setToggleStep] = useState(stepNumber);
   const HEADER_BG = '/images/panel-bg-top.svg';
   const FOOTER_BG = '/images/panel-bg-bottom.svg';
   const SOLUTION = router.query.solution;
+  const GUIDES_HOMEPAGE = router.pathname.split('/').pop() === 'guided-setup';
+
+  const { guideOpen, guideProgress } = useContext(GuideContext);
+
+  let GUIDE_DATA = [...GUIDES_SEARCH, ...GUIDES_OBS, ...GUIDES_SECURITY][
+    guideIndex
+  ];
+
+  if (SOLUTION === 'search') {
+    GUIDE_DATA = GUIDES_SEARCH[guideIndex];
+  }
+
+  if (SOLUTION === 'observability') {
+    GUIDE_DATA = GUIDES_OBS[guideIndex];
+  }
+
+  if (SOLUTION === 'security') {
+    GUIDE_DATA = GUIDES_SECURITY[guideIndex];
+  }
 
   const iconQuestion = css`
     .euiIcon {
@@ -70,30 +80,6 @@ const GuidedSetupPanel = ({
     }
   `;
 
-  let GUIDE_DATA = [...GUIDES_SEARCH, ...GUIDES_OBS, ...GUIDES_SECURITY][
-    activeGuide
-  ];
-
-  if (SOLUTION === 'search') {
-    GUIDE_DATA = GUIDES_SEARCH[activeGuide];
-  }
-
-  if (SOLUTION === 'observability') {
-    GUIDE_DATA = GUIDES_OBS[activeGuide];
-  }
-
-  if (SOLUTION === 'security') {
-    GUIDE_DATA = GUIDES_SECURITY[activeGuide];
-  }
-
-  useEffect(() => {
-    if (guideProgress) {
-      setTimeout(() => {
-        setToggleStep(guideProgress);
-      }, 500);
-    }
-  }, []);
-
   return (
     <>
       <div
@@ -105,7 +91,7 @@ const GuidedSetupPanel = ({
           size="s"
           onClick={handleGuideClick}
           key="onboarding-setup-button"
-          disabled={buttonDisabled}
+          disabled={GUIDES_HOMEPAGE && !guideOpen && true}
           fill>
           Setup guide
         </EuiButton>
@@ -122,9 +108,6 @@ const GuidedSetupPanel = ({
                 <EuiIcon type="arrowLeft" size="m" />
                 Back to guides
               </EuiLink>
-              {/* <button onClick={() => setActiveGuide(guideIndex)}>
-                Click me
-              </button> */}
               <EuiSpacer size="m" />
               <EuiTitle size="m">
                 <h2>{GUIDE_DATA.title}</h2>
@@ -156,7 +139,7 @@ const GuidedSetupPanel = ({
                   </EuiText>
                 </>
               )}
-              {!!guideProgress && (
+              {!GUIDES_HOMEPAGE && (
                 <>
                   <EuiSpacer size="m" />
 
@@ -174,9 +157,15 @@ const GuidedSetupPanel = ({
               {GUIDE_DATA.steps.map(step => (
                 <PanelSection
                   step={step}
+                  stepNumber={stepNumber}
                   guideProgress={guideProgress}
-                  // forceState={toggleStep === stepNumber ? 'open' : 'closed'}
-                  forceState="open"
+                  key={step.title}
+                  initialOpen={GUIDES_HOMEPAGE && stepNumber === 1}
+                  forceState={
+                    !GUIDES_HOMEPAGE && stepNumber === guideProgress
+                      ? 'closed'
+                      : ''
+                  }
                 />
               ))}
             </EuiFlyoutBody>

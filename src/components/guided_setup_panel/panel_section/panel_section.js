@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import {
@@ -13,13 +13,16 @@ import {
   EuiHorizontalRule,
   useEuiTheme,
 } from '@elastic/eui';
-import { GuideContext } from '../../../pages/_app';
+import { GuideContext } from '../../../context/guide';
 
-const PanelSection = ({ step, guideProgress, forceState }) => {
+const PanelSection = ({ step, forceState, stepNumber }) => {
   const router = useRouter();
   const { euiTheme } = useEuiTheme();
 
-  const { activeGuide, setActiveGuide } = useContext(GuideContext);
+  const CURRENT_STEP = step.order === stepNumber;
+
+  const { guideOpen, setGuideOpen, guideProgress, setGuideProgress } =
+    useContext(GuideContext);
 
   const stepText = css`
     p {
@@ -75,10 +78,16 @@ const PanelSection = ({ step, guideProgress, forceState }) => {
     }
   `;
 
-  const handleGuideStart = () => {
-    setActiveGuide(activeGuide);
+  const handleStepAdvance = () => {
+    setGuideOpen(!guideOpen);
+    setGuideProgress(stepNumber);
 
-    router.push(`guided-setup/${step.stepPath}`);
+    router.push(
+      {
+        pathname: `guided-setup/${step.stepPath}`,
+      },
+      `guided-setup/${step.stepPath}`
+    );
   };
 
   // const currentStep = step.order === stepNumber;
@@ -99,7 +108,7 @@ const PanelSection = ({ step, guideProgress, forceState }) => {
             css={accordionStyles}
             buttonContent={
               <EuiFlexGroup gutterSize="none" responsive={false}>
-                <EuiFlexItem grow={false} class="guideStep">
+                <EuiFlexItem grow={false} className="guideStep">
                   <EuiText
                     size="s"
                     css={css`
@@ -130,25 +139,11 @@ const PanelSection = ({ step, guideProgress, forceState }) => {
             <EuiFlexGroup justifyContent="flexEnd" gutterSize="none">
               <EuiFlexItem grow={false}>
                 <EuiSpacer size="m" />
-
-                <EuiButton
-                  fill
-                  onClick={handleGuideStart}
-                  // onClick={() => router.push(`guided-setup/${step.stepPath}`)}
-                  // onClick={() =>
-                  //   router.push(
-                  //     {
-                  //       pathname: `guided-setup/${step.stepPath}`,
-                  //       query: {
-                  //         stepsCompleted: guideProgress,
-                  //       },
-                  //     },
-                  //     `guided-setup/${step.stepPath}`
-                  //   )
-                  // }
-                >
-                  Start
-                </EuiButton>
+                {guideProgress === step.order - 1 && (
+                  <EuiButton fill onClick={handleStepAdvance}>
+                    Start
+                  </EuiButton>
+                )}
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiAccordion>

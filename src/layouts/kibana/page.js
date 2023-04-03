@@ -24,24 +24,20 @@ import {
 import { css } from '@emotion/react';
 import GuidedSetupPanel from '../../components/guided_setup_panel/guided_setup_panel';
 import SolutionSidebar from '../../components/solution_sidebar';
-import { GuideContext } from '../../pages/_app';
 
 const KibanaLayout = ({
   breadcrumbs,
-  buttonDisabled,
   children,
   handleGuideClick,
-  guideOpen,
-  guideProgress,
+  guideIndex,
   sidebar,
-  section,
+  solution,
+  stepNumber,
   title,
 }) => {
   const { euiTheme } = useEuiTheme();
   const [navIsOpen, setNavIsOpen] = useState(false);
   const collapsibleNavId = useGeneratedHtmlId({ prefix: 'collapsibleNav' });
-
-  const { activeGuide } = useContext(GuideContext);
 
   const collapsibleNav = (
     <EuiCollapsibleNav
@@ -76,6 +72,7 @@ const KibanaLayout = ({
                 label: 'Manage deployment',
                 href: '#',
                 iconType: 'logoCloud',
+                key: 'cloud',
                 iconProps: {
                   color: 'ghost',
                 },
@@ -134,10 +131,9 @@ const KibanaLayout = ({
                 items: [
                   <GuidedSetupPanel
                     handleGuideClick={handleGuideClick}
-                    guideOpen={guideOpen}
-                    activeGuide={activeGuide}
-                    buttonDisabled={buttonDisabled}
-                    guideProgress={guideProgress}
+                    stepNumber={stepNumber}
+                    guideIndex={guideIndex}
+                    key="guided-setup-panel"
                   />,
                   <EuiHeaderSectionItemButton flush="both" key="user-menu">
                     <EuiAvatar
@@ -146,7 +142,9 @@ const KibanaLayout = ({
                       name="account"
                     />
                   </EuiHeaderSectionItemButton>,
-                  <EuiHeaderSectionItemButton aria-label="Account menu">
+                  <EuiHeaderSectionItemButton
+                    aria-label="Account menu"
+                    key="avatar">
                     <EuiAvatar
                       size="s"
                       name="Emily Lin"
@@ -178,13 +176,10 @@ const KibanaLayout = ({
               />
             </EuiHeaderSection>
           </EuiHeader>
-          {/* <div style={{ height: '300px', paddingTop: '200px' }}>
-            {activeGuide}
-          </div> */}
           {sidebar ? (
             <EuiPageTemplate style={{ paddingBlockStart: 90 }}>
               <EuiPageTemplate.Sidebar>
-                <SolutionSidebar sidebar={sidebar} section={section} />
+                <SolutionSidebar sidebar={sidebar} solution={solution} />
               </EuiPageTemplate.Sidebar>
               <EuiPageTemplate.Section>
                 <EuiTitle size="l">

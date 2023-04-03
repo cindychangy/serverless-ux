@@ -18,7 +18,7 @@ export const GUIDES_SEARCH = [
           title: 'Getting started with Elastic Enterprise Search',
           url: '#',
         },
-        stepPath: '../search/new-index',
+        stepPath: '../search/guide-1/new-index',
         order: 1,
       },
       {
@@ -26,7 +26,7 @@ export const GUIDES_SEARCH = [
         description:
           "<p>Learn more about Elastic's Search UI, try our Search UI tutorial for Elasticsearch, and build a search experience.</p>",
         link: null,
-        stepPath: '../search/search-experiences',
+        stepPath: '../search/guide-1/search-experiences',
         order: 2,
       },
     ],
