@@ -112,7 +112,7 @@ const CloudHomepage = () => {
                     font-size: 16px;
                   `}
                   onClick={() => router.push('deployments/list')}>
-                  Elasticsearch deployments
+                  Dedicated deployments
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
@@ -192,7 +192,7 @@ const CloudHomepage = () => {
                     font-size: 16px;
                   `}
                   onClick={() => router.push('projects/list')}>
-                  Elasticsearch projects
+                  Fully-managed projects
                 </EuiButtonEmpty>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
