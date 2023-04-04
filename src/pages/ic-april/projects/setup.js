@@ -71,7 +71,7 @@ const SetupFromProjectList = () => {
                 css={cardContainer}
                 title={
                   <>
-                    <EuiSpacer size="s" />
+                    <EuiSpacer size="m" />
                     <EuiIcon type={card.logo} size="m" />
                     <div>{card.title}</div>
                   </>
@@ -79,7 +79,7 @@ const SetupFromProjectList = () => {
                 titleElement="h4"
                 titleSize="xs">
                 <EuiBadge color="warning" css={badgeStyle}>
-                  <small>BETA</small>
+                  <small>PREVIEW</small>
                 </EuiBadge>
                 <EuiHorizontalRule margin="xs" />
                 <EuiSpacer size="xs" />
@@ -96,7 +96,7 @@ const SetupFromProjectList = () => {
                   </EuiText>
                 </EuiTextAlign>
 
-                <EuiSpacer size="s" />
+                <EuiSpacer size="l" />
                 <EuiButton
                   fullWidth
                   size="s"
@@ -113,6 +113,7 @@ const SetupFromProjectList = () => {
                   }>
                   Next
                 </EuiButton>
+                <EuiSpacer size="s" />
               </EuiCard>
             </EuiFlexItem>
           ))}

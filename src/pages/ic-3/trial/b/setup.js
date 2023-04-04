@@ -203,7 +203,7 @@ const ProjectSetup = () => {
                       margin-left: 5px;
                       margin-top: -4px;
                     `}>
-                    BETA
+                    PREVIEW
                   </EuiBadge>
                 </>
               }
