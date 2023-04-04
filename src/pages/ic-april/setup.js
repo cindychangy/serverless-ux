@@ -128,7 +128,7 @@ const Setup = () => {
               }}
               title={
                 <EuiTextAlign textAlign="center">
-                  <EuiSpacer size="m" />
+                  <EuiSpacer size="l" />
                   {PROJECT_CLASSIC}
                 </EuiTextAlign>
               }
@@ -190,7 +190,7 @@ const Setup = () => {
               }}
               title={
                 <EuiTextAlign textAlign="center">
-                  <EuiSpacer size="m" />
+                  <EuiSpacer size="l" />
                   {PROJECT_BETA}
                   <EuiBadge color="warning" css={badgeStyle}>
                     PREVIEW
