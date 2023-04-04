@@ -140,7 +140,8 @@ const PanelSection = ({ step, forceState, stepNumber }) => {
               <EuiFlexItem grow={false}>
                 <EuiSpacer size="m" />
                 {guideProgress === step.order - 1 && (
-                  <EuiButton fill onClick={handleStepAdvance}>
+                  // <EuiButton fill onClick={handleStepAdvance}></EuiButton>
+                  <EuiButton fill onClick={() => {}}>
                     Start
                   </EuiButton>
                 )}
