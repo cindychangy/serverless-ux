@@ -128,7 +128,7 @@ const Setup = () => {
               }}
               title={
                 <EuiTextAlign textAlign="center">
-                  <EuiSpacer size="m" />
+                  <EuiSpacer size="l" />
                   {PROJECT_CLASSIC}
                 </EuiTextAlign>
               }
@@ -190,10 +190,10 @@ const Setup = () => {
               }}
               title={
                 <EuiTextAlign textAlign="center">
-                  <EuiSpacer size="m" />
+                  <EuiSpacer size="l" />
                   {PROJECT_BETA}
                   <EuiBadge color="warning" css={badgeStyle}>
-                    BETA
+                    PREVIEW
                   </EuiBadge>
                 </EuiTextAlign>
               }
@@ -284,7 +284,7 @@ const Setup = () => {
                       }}
                       title={
                         <>
-                          <EuiSpacer size="s" />
+                          <EuiSpacer size="m" />
                           <EuiIcon type={card.logo} size="m" />
                           <div>{card.title}</div>
                         </>
@@ -292,7 +292,7 @@ const Setup = () => {
                       titleElement="h4"
                       titleSize="xs">
                       <EuiBadge color="warning" css={badgeStyle}>
-                        <small>BETA</small>
+                        <small>PREVIEW</small>
                       </EuiBadge>
                       <EuiHorizontalRule margin="xs" />
                       <EuiSpacer size="xs" />
@@ -309,7 +309,7 @@ const Setup = () => {
                         </EuiText>
                       </EuiTextAlign>
 
-                      <EuiSpacer size="s" />
+                      <EuiSpacer size="m" />
                     </EuiCard>
                   </EuiFlexItem>
                 ))}
