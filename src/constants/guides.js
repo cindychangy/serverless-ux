@@ -291,7 +291,7 @@ export const GUIDES_SECURITY = [
         order: 1,
       },
       {
-        title: 'TUrn on rules',
+        title: 'Turn on rules',
         description:
           '<ul><li>Load the Elastic prebuilt rules, select the rules you want, and enable them to generate alerts.</li></ul>',
         link: null,
