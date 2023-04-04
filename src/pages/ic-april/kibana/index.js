@@ -86,7 +86,9 @@ const KibanaHome = () => {
                 <EuiFlexItem grow={false}>
                   <EuiButton
                     fill
-                    onClick={() => router.push('/8.6/guided-setup')}>
+                    onClick={() =>
+                      router.push('/ic-april/kibana/guided-setup')
+                    }>
                     Launch Guided Setup
                   </EuiButton>
                 </EuiFlexItem>
