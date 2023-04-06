@@ -48,7 +48,7 @@ const CloudSubPageLayout = ({
             css={css`
               max-width: 1320px;
               margin: auto;
-              height: 100vh;
+              min-height: 100vh;
             `}>
             <EuiSpacer size="l" />
             <EuiPageHeader
