@@ -64,7 +64,7 @@ const CloudHomepage = () => {
 
   const TABLE_ITEMS_DEPLOYMENTS = [
     {
-      name: 'Security xyz2064',
+      name: 'Docs_dev',
       status: <EuiBadge color="success">Healthy</EuiBadge>,
       version: '8.5.0',
       region: 'GCP - Iowa (us-central1)',
@@ -73,7 +73,7 @@ const CloudHomepage = () => {
 
   const TABLE_HEADER_PROJECTS = [
     'Project',
-    'Type',
+    'Solution',
     'Cloud provider & region',
     'Actions',
   ];

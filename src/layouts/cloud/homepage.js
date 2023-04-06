@@ -79,7 +79,7 @@ const CloudHomepageLayout = ({ children, route, icNumber }) => {
                 <EuiFlexGroup alignItems="center">
                   <EuiFlexItem>
                     <EuiTitle size="s">
-                      <h3>Elastic Cloud</h3>
+                      <h3>Welcome to Elastic Cloud</h3>
                     </EuiTitle>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>

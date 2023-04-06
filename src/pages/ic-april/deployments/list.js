@@ -46,7 +46,7 @@ const DeploymentsPage = () => {
 
   const TABLE_ITEMS = [
     {
-      name: 'Security xyz2064',
+      name: 'Docs_dev',
       status: <EuiBadge color="success">Healthy</EuiBadge>,
       version: '8.5.0',
       region: 'GCP - Iowa (us-central1)',
