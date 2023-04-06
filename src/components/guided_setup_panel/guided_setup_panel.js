@@ -25,6 +25,7 @@ import {
   GUIDES_SEARCH,
   GUIDES_OBS,
   GUIDES_SECURITY,
+  GUIDES_ALL,
 } from '../../constants/guides';
 import { GuideContext } from '../../context/guide';
 
@@ -39,9 +40,7 @@ const GuidedSetupPanel = ({ handleGuideClick, guideIndex, stepNumber }) => {
 
   const { guideOpen, guideProgress } = useContext(GuideContext);
 
-  let GUIDE_DATA = [...GUIDES_SEARCH, ...GUIDES_OBS, ...GUIDES_SECURITY][
-    guideIndex
-  ];
+  let GUIDE_DATA = GUIDES_ALL[guideIndex];
 
   if (SOLUTION === 'search') {
     GUIDE_DATA = GUIDES_SEARCH[guideIndex];
