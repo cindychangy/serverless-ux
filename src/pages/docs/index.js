@@ -1,28 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 /** @jsxImportSource @emotion/react */
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { css } from '@emotion/react';
 import {
-  EuiPanel,
   EuiText,
-  EuiSpacer,
-  EuiImage,
-  EuiLink,
   EuiButton,
-  EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
   EuiButtonEmpty,
-  EuiIcon,
   EuiTitle,
-  EuiCopy,
   EuiContextMenuPanel,
   EuiContextMenuItem,
   EuiPopover,
-  EuiSelect,
-  useEuiTheme,
-  useEuiBackgroundColor,
   EuiHorizontalRule,
 } from '@elastic/eui';
 
