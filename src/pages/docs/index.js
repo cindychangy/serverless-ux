@@ -166,6 +166,13 @@ const DocsPage = () => {
           width: 450px;
           margin-top: 150px;
         `}>
+        <EuiTitle
+          size="s"
+          css={css`
+            margin-bottom: 40px;
+          `}>
+          <h4>Docs Versioning Example</h4>
+        </EuiTitle>
         <EuiFlexGroup alignItems="center" gutterSize="s">
           <EuiFlexItem grow={false}>
             <EuiPopover
