@@ -12,7 +12,12 @@ import {
   EuiContextMenuPanel,
   EuiContextMenuItem,
   EuiPopover,
+  EuiLink,
+  EuiAccordion,
+  EuiSkeletonRectangle,
   EuiHorizontalRule,
+  EuiSkeletonText,
+  EuiSpacer,
 } from '@elastic/eui';
 
 const DocsPage = () => {
@@ -20,6 +25,7 @@ const DocsPage = () => {
   const [isSecondaryOpen, setSecondary] = useState(false);
   const [currentStack, setCurrentStack] = useState('8.6');
   const [currentSecondary, setCurrentSecondary] = useState('1.x');
+  const [secondaryVersioning, setSecondaryVersioning] = useState(false);
 
   const onStackClick = () => {
     setStack(!isStackOpen);
@@ -151,51 +157,116 @@ const DocsPage = () => {
     return (
       <div
         css={css`
-          margin: auto;
-          width: 450px;
-          margin-top: 150px;
+          background: #fff;
+          height: 100vh;
+          width: 100vw;
         `}>
-        <EuiTitle
-          size="s"
+        <div
           css={css`
-            margin-bottom: 40px;
+            margin: auto;
+            width: 1350px;
+            margin-top: 150px;
           `}>
-          <h4>Docs Versioning Example</h4>
-        </EuiTitle>
-        <EuiFlexGroup alignItems="center" gutterSize="s">
-          <EuiFlexItem grow={false}>
-            <EuiPopover
-              id="stack options"
-              button={stackButton}
-              isOpen={isStackOpen}
-              closePopover={closeStack}
-              panelPaddingSize="xs"
-              anchorPosition="downLeft">
-              <EuiContextMenuPanel size="s" items={stackItems} />
-            </EuiPopover>
-          </EuiFlexItem>
-          <EuiFlexItem grow={false}>
-            <EuiText
-              color="#D3DAE6"
+          <EuiFlexGroup alignItems="flexStart">
+            <EuiFlexItem
+              grow={false}
               css={css`
-                font-size: 24px;
-                font-weight: 200;
+                width: 250px;
+                padding-top: 5px;
               `}>
-              <p> /</p>
-            </EuiText>
-          </EuiFlexItem>
-          <EuiFlexItem grow={false}>
-            <EuiPopover
-              id="stack options"
-              button={secondaryButton}
-              isOpen={isSecondaryOpen}
-              closePopover={closeSecondary}
-              panelPaddingSize="xs"
-              anchorPosition="downLeft">
-              <EuiContextMenuPanel size="s" items={secondaryItems} />
-            </EuiPopover>
-          </EuiFlexItem>
-        </EuiFlexGroup>
+              <EuiAccordion
+                initialIsOpen={true}
+                id="Observability Guide"
+                forceState="open"
+                onClick={() => setSecondaryVersioning(!secondaryVersioning)}
+                buttonContent={
+                  <EuiText size="s">
+                    <h4>Observability Guide</h4>
+                  </EuiText>
+                }>
+                <EuiLink
+                  size="s"
+                  color="subdued"
+                  css={css`
+                    padding: 10px 0 0 25px;
+                  `}
+                  onClick={() => setSecondaryVersioning(!secondaryVersioning)}>
+                  Java Agent
+                </EuiLink>
+              </EuiAccordion>
+            </EuiFlexItem>
+            <EuiFlexItem
+              grow={2}
+              css={css`
+                padding: 0 30px;
+              `}>
+              <EuiTitle size="l">
+                <h1>What is Elastic Observability</h1>
+              </EuiTitle>
+              <EuiSpacer size="m" />
+              <EuiSkeletonText size="s" lines="4" />
+            </EuiFlexItem>
+            <EuiFlexItem grow={1}>
+              <EuiSpacer size="s" />
+              {/* START VERSIONING DROPDOWNS */}
+              <EuiFlexGroup alignItems="center" gutterSize="s">
+                <EuiFlexItem grow={false}>
+                  <EuiPopover
+                    id="stack options"
+                    button={stackButton}
+                    isOpen={isStackOpen}
+                    closePopover={closeStack}
+                    panelPaddingSize="xs"
+                    anchorPosition="downLeft">
+                    <EuiContextMenuPanel size="s" items={stackItems} />
+                  </EuiPopover>
+                </EuiFlexItem>
+
+                {!!secondaryVersioning && (
+                  <>
+                    <EuiFlexItem grow={false}>
+                      <EuiText
+                        color="#D3DAE6"
+                        css={css`
+                          font-size: 24px;
+                          font-weight: 200;
+                        `}>
+                        <p> /</p>
+                      </EuiText>
+                    </EuiFlexItem>
+                    <EuiFlexItem grow={false}>
+                      <EuiPopover
+                        id="stack options"
+                        button={secondaryButton}
+                        isOpen={isSecondaryOpen}
+                        closePopover={closeSecondary}
+                        panelPaddingSize="xs"
+                        anchorPosition="downLeft">
+                        <EuiContextMenuPanel size="s" items={secondaryItems} />
+                      </EuiPopover>
+                    </EuiFlexItem>
+                  </>
+                )}
+              </EuiFlexGroup>
+              {/* END VERSIONING DROPDOWNS */}
+              <EuiSpacer size="xxl" />
+              <EuiTitle size="xs">
+                <h4>On this page</h4>
+              </EuiTitle>
+              <EuiSpacer size="m" />
+              <div
+                css={css`
+                  border-left: 2px solid #cecece;
+                  padding-left: 20px;
+                  margin-left: 6px;
+                `}>
+                <EuiText size="s" color="subdued">
+                  What is Observability?
+                </EuiText>
+              </div>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </div>
       </div>
     );
   } else {
