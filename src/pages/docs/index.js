@@ -14,7 +14,6 @@ import {
   EuiPopover,
   EuiLink,
   EuiAccordion,
-  EuiSkeletonRectangle,
   EuiHorizontalRule,
   EuiSkeletonText,
   EuiSpacer,
