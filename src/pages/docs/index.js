@@ -190,7 +190,7 @@ const DocsPage = () => {
                     padding: 10px 0 0 25px;
                   `}
                   onClick={() => setSecondaryVersioning(!secondaryVersioning)}>
-                  Java Agent
+                  Java
                 </EuiLink>
               </EuiAccordion>
             </EuiFlexItem>
